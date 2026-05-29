@@ -22,6 +22,10 @@ function getHomeSections() {
     ]);
 }
 
+// =============================================================================
+// CATEGORIES & FILTERS
+// =============================================================================
+
 function getPrimaryCategories() {
     return JSON.stringify([
         { name: 'Recent Uploads', slug: 'recent' },
@@ -74,7 +78,7 @@ function getUrlDetail(slug) {
 }
 
 // =============================================================================
-// PARSERS (Using highly optimized Regex for sandboxed Rhino/QuickJS engines)
+// PARSERS
 // =============================================================================
 
 function parseListResponse(htmlContent) {
@@ -111,7 +115,7 @@ function parseListResponse(htmlContent) {
         
         if (url && title) {
             items.push({
-                id: url, // Use the full URL as id/slug for detail loading!
+                id: url,
                 title: title,
                 posterUrl: posterUrl,
                 backdropUrl: posterUrl,
@@ -170,7 +174,6 @@ function parseMovieDetail(htmlContent, apiUrl) {
         if (!isNaN(y)) year = y;
     }
     
-    // Build servers list
     var servers = [];
     
     // Detect if this is a TV Show (has episode list or id="episodes")
@@ -214,7 +217,6 @@ function parseMovieDetail(htmlContent, apiUrl) {
                 });
             }
         } else {
-            // Fallback: simple default server if post config not parsed
             servers.push({
                 name: "Default Server",
                 episodes: [{ id: apiUrl, name: "Full Movie / Episode", slug: "full" }]
@@ -269,7 +271,6 @@ function parseMovieDetail(htmlContent, apiUrl) {
             }
         }
         
-        // If absolutely no servers found, use the page itself
         if (playOptions.length === 0) {
             playOptions.push({
                 id: apiUrl,
@@ -309,7 +310,6 @@ function parseDetailResponse(htmlContent, apiUrl) {
         var season = parts[4];
         var episode = parts[5];
         
-        // Construct getPlayTV.php source which contains the window.location redirect to the actual video stream
         var playTvUrl = 'https://wmovies.org/getPlayTV.php?id=' + tvid + '&s=' + season + '&e=' + episode + '&sv=embedru&playtv=true';
         return JSON.stringify({
             url: playTvUrl,
@@ -330,9 +330,86 @@ function parseDetailResponse(htmlContent, apiUrl) {
         var url = iframeMatch[1];
         if (url.indexOf('//') === 0) url = 'https:' + url;
         
-        // If iframe src is blank, try parsing the 'Servers' JSON as a fallback
         if (url === 'about:blank' || !url) {
             var serversMatch = /var\s+Servers\s*=\s*({[^;]+});/.exec(htmlContent);
             if (serversMatch) {
                 try {
                     var serversObj = JSON.parse(serversMatch[1]);
+                    var streamUrl = serversObj.embedru || serversObj.vidsrc || serversObj.superembed || serversObj.premium || "";
+                    if (streamUrl.indexOf('//') === 0) streamUrl = 'https:' + streamUrl;
+                    if (streamUrl) {
+                        return JSON.stringify({
+                            url: streamUrl,
+                            isEmbed: true,
+                            headers: {
+                                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                                "Referer": apiUrl
+                            }
+                        });
+                    }
+                } catch(e) {}
+            }
+        }
+        
+        return JSON.stringify({
+            url: url,
+            isEmbed: true,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Referer": apiUrl
+            }
+        });
+    }
+    
+    return JSON.stringify({
+        url: apiUrl,
+        isEmbed: true,
+        headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Referer": "https://wmovies.org/"
+        }
+    });
+}
+
+function parseEmbedResponse(htmlContent, apiUrl) {
+    // 1. Extract window.location.href redirects
+    var redirectMatch = /window\.location\.href\s*=\s*"([^"]+)"/.exec(htmlContent) ||
+                        /window\.location\.replace\s*\(\s*"([^"]+)"\s*\)/.exec(htmlContent);
+    if (redirectMatch) {
+        var url = redirectMatch[1];
+        if (url.indexOf('//') === 0) url = 'https:' + url;
+        return JSON.stringify({
+            url: url,
+            isEmbed: true,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Referer": "https://wmovies.org/"
+            }
+        });
+    }
+    
+    // 2. Extract nested iframe player embeds
+    var iframeMatch = /<iframe[^>]*src="([^"]+)"/.exec(htmlContent);
+    if (iframeMatch) {
+        var url = iframeMatch[1];
+        if (url.indexOf('//') === 0) url = 'https:' + url;
+        return JSON.stringify({
+            url: url,
+            isEmbed: true,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Referer": apiUrl
+            }
+        });
+    }
+    
+    // 3. If no further redirects, we are at the final stream
+    return JSON.stringify({
+        url: apiUrl,
+        isEmbed: false,
+        headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Referer": "https://wmovies.org/"
+        }
+    });
+}
