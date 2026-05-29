@@ -1,7 +1,7 @@
 {
-version: 1,
-plugins: [
-{
+  "version": 1,
+  "plugins": [
+  {
 id: "cinema",
 name: "CinemaBZ",
 version: "1.0.0",
@@ -20,6 +20,6 @@ name: "Fmovie",
 version: "1.0.0",
 scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/fm.js",
 iconUrl: "",
+}]
 }
-]
-}
+
