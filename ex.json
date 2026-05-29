@@ -1,0 +1,23 @@
+{
+version: 1,
+plugins: [
+{
+id: "cinema",
+name: "CinemaBZ",
+version: "1.0.0",
+scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cinema.js",
+},
+{
+id: "wmovie",
+name: "Wmovie",
+version: "1.0.0",
+scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/wmovies_plugin.js",
+},
+{
+id: "Fmovie",
+name: "Fmovie",
+version: "1.0.0",
+scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/fm.js",
+}
+]
+}
