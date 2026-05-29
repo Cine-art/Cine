@@ -257,12 +257,12 @@ function parseDetailResponse(htmlContent, apiUrl) {
             "    window.srv = " + serverId + ";\n" +
             "    \n" +
             "    var checkInterval = setInterval(function() {\n" +
-            "        var playBtn = document.getElementById('play-btn');\n" +
-            "        if (playBtn) {\n" +
+            "        var playNow = document.getElementById('play-now') || document.getElementById('play-btn');\n" +
+            "        if (playNow) {\n" +
             "            clearInterval(checkInterval);\n" +
             "            \n" +
-            "            // 1. Click play-btn to initialize the iframe\n" +
-            "            playBtn.click();\n" +
+            "            // 1. Click play-now cover to initialize the iframe\n" +
+            "            playNow.click();\n" +
             "            console.log('Auto-clicked Play Button');\n" +
             "            \n" +
             "            // 2. Click correct server and episode buttons\n" +
