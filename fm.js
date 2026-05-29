@@ -248,60 +248,10 @@ function parseDetailResponse(htmlContent, apiUrl) {
         var serverId = parts[3];
         var episodeId = parts[4];
         
-        // Custom auto-clicker script to control the WebView player
-        var injectScript = 
-            "<script>\n" +
-            "document.addEventListener('DOMContentLoaded', function() {\n" +
-            "    console.log('Fmovies Auto-Clicker Loaded: Server " + serverId + ", Episode " + episodeId + "');\n" +
-            "    \n" +
-            "    window.srv = " + serverId + ";\n" +
-            "    \n" +
-            "    var checkInterval = setInterval(function() {\n" +
-            "        var playNow = document.getElementById('play-now') || document.getElementById('play-btn');\n" +
-            "        if (playNow) {\n" +
-            "            clearInterval(checkInterval);\n" +
-            "            \n" +
-            "            // 1. Click play-now cover to initialize the iframe\n" +
-            "            playNow.click();\n" +
-            "            console.log('Auto-clicked Play Button');\n" +
-            "            \n" +
-            "            // 2. Click correct server and episode buttons\n" +
-            "            setTimeout(function() {\n" +
-            "                var serverBtn = document.getElementById('srv-" + serverId + "');\n" +
-            "                if (serverBtn) {\n" +
-            "                    serverBtn.click();\n" +
-            "                    console.log('Auto-clicked Server Button: srv-" + serverId + "');\n" +
-            "                }\n" +
-            "                \n" +
-            "                setTimeout(function() {\n" +
-            "                    var episodeBtn = document.getElementById('ep-" + episodeId + "');\n" +
-            "                    if (episodeBtn) {\n" +
-            "                        episodeBtn.click();\n" +
-            "                        console.log('Auto-clicked Episode Button: ep-" + episodeId + "');\n" +
-            "                    }\n" +
-            "                }, 300);\n" +
-            "            }, 500);\n" +
-            "        }\n" +
-            "    }, 100);\n" +
-            "    \n" +
-            "    setTimeout(function() { clearInterval(checkInterval); }, 6000);\n" +
-            "});\n" +
-            "</script>\n";
-            
-        // Inject script into detail page HTML
-        var modifiedHtml = htmlContent;
-        if (modifiedHtml.indexOf('</head>') !== -1) {
-            modifiedHtml = modifiedHtml.replace('</head>', injectScript + '</head>');
-        } else {
-            modifiedHtml = modifiedHtml + injectScript;
-        }
-        
-        // Base64 encode the HTML safely in ES5
-        var base64Html = base64Encode(modifiedHtml);
-        var dataUrl = "data:text/html;base64," + base64Html;
+        var playUrlWithHash = originalDetailUrl + "#fmovies-play|" + mid + "|" + serverId + "|" + episodeId;
         
         return JSON.stringify({
-            url: dataUrl,
+            url: playUrlWithHash,
             isEmbed: true,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -318,40 +268,4 @@ function parseDetailResponse(htmlContent, apiUrl) {
             "Referer": "https://fmoviess.org/"
         }
     });
-}
-
-// Helper: safe Base64 encoding supporting UTF-8 in ES5 JS
-function base64Encode(str) {
-    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-    var out = "";
-    var i = 0;
-    var len = str.length;
-    var c1, c2, c3;
-    
-    var utf8Str = unescape(encodeURIComponent(str));
-    len = utf8Str.length;
-    
-    while (i < len) {
-        c1 = utf8Str.charCodeAt(i++) & 0xff;
-        if (i === len) {
-            out += chars.charAt(c1 >> 2);
-            out += chars.charAt((c1 & 0x3) << 4);
-            out += "==";
-            break;
-        }
-        c2 = utf8Str.charCodeAt(i++);
-        if (i === len) {
-            out += chars.charAt(c1 >> 2);
-            out += chars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
-            out += chars.charAt((c2 & 0xF) << 2);
-            out += "=";
-            break;
-        }
-        c3 = utf8Str.charCodeAt(i++);
-        out += chars.charAt(c1 >> 2);
-        out += chars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
-        out += chars.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >> 6));
-        out += chars.charAt(c3 & 0x3F);
-    }
-    return out;
 }
