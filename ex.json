@@ -15,5 +15,6 @@
     {
       "name:TheMovieBox",
       "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/moviebox_plugin.js"
+    }
   ]
 }
