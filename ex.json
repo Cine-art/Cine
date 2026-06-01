@@ -13,7 +13,7 @@
       "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/fm.js"
     }
     {
-      "name:TheMovieBox",
+      "name": "TheMovieBox",
       "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/moviebox_plugin.js"
     }
   ]
