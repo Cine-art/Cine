@@ -1,25 +1,16 @@
 {
-  "version": 1,
   "plugins": [
-  {
-id: "cinema",
-name: "CinemaBZ",
-version: "1.0.0",
-scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cinema.js",
-iconUrl: "",
-},
-{
-id: "wmovie",
-name: "Wmovie",
-version: "1.0.0",
-scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/wmovies_plugin.js",
-iconUrl: "",
-{
-id: "Fmovie",
-name: "Fmovie",
-version: "1.0.0",
-scriptUrl: "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/fm.js",
-iconUrl: "",
-}]
+    {
+      "name": "Cinema Source",
+      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cinema.js"
+    },
+    {
+      "name": "WMovies Source",
+      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/wmovies_plugin.js"
+    },
+    {
+      "name": "FMovies Source",
+      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/fm.js"
+    }
+  ]
 }
-
