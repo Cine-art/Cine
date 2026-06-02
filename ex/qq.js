@@ -5,7 +5,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "truyenqq",
         "name": "TruyenQQ",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://truyenqqko.com",
         "iconUrl": "https://truyenqqko.com/favicon.ico",
         "isEnabled": true,
@@ -124,19 +124,45 @@ function parseListResponse(htmlContent) {
         if (!title) {
             title = slug.split('-').join(' ');
         }
-        // Extract cover URL (prioritizing high-quality data-fb mirror)
+        // Extract cover URL using robust attribute parsing
         var cover = "";
-        var dataFbMatch = /data-fb=["']([^"']+)["']/.exec(liBlock);
-        if (dataFbMatch && dataFbMatch[1] && dataFbMatch[1].indexOf('no_image') === -1) {
-            cover = dataFbMatch[1];
-        } else {
-            var srcMatch = /src=["']([^"']+)["']/.exec(liBlock);
-            if (srcMatch) {
-                cover = srcMatch[1];
+        var imgMatch = /<img\s+([^>]+)>/i.exec(liBlock);
+        if (imgMatch) {
+            var attrs = imgMatch[1];
+            var src = getAttr(attrs, "src");
+            var dataOriginal = getAttr(attrs, "data-original");
+            var dataSrc = getAttr(attrs, "data-src");
+            var dataCdn = getAttr(attrs, "data-cdn");
+            var dataFb = getAttr(attrs, "data-fb");
+            
+            function isValid(url) {
+                if (!url) return false;
+                url = url.trim();
+                if (url.indexOf("data:") === 0 || url.indexOf("base64") > -1) return false;
+                if (url.indexOf("no_image") > -1 || url.indexOf("no-avatar") > -1 || url.indexOf("no_avatar") > -1) return false;
+                return true;
+            }
+            
+            if (isValid(src)) {
+                cover = src;
+            } else if (isValid(dataOriginal)) {
+                cover = dataOriginal;
+            } else if (isValid(dataSrc)) {
+                cover = dataSrc;
+            } else if (isValid(dataCdn)) {
+                cover = dataCdn;
+            } else if (isValid(dataFb)) {
+                cover = dataFb;
+            } else {
+                cover = src || dataFb || "";
             }
         }
-        if (cover && cover.indexOf("//") === 0) {
-            cover = "https:" + cover;
+        if (cover) {
+            if (cover.indexOf("//") === 0) {
+                cover = "https:" + cover;
+            } else if (cover.indexOf("/") === 0) {
+                cover = "https://truyenqqko.com" + cover;
+            }
         }
         // Extract latest chapter name
         var lastChap = "Chương mới";
@@ -212,6 +238,13 @@ function parseMovieDetail(htmlContent, apiUrl) {
     if (ogImg) {
         posterUrl = ogImg[1].trim();
     }
+    if (posterUrl) {
+        if (posterUrl.indexOf("//") === 0) {
+            posterUrl = "https:" + posterUrl;
+        } else if (posterUrl.indexOf("/") === 0) {
+            posterUrl = "https://truyenqqko.com" + posterUrl;
+        }
+    }
     // Parse Genres
     var genres = [];
     var genreRegex = /href=["'](?:https?:\/\/[^\/]+)?\/the-loai\/[^"'\s>]+["'][^>]*>([\s\S]*?)<\/a>/g;
@@ -285,24 +318,19 @@ function parseDetailResponse(htmlContent, apiUrl) {
     
     while ((match = imgTagRegex.exec(htmlContent)) !== null) {
         var attrs = match[1];
-        if (attrs.indexOf('class=') > -1 && attrs.indexOf('lazy') > -1) {
-            var imgUrl = "";
-            var cdnMatch = /data-cdn=["']([^"']+)["']/.exec(attrs);
-            var origMatch = /data-original=["']([^"']+)["']/.exec(attrs);
-            var srcMatch = /src=["']([^"']+)["']/.exec(attrs);
+        if (attrs.indexOf('lazy') > -1 || attrs.indexOf('data-cdn') > -1 || attrs.indexOf('data-original') > -1) {
+            var cdn = getAttr(attrs, "data-cdn");
+            var original = getAttr(attrs, "data-original");
+            var src = getAttr(attrs, "src");
             
-            if (cdnMatch && cdnMatch[1]) {
-                imgUrl = cdnMatch[1];
-            } else if (origMatch && origMatch[1]) {
-                imgUrl = origMatch[1];
-            } else if (srcMatch && srcMatch[1]) {
-                imgUrl = srcMatch[1];
-            }
+            var imgUrl = cdn || original || src;
             
             // Filter base64 placeholder values
             if (imgUrl && imgUrl.indexOf("data:") !== 0 && imgUrl.indexOf("base64") === -1) {
                 if (imgUrl.indexOf("//") === 0) {
                     imgUrl = "https:" + imgUrl;
+                } else if (imgUrl.indexOf("/") === 0) {
+                    imgUrl = "https://truyenqqko.com" + imgUrl;
                 }
                 images.push(imgUrl);
             }
@@ -316,4 +344,15 @@ function parseDetailResponse(htmlContent, apiUrl) {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
     });
+}
+// =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
+function getAttr(attrs, name) {
+    var regex = new RegExp(name + '\\s*=\\s*(?:["\']([^"\']+)["\']|([^\\s>]+))', 'i');
+    var match = regex.exec(attrs);
+    if (match) {
+        return match[1] || match[2] || "";
+    }
+    return "";
 }
