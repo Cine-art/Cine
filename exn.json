@@ -1,0 +1,173 @@
+{
+  "name": "Cine Repository",
+  "plugins": [
+    {
+      "id": "cinemabz",
+      "name": "CinemaBZ",
+      "version": "1.0.0",
+      "iconUrl": "https://cinema.bz/logo-icon.svg",
+      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cinema.js"
+    },
+    {
+      "id": "wmovies",
+      "name": "Wmovies",
+      "version": "1.0.1",
+      "iconUrl": "https://wmovies.org/favicon.ico",
+      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/wmovies_plugin.js"
+    },
+    {
+      "id": "fmoviess",
+      "name": "FMovies",
+      "version": "1.0.0",
+      "iconUrl": "https://fmoviess.org/icon/favicon-32x32.png",
+      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/fm.js"
+    },
+    {
+      "id": "ophim",
+      "name": "OPhim",
+      "version": "1.0.4",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/ophim.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/op.js"
+    },
+    {
+      "id": "avdbapi",
+      "name": "AVDB JAV",
+      "version": "1.0.3",
+      "iconUrl": "https://avdbapi.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/avd.js"
+    },
+    {
+      "id": "hh3d",
+      "name": "HH3D - Hoạt Hình 3D",
+      "version": "1.0.3",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/hh3d.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/h3.js"
+    },
+    {
+      "id": "javhd",
+      "name": "JavHD",
+      "version": "1.0.4",
+      "iconUrl": "https://javhdz.today/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/jh.js"
+    },
+    {
+      "id": "kkphim",
+      "name": "KKPhim",
+      "version": "1.0.1",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/kkphim.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/kk.js"
+    },
+    {
+      "id": "missav",
+      "name": "MissAV",
+      "version": "1.1.2",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ma.js"
+    },
+    {
+      "id": "missav2",
+      "name": "MissAV 2",
+      "version": "1.1.2",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ma2.js"
+    },
+    {
+      "id": "misskon",
+      "name": "MissKon",
+      "version": "1.0.1",
+      "iconUrl": "https://misskon.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mk.js"
+    },
+    {
+      "id": "nguonc",
+      "name": "Phim NguonC",
+      "version": "1.1.0",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/nguonC.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nc.js"
+    },
+    {
+      "id": "ophim",
+      "name": "OPhim",
+      "version": "1.0.4",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/ophim.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/op.js"
+    },
+    {
+      "id": "otruyen",
+      "name": "OTruyen",
+      "version": "1.0.2",
+      "iconUrl": "https://otruyenapi.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ot.js"
+    },
+    {
+      "id": "clbpx",
+      "name": "CLB Phim Xưa",
+      "version": "1.0.6",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/clbpx.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/px.js"
+    },
+    {
+      "id": "sayhentai",
+      "name": "SayHentai",
+      "version": "1.0.4",
+      "iconUrl": "https://sayhentai.sh/favicon-32x32.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/sh.js"
+    },
+    {
+      "id": "sextop1",
+      "name": "Sextop1",
+      "version": "1.1.5",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/sextop1.webp",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/st1.js"
+    },
+    {
+      "id": "sextop2",
+      "name": "Sextop2",
+      "version": "1.1.5",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/sextop1.webp",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/st2.js"
+    },
+    {
+      "id": "topxx",
+      "name": "TopXX",
+      "version": "1.0.0",
+      "iconUrl": "https://topxx.vip/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/tx.js"
+    },
+    {
+      "id": "vmttv",
+      "name": "VMT TV",
+      "version": "1.0.2",
+      "iconUrl": "https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/Logo.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/vmt.js"
+    },
+    {
+      "id": "vlxx",
+      "name": "VLXX",
+      "version": "1.0.3",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/vlxx.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/vx.js"
+    },
+    {
+      "id": "rophim9",
+      "name": "RoPhim9",
+      "version": "1.0.0",
+      "iconUrl": "https://rophim9.org/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rp9.js"
+    },
+    {
+      "id": "truyenqq",
+      "name": "TruyenQQ",
+      "version": "1.0.1",
+      "iconUrl": "https://truyenqqko.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/qq.js"
+    },
+    {
+      "id": "bogorraincake",
+      "name": "Motchill",
+      "version": "1.0.0",
+      "iconUrl": "https://bogorraincake.com/wp-content/uploads/2024/12/cropped-favicon2-32x32.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mc.js"
+    }
+  ]
+}
