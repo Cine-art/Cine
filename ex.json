@@ -88,5 +88,10 @@
       "name": "RoPhim9",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rp9.js"
     }
+    ,
+    {
+      "name": "Truyện QQ",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/qq.js"
+    }
   ]
 }
