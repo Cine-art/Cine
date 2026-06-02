@@ -92,6 +92,10 @@
     {
       "name": "Truyện QQ",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/qq.js"
+    },
+    {
+      "name": "MotChil",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mc.js"
     }
   ]
 }
