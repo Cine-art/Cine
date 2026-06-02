@@ -84,5 +84,9 @@
       "name": "VLXX",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/vx.js"
     },
+    {
+      "name": "RoPhim9",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rp9.js"
+    }
   ]
 }
