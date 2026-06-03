@@ -4,9 +4,9 @@
 
 function getManifest() {
     return JSON.stringify({
-        "id": "socolive",
-        "name": "Socolive",
-        "version": "1.0.0",
+        "id": "socolive16",
+        "name": "Socolive16",
+        "version": "1.0.1",
         "baseUrl": "https://socolive16.cv",
         "iconUrl": "https://socolive16.cv/wp-content/uploads/2023/11/socolive-logo.png",
         "isEnabled": true,
