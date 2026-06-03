@@ -1,6 +1,6 @@
 {
-    "latestVersionCode": 14,
-	"forceupdate": true,
+    "latestVersionCode": 15,
+	"forceupdate": false,
     "latestVersionName": "1.0",
     "releaseNotes": "Update",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
