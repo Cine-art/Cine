@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "socolivee",
         "name": "Socolivee",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://socolivee.cv",
         "iconUrl": "https://socolivee.cv/wp-content/uploads/2023/09/logo-7-2.png",
         "isEnabled": true,
