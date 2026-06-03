@@ -6,9 +6,9 @@ function getManifest() {
     return JSON.stringify({
         "id": "javhd",
         "name": "JavHD",
-        "version": "1.0.4",
-        "baseUrl": "https://javhdz.today",
-        "iconUrl": "https://javhdz.today/favicon.ico",
+        "version": "1.0.5",
+        "baseUrl": "https://javhd.today",
+        "iconUrl": "https://javhd.today/favicon.ico",
         "isEnabled": true,
         "isAdult": true,
         "type": "VIDEO",
@@ -77,12 +77,12 @@ function getUrlList(slug, filtersJson) {
 
     if (filters.category) {
         // /uncensored-jav/2/
-        return "https://javhdz.today/" + filters.category + "/" + sortPath + pageStr;
+        return "https://javhd.today/" + filters.category + "/" + sortPath + pageStr;
     }
 
     if (!slug || slug === 'recent') {
         // /recent/2/
-        return "https://javhdz.today/recent/" + pageStr;
+        return "https://javhd.today/recent/" + pageStr;
     }
 
     // Handles absolute slugs
@@ -97,25 +97,25 @@ function getUrlList(slug, filtersJson) {
     }
 
     // e.g., 'popular/today' -> /popular/today/2/
-    return "https://javhdz.today/" + slug + "/" + sortPath + pageStr;
+    return "https://javhd.today/" + slug + "/" + sortPath + pageStr;
 }
 
 function getUrlSearch(keyword, filtersJson) {
     var filters = JSON.parse(filtersJson || "{}");
     var page = parseInt(filters.page) || 1;
     var pageStr = (page > 1) ? page + '/' : '';
-    return "https://javhdz.today/search/video/" + pageStr + "?s=" + encodeURIComponent(keyword);
+    return "https://javhd.today/search/video/" + pageStr + "?s=" + encodeURIComponent(keyword);
 }
 
 function getUrlDetail(slug) {
     if (slug.indexOf("http") === 0) return slug;
-    if (slug.indexOf("/") === 0) return "https://javhdz.today" + slug;
-    return "https://javhdz.today/" + slug;
+    if (slug.indexOf("/") === 0) return "https://javhd.today" + slug;
+    return "https://javhd.today/" + slug;
 }
 
-function getUrlCategories() { return "https://javhdz.today/categories/"; }
-function getUrlCountries() { return "https://javhdz.today/"; }
-function getUrlYears() { return "https://javhdz.today/"; }
+function getUrlCategories() { return "https://javhd.today/categories/"; }
+function getUrlCountries() { return "https://javhd.today/"; }
+function getUrlYears() { return "https://javhd.today/"; }
 
 // =============================================================================
 // PARSERS
@@ -417,7 +417,7 @@ function parseDetailResponse(html, fallbackUrl) {
             url: hostUrl,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "Referer": "https://javhdz.today/"
+                "Referer": "https://javhd.today/"
             },
             subtitles: [],
             isEmbed: true,
@@ -436,7 +436,7 @@ function parseEmbedResponse(html, fallbackUrl) {
         url: fallbackUrl || "",
         headers: {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": "https://javhdz.today/"
+            "Referer": "https://javhd.today/"
         },
         subtitles: [],
         isEmbed: false
