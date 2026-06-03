@@ -175,6 +175,13 @@
       "version": "1.0.0",
       "iconUrl": "https://socolive16.cv/wp-content/uploads/2023/11/socolive-logo.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/sc.js"
+    },
+    {
+      "id": "luongsontv",
+      "name": "LuongSonTV",
+      "version": "1.0.0",
+      "iconUrl": "https://luongsontv60.online/wp-content/uploads/2025/04/cropped-fav-32x32.webp",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ls.js"
     }
   ]
 }
