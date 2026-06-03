@@ -1,19 +1,17 @@
 // =============================================================================
 // CONFIGURATION & METADATA
 // =============================================================================
-
 function getManifest() {
     return JSON.stringify({
         "id": "luongsontv",
         "name": "LuongSonTV",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://luongsontv60.online",
         "iconUrl": "https://luongsontv60.online/wp-content/uploads/2025/04/cropped-fav-32x32.webp",
         "isEnabled": true,
         "type": "MOVIE"
     });
 }
-
 function getHomeSections() {
     return JSON.stringify([
         { "slug": "truc-tiep", "title": "Bóng Đá Trực Tiếp", "type": "Grid", "path": "" },
@@ -21,7 +19,6 @@ function getHomeSections() {
         { "slug": "live", "title": "Đang Diễn Ra (LIVE)", "type": "Horizontal", "path": "" }
     ]);
 }
-
 function getPrimaryCategories() {
     return JSON.stringify([
         { "name": "Bóng Đá Trực Tiếp", "slug": "truc-tiep" },
@@ -31,7 +28,6 @@ function getPrimaryCategories() {
         { "name": "Ngày Mai", "slug": "tomorrow" }
     ]);
 }
-
 function getFilterConfig() {
     return JSON.stringify({
         "sort": [
@@ -39,17 +35,14 @@ function getFilterConfig() {
         ]
     });
 }
-
 // =============================================================================
 // URL GENERATION
 // =============================================================================
-
 function getUrlList(slug, filtersJson) {
     var isHot = "false";
     var isLive = "false";
     var isToday = "false";
     var isTomorrow = "false";
-
     if (slug === "hot") {
         isHot = "true";
     } else if (slug === "live") {
@@ -59,7 +52,6 @@ function getUrlList(slug, filtersJson) {
     } else if (slug === "tomorrow") {
         isTomorrow = "true";
     }
-
     var ts = new Date().getTime();
     return "https://api-ls.cdnokvip.com/api/get-livestream-group?isHot=" + isHot + 
            "&isLive=" + isLive + 
@@ -67,24 +59,20 @@ function getUrlList(slug, filtersJson) {
            "&isTomorrow=" + isTomorrow + 
            "&limit=100&offset=0&_t=" + ts;
 }
-
 function getUrlSearch(keyword, filtersJson) {
     // Return all matches, client-side filtering will be applied
     var ts = new Date().getTime();
     return "https://api-ls.cdnokvip.com/api/get-livestream-group?isHot=false&isLive=false&isToday=false&isTomorrow=false&limit=150&offset=0&_t=" + ts;
 }
-
 function getUrlDetail(slug) {
     if (slug.indexOf("http://") === 0 || slug.indexOf("https://") === 0) {
         return slug;
     }
-    return "https://luongsontv60.online/" + slug + "/";
+    return "https://luongsontv60.online/truc-tiep/" + slug + "/";
 }
-
 // =============================================================================
 // PARSERS
 // =============================================================================
-
 function parseListResponse(jsonContent) {
     var items = [];
     
@@ -104,7 +92,6 @@ function parseListResponse(jsonContent) {
         } else if (payload && Array.isArray(payload.matches)) {
             list = payload.matches;
         }
-
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
             var home = item.homeName || item.home_name || "Unknown";
@@ -166,7 +153,6 @@ function parseListResponse(jsonContent) {
         }
     });
 }
-
 function parseSearchResponse(jsonContent, keyword) {
     var resultJson = parseListResponse(jsonContent);
     if (!keyword) return resultJson;
@@ -190,7 +176,6 @@ function parseSearchResponse(jsonContent, keyword) {
         return resultJson;
     }
 }
-
 function parseMovieDetail(htmlContent, apiUrl) {
     var slug = apiUrl.substring(apiUrl.lastIndexOf("/") + 1);
     if (slug.endsWith("/")) {
@@ -215,11 +200,10 @@ function parseMovieDetail(htmlContent, apiUrl) {
     
     var ogImg = /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i.exec(htmlContent);
     if (ogImg) posterUrl = ogImg[1];
-
     var matchObj = null;
     
-    // Attempt 1: Search for match data JSON object block
-    var matchDataMatch = /(?:var|window\.)\s*(?:match|matchData|currentMatch)\s*=\s*(\{[\s\S]*?\});/.exec(htmlContent);
+    // Attempt 1: Search for match data JSON object block (supporting currentMatchData)
+    var matchDataMatch = /(?:var|window\.)\s*(?:match|matchData|currentMatch|currentMatchData)\s*=\s*(\{[\s\S]*?\});/.exec(htmlContent);
     if (matchDataMatch) {
         try {
             matchObj = JSON.parse(matchDataMatch[1]);
@@ -276,8 +260,21 @@ function parseMovieDetail(htmlContent, apiUrl) {
     }
     
     var servers = [];
+    var episodesDirect = [];
     var episodesInplyr = [];
     var episodesCdnokvip = [];
+    
+    if (matchObj) {
+        // Extract main direct streaming link
+        var mainLink = matchObj.linkLive || matchObj.link_live || "";
+        if (mainLink) {
+            episodesDirect.push({
+                "id": mainLink,
+                "name": "Kênh chính (Đường truyền trực tiếp)",
+                "slug": "kenh-chinh-direct"
+            });
+        }
+    }
     
     // Add Main Channel streams
     if (matchId) {
@@ -342,6 +339,14 @@ function parseMovieDetail(htmlContent, apiUrl) {
         });
     }
     
+    // Add direct server (highest priority)
+    if (episodesDirect.length > 0) {
+        servers.push({
+            "name": "Lương Sơn Direct Server",
+            "episodes": episodesDirect
+        });
+    }
+    
     // Add default servers
     if (episodesInplyr.length > 0) {
         servers.push({
@@ -402,7 +407,6 @@ function parseMovieDetail(htmlContent, apiUrl) {
         "status": "ongoing"
     });
 }
-
 function parseDetailResponse(htmlContent, apiUrl) {
     // If the resolved episode ID is a direct HLS url, we can play it directly,
     // otherwise check if it needs embedding.
