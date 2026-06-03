@@ -26,7 +26,7 @@ function getPrimaryCategories() {
     return JSON.stringify([
         { "name": "Bóng Đá & Bóng Chuyền", "slug": "truc-tiep" },
         { "name": "Trận Đấu Hot", "slug": "hot" },
-        { "name": "Đang Trực Tiếp", "slug": "live" }
+        { "name": "Đang Diễn Ra", "slug": "live" }
     ]);
 }
 
@@ -45,17 +45,17 @@ function getFilterConfig() {
 function getUrlList(slug, filtersJson) {
     // We always request all matches, client-side filtering handles sections
     var ts = new Date().getTime();
-    return "https://api-v2.chuoichientv.com/v2/matches?_t=" + ts;
+    return "https://api-v2.chuoichientv.com/v2/matches?_t=" + ts + "|__headers__=Referer=https://live33.chuoichientv.com/";
 }
 
 function getUrlSearch(keyword, filtersJson) {
     var ts = new Date().getTime();
-    return "https://api-v2.chuoichientv.com/v2/matches?_t=" + ts;
+    return "https://api-v2.chuoichientv.com/v2/matches?_t=" + ts + "|__headers__=Referer=https://live33.chuoichientv.com/";
 }
 
 function getUrlDetail(slug) {
     // We append the match ID as a query parameter so we can isolate it during parsing
-    return "https://api-v2.chuoichientv.com/v2/matches?id=" + encodeURIComponent(slug);
+    return "https://api-v2.chuoichientv.com/v2/matches?id=" + encodeURIComponent(slug) + "|__headers__=Referer=https://live33.chuoichientv.com/";
 }
 
 // =============================================================================
@@ -177,8 +177,12 @@ function parseSearchResponse(jsonContent, keyword) {
 }
 
 function parseMovieDetail(jsonContent, apiUrl) {
+    var cleanApiUrl = apiUrl;
+    if (apiUrl.indexOf("|") > -1) {
+        cleanApiUrl = apiUrl.substring(0, apiUrl.indexOf("|"));
+    }
     var slug = "";
-    var idMatch = /[?&]id=([^&]+)/.exec(apiUrl);
+    var idMatch = /[?&]id=([^&]+)/.exec(cleanApiUrl);
     if (idMatch) {
         slug = decodeURIComponent(idMatch[1]);
     }
