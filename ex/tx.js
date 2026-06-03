@@ -353,4 +353,3 @@ function parseCountriesResponse(apiResponseJson) {
         }));
     } catch (e) { return "[]"; }
 }
-DDict Logo
