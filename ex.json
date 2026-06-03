@@ -172,7 +172,7 @@
     {
       "id": "socolive",
       "name": "Socolive",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "iconUrl": "https://socolivee.cv/wp-content/uploads/2023/09/logo-7-2.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/sc.js"
     },
@@ -186,7 +186,7 @@
     {
       "id": "chuoichientv",
       "name": "ChuoiChienTV",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "iconUrl": "https://media.chuoichientv.com/media/uploads/20250618_144837_81ae2275.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/cc.js"
     },
