@@ -11,7 +11,7 @@ function getManifest() {
         "iconUrl": "https://avdbapi.com/favicon.ico",
         "isEnabled": true,
         "isAdult": true,
-        "type": "VIDEO",
+        "type": "MOVIE",
         "layoutType": "HORIZONTAL",
         "playerType": "embed"
     });
