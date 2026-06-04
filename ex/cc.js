@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "chuoichientv",
         "name": "ChuoiChienTV",
-        "version": "1.0.1",
+        "version": "1.0.3",
         "baseUrl": "https://live33.chuoichientv.com",
         "iconUrl": "https://media.chuoichientv.com/media/uploads/20250618_144837_81ae2275.png",
         "isEnabled": true,
