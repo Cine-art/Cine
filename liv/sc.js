@@ -10,7 +10,7 @@ function getManifest() {
         "baseUrl": "https://socolivee.cv",
         "iconUrl": "https://socolivee.cv/wp-content/uploads/2023/09/logo-7-2.png",
         "isEnabled": true,
-        "type": "MOVIE"
+        "type": "LIVE"
     });
 }
 
