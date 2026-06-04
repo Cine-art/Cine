@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "socolivee",
         "name": "Socolivee",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "baseUrl": "https://socolivee.cv",
         "iconUrl": "https://socolivee.cv/wp-content/uploads/2023/09/logo-7-2.png",
         "isEnabled": true,
@@ -40,6 +40,18 @@ function getFilterConfig() {
 
 function getUrlList(slug, filtersJson) {
     return "https://socolivee.cv/";
+}
+
+function getUrlSearch(keyword, filtersJson) {
+    return "https://socolivee.cv/";
+}
+
+function getUrlDetail(slug) {
+    // If slug is already a fully qualified watch URL, return it directly
+    if (slug.indexOf("http://") === 0 || slug.indexOf("https://") === 0) {
+        return slug;
+    }
+    return "https://socolivee.cv/truc-tiep/" + slug + "/";
 }
 
 // =============================================================================
