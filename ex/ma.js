@@ -158,10 +158,23 @@ var PluginUtils = {
      */
     normalizeHtml: function (html) {
         if (!html) return "";
-        // Strip missav_media- prefix trong class attributes
-        // Pattern: tìm class="..." rồi strip prefix bên trong
+        // Strip prefix missav_media- or missav123_com- or any domain-based dynamic prefix.
+        // E.g., class="missav123_com-thumbnail missav123_com-group" -> class="thumbnail group"
+        
+        var prefix = "";
+        var prefixMatch = html.match(/class="([a-zA-Z0-9_]+)-(?:thumbnail|relative|group)/i);
+        if (prefixMatch) {
+            prefix = prefixMatch[1] + "-";
+        }
+        
         return html.replace(/class="([^"]*)"/g, function (fullMatch, classValue) {
-            var normalized = classValue.replace(/missav_media-/g, '');
+            var normalized = classValue;
+            if (prefix) {
+                normalized = normalized.split(prefix).join("");
+            }
+            // Standard fallback cleanup
+            normalized = normalized.replace(/missav_media-/g, '')
+                                   .replace(/missav123_com-/g, '');
             return 'class="' + normalized + '"';
         });
     },
