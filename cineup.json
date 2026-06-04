@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 17,
+    "latestVersionCode": 18,
 	"forceupdate": false,
     "latestVersionName": "1.0",
-    "releaseNotes": "Update",
+    "releaseNotes": "DLNA Cast",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
