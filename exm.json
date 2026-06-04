@@ -28,6 +28,13 @@
       "version": "1.0.2",
       "iconUrl": "https://otruyenapi.com/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ot.js"
+    },
+    {
+      "id": "misskon",
+      "name": "MissKon",
+      "version": "1.0.1",
+      "iconUrl": "https://misskon.com/media/2023/12/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mk.js"
     }
 	  ]
 }
