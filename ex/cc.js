@@ -1,17 +1,19 @@
 // =============================================================================
 // CONFIGURATION & METADATA
 // =============================================================================
+
 function getManifest() {
     return JSON.stringify({
         "id": "chuoichientv",
         "name": "ChuoiChienTV",
-        "version": "1.0.2",
+        "version": "1.0.0",
         "baseUrl": "https://live33.chuoichientv.com",
         "iconUrl": "https://media.chuoichientv.com/media/uploads/20250618_144837_81ae2275.png",
         "isEnabled": true,
         "type": "MOVIE"
     });
 }
+
 function getHomeSections() {
     return JSON.stringify([
         { "slug": "truc-tiep", "title": "Bóng Đá & Bóng Chuyền", "type": "Grid", "path": "" },
@@ -19,6 +21,7 @@ function getHomeSections() {
         { "slug": "live", "title": "Đang Diễn Ra (LIVE)", "type": "Horizontal", "path": "" }
     ]);
 }
+
 function getPrimaryCategories() {
     return JSON.stringify([
         { "name": "Bóng Đá & Bóng Chuyền", "slug": "truc-tiep" },
@@ -26,6 +29,7 @@ function getPrimaryCategories() {
         { "name": "Đang Diễn Ra", "slug": "live" }
     ]);
 }
+
 function getFilterConfig() {
     return JSON.stringify({
         "sort": [
@@ -33,25 +37,35 @@ function getFilterConfig() {
         ]
     });
 }
+
 // =============================================================================
 // URL GENERATION
 // =============================================================================
+
 function getUrlList(slug, filtersJson) {
     // We always request all matches, client-side filtering handles sections
     var ts = new Date().getTime();
     return "https://api-v2.chuoichientv.com/v2/matches?_t=" + ts + "|__headers__=Referer=https://live33.chuoichientv.com/";
 }
+
 function getUrlSearch(keyword, filtersJson) {
     var ts = new Date().getTime();
     return "https://api-v2.chuoichientv.com/v2/matches?_t=" + ts + "|__headers__=Referer=https://live33.chuoichientv.com/";
 }
+
 function getUrlDetail(slug) {
+    // If slug is already a fully qualified watch URL, return it directly
+    if (slug.indexOf("http://") === 0 || slug.indexOf("https://") === 0) {
+        return slug;
+    }
     // We append the match ID as a query parameter so we can isolate it during parsing
     return "https://api-v2.chuoichientv.com/v2/matches?id=" + encodeURIComponent(slug) + "|__headers__=Referer=https://live33.chuoichientv.com/";
 }
+
 // =============================================================================
 // PARSERS
 // =============================================================================
+
 function parseListResponse(jsonContent) {
     var items = [];
     
@@ -141,6 +155,7 @@ function parseListResponse(jsonContent) {
         }
     });
 }
+
 function parseSearchResponse(jsonContent, keyword) {
     var resultJson = parseListResponse(jsonContent);
     if (!keyword) return resultJson;
@@ -164,6 +179,7 @@ function parseSearchResponse(jsonContent, keyword) {
         return resultJson;
     }
 }
+
 function parseMovieDetail(jsonContent, apiUrl) {
     var cleanApiUrl = apiUrl;
     if (apiUrl.indexOf("|") > -1) {
@@ -300,14 +316,19 @@ function parseMovieDetail(jsonContent, apiUrl) {
         "status": "ongoing"
     });
 }
+
 function parseDetailResponse(htmlContent, apiUrl) {
     var isEmbed = false;
-    if (apiUrl.indexOf(".m3u8") === -1) {
+    var cleanUrl = apiUrl;
+    if (apiUrl.indexOf("|") > -1) {
+        cleanUrl = apiUrl.substring(0, apiUrl.indexOf("|"));
+    }
+    if (cleanUrl.indexOf(".m3u8") === -1) {
         isEmbed = true;
     }
     
     return JSON.stringify({
-        "url": apiUrl,
+        "url": cleanUrl,
         "isEmbed": isEmbed,
         "headers": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
