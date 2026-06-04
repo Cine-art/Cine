@@ -4,8 +4,8 @@
 
 function getManifest() {
     return JSON.stringify({
-        "id": "motchill",
-        "name": "MotChill",
+        "id": "motchilll",
+        "name": "MotChilll",
         "version": "1.0.0",
         "baseUrl": "https://motchilll.xyz",
         "iconUrl": "https://motchilll.xyz/images/favicon.png",
