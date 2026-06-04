@@ -9,7 +9,7 @@ function getManifest() {
         "baseUrl": "https://luongsontv60.online",
         "iconUrl": "https://luongsontv60.online/wp-content/uploads/2025/04/cropped-fav-32x32.webp",
         "isEnabled": true,
-        "type": "MOVIE"
+        "type": "LIVE"
     });
 }
 function getHomeSections() {
