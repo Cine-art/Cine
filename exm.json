@@ -1,0 +1,33 @@
+{
+  "name": "Cine Manga Repository",
+  "plugins": [
+    {
+      "id": "nettruyen",
+      "name": "NetTruyen",
+      "version": "1.0.0",
+      "iconUrl": "https://nettruyen.gg/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nt.js"
+    },
+    {
+      "id": "truyenqq",
+      "name": "TruyenQQ",
+      "version": "1.0.1",
+      "iconUrl": "https://truyenqqko.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/qq.js"
+    },
+    {
+      "id": "sayhentai",
+      "name": "SayHentai",
+      "version": "1.0.4",
+      "iconUrl": "https://sayhentai.sh/favicon-32x32.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/sh.js"
+    },
+    {
+      "id": "otruyen",
+      "name": "OTruyen",
+      "version": "1.0.2",
+      "iconUrl": "https://otruyenapi.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ot.js"
+    }
+	  ]
+}
