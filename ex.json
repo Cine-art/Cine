@@ -46,7 +46,7 @@
     {
       "id": "javhd",
       "name": "JavHD",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "iconUrl": "https://javhdz.today/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/jh.js"
     },
@@ -86,25 +86,11 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nc.js"
     },
     {
-      "id": "otruyen",
-      "name": "OTruyen",
-      "version": "1.0.2",
-      "iconUrl": "https://otruyenapi.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ot.js"
-    },
-    {
       "id": "clbpx",
       "name": "CLB Phim Xưa",
       "version": "1.0.6",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/clbpx.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/px.js"
-    },
-    {
-      "id": "sayhentai",
-      "name": "SayHentai",
-      "version": "1.0.4",
-      "iconUrl": "https://sayhentai.sh/favicon-32x32.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/sh.js"
     },
     {
       "id": "sextop1",
@@ -149,18 +135,39 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rp9.js"
     },
     {
-      "id": "truyenqq",
-      "name": "TruyenQQ",
-      "version": "1.0.1",
-      "iconUrl": "https://truyenqqko.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/qq.js"
-    },
-    {
       "id": "bogorraincake",
       "name": "Motchill",
       "version": "1.0.0",
       "iconUrl": "https://bogorraincake.com/wp-content/uploads/2024/12/cropped-favicon2-32x32.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mc.js"
+    },
+    {
+      "id": "motchilll",
+      "name": "MotChilll",
+      "version": "1.0.0",
+      "iconUrl": "https://motchilll.xyz/images/favicon.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mcc.js"
+    },
+    {
+      "id": "rophimmoi",
+      "name": "RoPhimMoi",
+      "version": "1.0.0",
+      "iconUrl": "https://www.rophimmoi.biz/wp-content/uploads/2025/10/cropped-vJqxy4F.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rpm.js"
+    },
+    {
+      "id": "phimtv",
+      "name": "PhimTV",
+      "version": "1.0.0",
+      "iconUrl": "https://phimtv.cv/1day2love/favicon.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ptv.js"
+    },
+    {
+      "id": "guphim",
+      "name": "GuPhim",
+      "version": "1.0.0",
+      "iconUrl": "https://guphim.com/assets/icons/favicon-32x32.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/gp.js"
     }
   ]
 }
