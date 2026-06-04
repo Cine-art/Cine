@@ -72,13 +72,6 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ma2.js"
     },
     {
-      "id": "misskon",
-      "name": "MissKon",
-      "version": "1.0.1",
-      "iconUrl": "https://misskon.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mk.js"
-    },
-    {
       "id": "nguonc",
       "name": "Phim NguonC",
       "version": "1.1.0",
