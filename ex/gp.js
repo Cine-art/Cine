@@ -11,7 +11,6 @@ function getManifest() {
         "iconUrl": "https://guphim.com/assets/icons/favicon-32x32.png",
         "isEnabled": true,
         "type": "MOVIE",
-        "layoutType": "VERTICAL"
     });
 }
 
