@@ -11,7 +11,7 @@ function getManifest() {
         "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/sextop1.webp",
         "isEnabled": true,
         "isAdult": true,
-        "type": "VIDEO",
+        "type": "MOVIE",
         "playerType": "embedtoexoplay",
         "layoutType": "HORIZONTAL"
     });
