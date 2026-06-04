@@ -10,7 +10,7 @@ function getManifest() {
         "baseUrl": "https://socolive16.cv",
         "iconUrl": "https://socolive16.cv/wp-content/uploads/2023/11/socolive-logo.png",
         "isEnabled": true,
-        "type": "MOVIE"
+        "type": "LIVE"
     });
 }
 
