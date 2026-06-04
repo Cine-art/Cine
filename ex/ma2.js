@@ -12,7 +12,7 @@ function getManifest() {
         "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
         "isEnabled": true,
         "isAdult": true,
-        "type": "VIDEO",
+        "type": "MOVIE",
         "layoutType": "HORIZONTAL",
         "subtitleCat": true,
         "imageReferer": "https://missav123.com/"
