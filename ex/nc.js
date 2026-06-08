@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "nguonc",
         "name": "Phim NguonC",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "baseUrl": "https://phim.nguonc.com",
         "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/nguonC.png",
         "isEnabled": true,
@@ -17,7 +17,7 @@ function getManifest() {
 
 function getHomeSections() {
     return JSON.stringify([
-        { slug: 'phim-dang-chieu', title: 'Phim Đang Chiếu', type: 'Horizontal', path: 'danh-sach' },
+        { slug: 'dang-chieu', title: 'Phim Đang Chiếu', type: 'Horizontal', path: 'danh-sach' },
         { slug: 'phim-le', title: 'Phim Lẻ', type: 'Horizontal', path: 'danh-sach' },
         { slug: 'phim-bo', title: 'Phim Bộ', type: 'Horizontal', path: 'danh-sach' },
         { slug: 'tv-shows', title: 'TV Shows', type: 'Horizontal', path: 'danh-sach' },
@@ -28,7 +28,7 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
     return JSON.stringify([
-        { name: 'Phim đang chiếu', slug: 'phim-dang-chieu' },
+        { name: 'Phim đang chiếu', slug: 'dang-chieu' },
         { name: 'Phim lẻ', slug: 'phim-le' },
         { name: 'Phim bộ', slug: 'phim-bo' },
         { name: 'TV Shows', slug: 'tv-shows' },
@@ -84,7 +84,7 @@ function getUrlList(slug, filtersJson) {
         }
 
         // Handle specific Lists (Danh sách)
-        var listSlugs = ['phim-le', 'phim-bo', 'phim-dang-chieu', 'tv-shows', 'subteam'];
+        var listSlugs = ['phim-le', 'phim-bo', 'dang-chieu', 'tv-shows', 'subteam'];
         // Note: 'hoat-hinh' is sometimes a list, sometimes a category. 
         // On NguonC, 'hoat-hinh' is usually in 'the-loai' but let's check standard lists.
         // NguonC commonly puts 'phim-hoat-hinh' in lists or 'hoat-hinh' in genres.
