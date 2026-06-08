@@ -8,7 +8,7 @@ function getManifest() {
         "name": "Nguồn C",
         "version": "1.1.2",
         "baseUrl": "https://phim.nguonc.com",
-        "iconUrl": "https://phim.nguonc.com/favicon.ico",
+        "iconUrl": "https://phim.nguonc.com/public/images/Logo/logonc.png",
         "isEnabled": true,
         "type": "MOVIE"
     });
