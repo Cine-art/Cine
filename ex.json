@@ -73,9 +73,9 @@
     },
     {
       "id": "nguonc",
-      "name": "Phim NguonC",
-      "version": "1.1.1",
-      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/nguonC.png",
+      "name": "Nguồn C",
+      "version": "1.1.2",
+      "iconUrl": "https://phim.nguonc.com/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nc.js"
     },
     {
