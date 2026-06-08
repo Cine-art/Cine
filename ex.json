@@ -74,7 +74,7 @@
     {
       "id": "nguonc",
       "name": "Phim NguonC",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/nguonC.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nc.js"
     },
