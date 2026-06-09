@@ -8,7 +8,7 @@ function getManifest() {
         "name": "RoPhimMoi",
         "version": "1.0.0",
         "baseUrl": "https://www.rophimmoi.biz",
-        "iconUrl": "https://www.rophimmoi.biz/wp-content/uploads/2025/10/cropped-vJqxy4F.png",
+        "iconUrl": "https://www.rophimmoi.biz/wp-content/uploads/2025/10/cropped-uJJ9SiU-32x32.png",
         "isEnabled": true,
         "type": "MOVIE",
         "layoutType": "VERTICAL"
