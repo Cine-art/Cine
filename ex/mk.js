@@ -8,7 +8,7 @@ function getManifest() {
         "name": "MissKon",
         "version": "1.0.1",
         "baseUrl": "https://misskon.com",
-        "iconUrl": "https://misskon.com/media/2023/12/favicon.ico",
+        "iconUrl": "https://misskon.com/img/logo.2026.v5.png",
         "isEnabled": true,
         "isAdult": true,
         "type": "MANGA",
