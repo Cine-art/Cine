@@ -8,7 +8,7 @@ function getManifest() {
         "name": "NetTruyen",
         "version": "1.0.0",
         "baseUrl": "https://nettruyen.gg",
-        "iconUrl": "https://nettruyen.gg/favicon.ico",
+        "iconUrl": "https://nettruyen.gg/assets/images/landings/nettruyen-fav.png",
         "isEnabled": true,
         "type": "MANGA"
     });
