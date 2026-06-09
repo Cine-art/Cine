@@ -40,7 +40,7 @@
       "id": "hh3d",
       "name": "HH3D - Hoạt Hình 3D",
       "version": "1.0.3",
-      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/hh3d.ico",
+      "iconUrl": "https://hoathinh3d.ee/wp-content/uploads/2025/02/cropped-favicon_hh-400x400.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/h3.js"
     },
     {
@@ -145,7 +145,7 @@
       "id": "rophimmoi",
       "name": "RoPhimMoi",
       "version": "1.0.0",
-      "iconUrl": "https://www.rophimmoi.biz/wp-content/uploads/2025/10/cropped-vJqxy4F.png",
+      "iconUrl": "https://www.rophimmoi.biz/wp-content/uploads/2025/10/cropped-uJJ9SiU-32x32.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rpm.js"
     },
     {
