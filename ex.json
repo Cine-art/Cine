@@ -161,6 +161,13 @@
       "version": "1.0.0",
       "iconUrl": "https://guphim.com/assets/icons/favicon-32x32.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/gp.js"
+    },
+    {
+      "id": "cineviet",
+      "name": "CineViet",
+      "version": "1.0.0",
+      "iconUrl": "https://cineviet.live/favicon.svg",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/cnv.js"
     }
   ]
 }
