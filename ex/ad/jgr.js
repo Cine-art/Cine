@@ -10,7 +10,7 @@ function getManifest() {
         "baseUrl": "https://jav.guru",
         "iconUrl": "https://jav.guru/favicon.ico",
         "isEnabled": true,
-        "isAdult": true,
+		"isAdult": true,
         "type": "MOVIE"
     });
 }
@@ -18,7 +18,13 @@ function getManifest() {
 function getHomeSections() {
     return JSON.stringify([
         { slug: 'moi-nhat', title: 'New Videos', type: 'Grid', path: '' },
-        { slug: 'english-subbed', title: 'English Subbed', type: 'Horizontal', path: 'category/english-subbed' }
+        { slug: 'english-subbed', title: 'English Subbed', type: 'Horizontal', path: 'category/english-subbed' },
+        { slug: 'creampie', title: 'Creampie', type: 'Horizontal', path: 'tag/creampie' },
+        { slug: 'big-tits', title: 'Big Tits', type: 'Horizontal', path: 'tag/big-tits' },
+        { slug: 'amateur', title: 'Amateur JAV', type: 'Horizontal', path: 'tag/amateur' },
+        { slug: 'blowjob', title: 'Blowjob', type: 'Horizontal', path: 'tag/blowjob' },
+        { slug: 'married', title: 'Married', type: 'Horizontal', path: 'tag/married' },
+        { slug: 'beautiful-girl', title: 'Beautiful Girl', type: 'Horizontal', path: 'tag/beautiful-girl' }
     ]);
 }
 
@@ -62,7 +68,7 @@ function getUrlList(slug, filtersJson) {
             path = "/category/" + filters.category + "/";
         } else if (slug === "moi-nhat" || slug === "") {
             path = "/";
-        } else if (slug.indexOf("category/") === 0) {
+        } else if (slug.indexOf("category/") === 0 || slug.indexOf("tag/") === 0) {
             path = "/" + slug + "/";
         } else {
             path = "/category/" + slug + "/";
