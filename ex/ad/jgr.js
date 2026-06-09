@@ -10,6 +10,7 @@ function getManifest() {
         "baseUrl": "https://jav.guru",
         "iconUrl": "https://jav.guru/favicon.ico",
         "isEnabled": true,
+        "isAdult": true,
         "type": "MOVIE"
     });
 }
