@@ -8,7 +8,7 @@ function getManifest() {
         "name": "VLXX",
         "version": "1.0.3",
         "baseUrl": "https://vlxx.moi",
-        "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/vlxx.ico",
+        "iconUrl": "https://vlxxsex.page/favicon.ico",
         "isEnabled": true,
         "isAdult": true,
         "type": "MOVIE",
