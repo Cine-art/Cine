@@ -10,6 +10,7 @@ function getManifest() {
         "baseUrl": "https://javhdz.today",
         "iconUrl": "https://javhdz.today/favicon-32x32.png",
         "isEnabled": true,
+        "isAdult": true,
         "type": "MOVIE"
     });
 }
