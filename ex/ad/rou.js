@@ -10,16 +10,16 @@ function getManifest() {
         "baseUrl": "https://rou.video",
         "iconUrl": "https://rou.video/favicon.ico",
         "isEnabled": true,
-        "isAdult": true,
+		"isAdult": true,
         "type": "MOVIE"
     });
 }
 
 function getHomeSections() {
     return JSON.stringify([
-        { slug: 'latest', title: '最新视频', type: 'Grid', path: 'v' },
-        { slug: 'hot', title: '热门视频', type: 'Horizontal', path: 'v?order=viewCount' },
-        { slug: 'liked', title: '最多好评', type: 'Horizontal', path: 'v?order=likeCount' }
+        { slug: 'latest', title: 'Latest Videos', type: 'Grid', path: 'v' },
+        { slug: 'hot', title: 'Hot Videos', type: 'Horizontal', path: 'v?order=viewCount' },
+        { slug: 'liked', title: 'Highly Rated', type: 'Horizontal', path: 'v?order=likeCount' }
     ]);
 }
 
@@ -309,18 +309,15 @@ function parseMovieDetail(apiResponseHtml) {
             var tags = v.tagsZh || v.tags || [];
             category = tags.join(", ");
 
-            var decrypted = decryptEv(ev);
-            var streamUrl = "";
-            if (decrypted && decrypted.videoUrl) {
-                streamUrl = decrypted.videoUrl;
-            }
+            var videoId = v.id || "";
+            var watchUrl = "https://rou.video/v/" + videoId;
 
-            if (streamUrl) {
+            if (videoId) {
                 servers.push({
                     name: "Rou Stream",
                     episodes: [
                         {
-                            id: streamUrl,
+                            id: watchUrl,
                             name: "Play Video",
                             slug: "play"
                         }
@@ -377,8 +374,8 @@ function parseDetailResponse(apiResponseHtml) {
             return apiResponseHtml;
         }
 
-        // If the response is a direct HTTP URL
-        if (apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0) {
+        // If the response is a direct HTTP URL (and not an HTML page)
+        if ((apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0) && apiResponseHtml.indexOf("<html") === -1 && apiResponseHtml.indexOf("<body") === -1) {
             return JSON.stringify({
                 url: apiResponseHtml.trim(),
                 headers: {
@@ -389,13 +386,15 @@ function parseDetailResponse(apiResponseHtml) {
             });
         }
 
-        // Parse detail HTML page
-        var detail = JSON.parse(parseMovieDetail(apiResponseHtml));
+        // Extract and decrypt stream URL from the detail page HTML
         var streamUrl = "";
-        if (detail && detail.servers && detail.servers.length > 0) {
-            var firstServer = detail.servers[0];
-            if (firstServer.episodes && firstServer.episodes.length > 0) {
-                streamUrl = firstServer.episodes[0].id || "";
+        var nextData = extractNextData(apiResponseHtml);
+        if (nextData && nextData.props && nextData.props.pageProps) {
+            var props = nextData.props.pageProps;
+            var ev = props.ev || {};
+            var decrypted = decryptEv(ev);
+            if (decrypted && decrypted.videoUrl) {
+                streamUrl = decrypted.videoUrl;
             }
         }
 
