@@ -1,0 +1,19 @@
+{
+  "name": "Cine Live",
+  "plugins": [
+    {
+      "id": "phimnganhdc",
+      "name": "PhimNganHDC",
+      "version": "1.0.0",
+      "iconUrl": "https://phimnganhdc.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/phdc.js"
+    },
+    {
+      "id": "phimngan",
+      "name": "PhimNgan.TV",
+      "version": "1.0.0",
+      "iconUrl": "https://phimngan.tv/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pntv.js"
+    }
+  ]
+}
