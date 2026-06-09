@@ -8,7 +8,7 @@ function getManifest() {
         "name": "HH3D - Hoạt Hình 3D",
         "version": "1.0.3",
         "baseUrl": "https://hoathinh3d.co",
-        "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/hh3d.ico",
+        "iconUrl": "https://hoathinh3d.ee/wp-content/uploads/2025/02/cropped-favicon_hh-400x400.png",
         "isEnabled": true,
         "isAdult": false,
         "type": "MOVIE",
