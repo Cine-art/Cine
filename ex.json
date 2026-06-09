@@ -168,6 +168,13 @@
       "version": "1.0.0",
       "iconUrl": "https://cineviet.live/favicon.svg",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/cnv.js"
+    },
+    {
+      "id": "1phim",
+        "name": "1Phim",
+        "version": "1.0.0",
+      "iconUrl": "https://www.1phim2.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/1p.js"
     }
   ]
 }
