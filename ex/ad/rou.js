@@ -376,8 +376,10 @@ function parseDetailResponse(apiResponseHtml) {
 
         // If the response is a direct HTTP URL (and not an HTML page)
         if ((apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0) && apiResponseHtml.indexOf("<html") === -1 && apiResponseHtml.indexOf("<body") === -1) {
+            var directUrl = apiResponseHtml.trim();
+            directUrl = directUrl.replace("/index.jpg", "/index.m3u8");
             return JSON.stringify({
-                url: apiResponseHtml.trim(),
+                url: directUrl,
                 headers: {
                     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                     "Referer": "https://rou.video/"
@@ -396,6 +398,10 @@ function parseDetailResponse(apiResponseHtml) {
             if (decrypted && decrypted.videoUrl) {
                 streamUrl = decrypted.videoUrl;
             }
+        }
+
+        if (streamUrl) {
+            streamUrl = streamUrl.replace("/index.jpg", "/index.m3u8");
         }
 
         return JSON.stringify({
