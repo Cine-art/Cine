@@ -10,6 +10,7 @@ function getManifest() {
         "baseUrl": "https://rou.video",
         "iconUrl": "https://rou.video/favicon.ico",
         "isEnabled": true,
+        "isAdult": true,
         "type": "MOVIE"
     });
 }
