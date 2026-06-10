@@ -19,7 +19,7 @@
       "id": "netshort",
       "name": "NetShort",
       "version": "1.0.0",
-      "iconUrl": https://netshort.com/favicon.ico",
+      "iconUrl": "https://netshort.com/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/ns.js"
     }
   ]
