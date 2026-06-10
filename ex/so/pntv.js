@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimngan",
         "name": "PhimNgan.TV",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://phimngan.tv",
         "iconUrl": "https://phimngan.tv/favicon.ico",
         "isEnabled": true,
@@ -294,35 +294,57 @@ function parseMovieDetail(apiResponseHtml) {
     }
 }
 
-function parseDetailResponse(apiResponseHtml) {
+function parseDetailResponse(apiResponseHtml, apiUrl) {
     try {
-        if (apiResponseHtml && apiResponseHtml.indexOf('"url":') > -1) {
-            return apiResponseHtml;
-        }
-        if (apiResponseHtml && (apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0)) {
-            return JSON.stringify({
-                url: apiResponseHtml.trim(),
-                headers: {
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                    "Referer": "https://phimngan.tv/"
-                },
-                subtitles: []
-            });
-        }
-
-        var detail = JSON.parse(parseMovieDetail(apiResponseHtml));
         var streamUrl = "";
-        if (detail && detail.servers && detail.servers.length > 0) {
-            var firstServer = detail.servers[0];
-            if (firstServer.episodes && firstServer.episodes.length > 0) {
-                streamUrl = firstServer.episodes[0].id || "";
+        var subtitles = [];
+
+        if (apiResponseHtml && apiResponseHtml.indexOf('"url":') > -1) {
+            var parsed = JSON.parse(apiResponseHtml);
+            streamUrl = parsed.url;
+            subtitles = parsed.subtitles || [];
+        } else if (apiResponseHtml && (apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0)) {
+            streamUrl = apiResponseHtml.trim();
+        } else if ((apiResponseHtml && apiResponseHtml.indexOf("#EXTM3U") > -1) || (apiUrl && apiUrl.indexOf(".m3u8") > -1)) {
+            streamUrl = apiUrl;
+        } else {
+            var detail = JSON.parse(parseMovieDetail(apiResponseHtml));
+            if (detail && detail.servers && detail.servers.length > 0) {
+                var firstServer = detail.servers[0];
+                if (firstServer.episodes && firstServer.episodes.length > 0) {
+                    streamUrl = firstServer.episodes[0].id || "";
+                }
+            }
+
+            if (!streamUrl) {
+                var m3u8Match = /(https?:\/\/[^\s\"']+\.m3u8)/i.exec(apiResponseHtml);
+                if (m3u8Match) {
+                    streamUrl = m3u8Match[1];
+                }
             }
         }
 
-        if (!streamUrl) {
-            var m3u8Match = /(https?:\/\/[^\s\"']+\.m3u8)/i.exec(apiResponseHtml);
-            if (m3u8Match) {
-                streamUrl = m3u8Match[1];
+        // Extract subtitles if we have a stream URL (either in streamUrl or apiUrl)
+        var targetUrl = streamUrl || apiUrl || "";
+        if (targetUrl) {
+            var match = /videos\/([a-f0-9\-]+)\/([a-f0-9\-]+)/i.exec(targetUrl);
+            if (match) {
+                var movieId = match[1];
+                var episodeId = match[2];
+                var hostIndex = targetUrl.indexOf("/videos/");
+                var host = hostIndex > -1 ? targetUrl.substring(0, hostIndex) : "https://cdn.phimngan.xyz";
+                subtitles = [
+                    {
+                        url: host + "/subtitles/" + movieId + "/" + episodeId + "/vi-VN.vtt",
+                        lang: "vi",
+                        label: "Tiếng Việt"
+                    },
+                    {
+                        url: host + "/subtitles/" + movieId + "/" + episodeId + "/en-US.vtt",
+                        lang: "en",
+                        label: "English"
+                    }
+                ];
             }
         }
 
@@ -332,10 +354,10 @@ function parseDetailResponse(apiResponseHtml) {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 "Referer": "https://phimngan.tv/"
             },
-            subtitles: []
+            subtitles: subtitles
         });
     } catch (error) {
-        return "{}";
+        return JSON.stringify({ url: "", headers: {}, subtitles: [] });
     }
 }
 
@@ -358,3 +380,4 @@ function parseYearsResponse(apiResponseJson) {
     }
     return JSON.stringify(years);
 }
+
