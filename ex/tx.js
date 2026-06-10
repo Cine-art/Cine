@@ -8,7 +8,7 @@ function getManifest() {
         "name": "TopXX",
         "version": "1.0.0",
         "baseUrl": "https://topxx.vip",
-        "iconUrl": "https://topxx.vip/favicon.ico",
+        "iconUrl": "https://topxx.vip/storage/uploads/logo/favicon-1766542707.png",
         "isEnabled": true,
         "isAdult": true,
         "type": "MOVIE"
