@@ -54,14 +54,14 @@
       "id": "missav123",
       "name": "MissAV 123",
       "version": "1.0.1",
-      "iconUrl": "https://topxx.vip/storage/uploads/logo/favicon-1766542707.png",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma123.js"
     },
      {
       "id": "missav2",
       "name": "MissAV 2",
       "version": "1.1.2",
-      "iconUrl": "https://topxx.vip/storage/uploads/logo/favicon-1766542707.png",
+      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma2.js"
     }
   ]
