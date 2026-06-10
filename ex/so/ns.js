@@ -4,11 +4,11 @@
 
 function getManifest() {
     return JSON.stringify({
-        "id": "phimngan",
-        "name": "PhimNgan.TV",
+        "id": "netshort",
+        "name": "NetShort",
         "version": "1.0.0",
-        "baseUrl": "https://phimngan.tv",
-        "iconUrl": "https://phimngan.tv/favicon.ico",
+        "baseUrl": "https://netshort.com",
+        "iconUrl": "https://netshort.com/favicon.ico",
         "isEnabled": true,
         "type": "SHORT"
     });
@@ -17,26 +17,20 @@ function getManifest() {
 function getHomeSections() {
     return JSON.stringify([
         { slug: 'phim-moi-cap-nhat', title: 'Phim Mới Cập Nhật', type: 'Grid', path: '' },
-        { slug: 'tai-sinh', title: 'Tái Sinh', type: 'Horizontal', path: 'genres/tai-sinh' },
-        { slug: 'bao-thu', title: 'Báo Thù', type: 'Horizontal', path: 'genres/bao-thu' },
-        { slug: 'nguoc-luyen', title: 'Ngược Luyến', type: 'Horizontal', path: 'genres/nguoc-luyen' },
-        { slug: 'tinh-yeu-ep-buoc', title: 'Tình Yêu Ép Buộc', type: 'Horizontal', path: 'genres/tinh-yeu-ep-buoc' },
-        { slug: 'guong-vo-lai-lanh', title: 'Gương Vỡ Lại Lành', type: 'Horizontal', path: 'genres/guong-vo-lai-lanh' }
+        { slug: 'Báo%20Thù-1983832092270911500', title: 'Báo Thù', type: 'Horizontal', path: 'vi/drama/Báo%20Thù-1983832092270911500' },
+        { slug: 'Song%20Trùng%20Sinh-1983832092187025421', title: 'Song Trùng Sinh', type: 'Horizontal', path: 'vi/drama/Song%20Trùng%20Sinh-1983832092187025421' },
+        { slug: 'Cưới%20Vì%20Có%20Thai-1983832091767595020', title: 'Cưới Vì Có Thai', type: 'Horizontal', path: 'vi/drama/Cưới%20Vì%20Có%20Thai-1983832091767595020' },
+        { slug: 'Tình%20Yêu%20Cưỡng%20Ép-1983832091708874755', title: 'Tình Yêu Cưỡng Ép', type: 'Horizontal', path: 'vi/drama/Tình%20Yêu%20Cưỡng%20Ép-1983832091708874755' }
     ]);
 }
 
 function getPrimaryCategories() {
     return JSON.stringify([
-        { name: 'Báo thù', slug: 'bao-thu' },
-        { name: 'Bí ẩn thân phận', slug: 'bi-an-than-phan' },
-        { name: 'Cạnh tranh', slug: 'canh-tranh' },
-        { name: 'Đổi đời', slug: 'doi-doi' },
-        { name: 'Duyên định mệnh', slug: 'duyen-dinh-menh' },
-        { name: 'Gương vỡ lại lành', slug: 'guong-vo-lai-lanh' },
-        { name: 'Ngược luyến', slug: 'nguoc-luyen' },
-        { name: 'Tái sinh', slug: 'tai-sinh' },
-        { name: 'Tình yêu ép buộc', slug: 'tinh-yeu-ep-buoc' },
-        { name: 'Yêu thầm', slug: 'yeu-tham' }
+        { name: 'Phim mới', slug: 'phim-moi-cap-nhat' },
+        { name: 'Báo Thù', slug: 'Báo%20Thù-1983832092270911500' },
+        { name: 'Song Trùng Sinh', slug: 'Song%20Trùng%20Sinh-1983832092187025421' },
+        { name: 'Cưới Vì Có Thai', slug: 'Cưới%20Vì%20Có%20Thai-1983832091767595020' },
+        { name: 'Tình Yêu Cưỡng Ép', slug: 'Tình%20Yêu%20Cưỡng%20Ép-1983832091708874755' }
     ]);
 }
 
@@ -56,28 +50,32 @@ function getUrlList(slug, filtersJson) {
     try {
         var filters = JSON.parse(filtersJson || "{}");
         var page = filters.page || 1;
-        var baseUrl = "https://phimngan.tv";
+        var baseUrl = "https://netshort.com";
         var path = "";
 
         if (filters.category) {
-            path = "/genres/" + filters.category;
+            path = "/vi/drama/" + filters.category;
         } else if (slug === "phim-moi-cap-nhat" || slug === "movies") {
             if (page > 1) {
-                path = "/movies";
+                path = "/vi/movies";
             } else {
-                path = "";
+                path = "/vi";
             }
         } else {
-            path = "/genres/" + slug;
+            if (slug.indexOf("vi/drama/") === 0 || slug.indexOf("/vi/drama/") === 0) {
+                path = slug.indexOf("/") === 0 ? slug : "/" + slug;
+            } else {
+                path = "/vi/drama/" + slug;
+            }
         }
 
         var url = baseUrl + path;
         if (page > 1) {
-            url += "?page=" + page;
+            url += (url.indexOf("?") > -1 ? "&" : "?") + "pageNum=" + page;
         }
         return url;
     } catch (e) {
-        return "https://phimngan.tv/movies";
+        return "https://netshort.com/vi/movies";
     }
 }
 
@@ -85,13 +83,13 @@ function getUrlSearch(keyword, filtersJson) {
     try {
         var filters = JSON.parse(filtersJson || "{}");
         var page = filters.page || 1;
-        var url = "https://phimngan.tv/movies?search=" + encodeURIComponent(keyword);
+        var url = "https://netshort.com/vi/movies?search=" + encodeURIComponent(keyword);
         if (page > 1) {
-            url += "&page=" + page;
+            url += "&pageNum=" + page;
         }
         return url;
     } catch (e) {
-        return "https://phimngan.tv/movies?search=" + encodeURIComponent(keyword);
+        return "https://netshort.com/vi/movies?search=" + encodeURIComponent(keyword);
     }
 }
 
@@ -99,19 +97,22 @@ function getUrlDetail(slug) {
     if (slug.indexOf("http") === 0) {
         return slug;
     }
-    return "https://phimngan.tv/movies/" + slug;
+    if (slug.indexOf("vi/episode/") > -1) {
+        return "https://netshort.com/" + (slug.indexOf("/") === 0 ? slug.substring(1) : slug);
+    }
+    return "https://netshort.com/vi/episode/" + slug;
 }
 
 function getUrlCategories() {
-    return "https://phimngan.tv/movies";
+    return "https://netshort.com/vi/movies";
 }
 
 function getUrlCountries() {
-    return "https://phimngan.tv/movies";
+    return "https://netshort.com/vi/movies";
 }
 
 function getUrlYears() {
-    return "https://phimngan.tv/movies";
+    return "https://netshort.com/vi/movies";
 }
 
 // =============================================================================
@@ -121,42 +122,47 @@ function getUrlYears() {
 function parseListResponse(apiResponseHtml) {
     try {
         var movies = [];
-        var regex = /\\"id\\":\\"([a-f0-9\-]+)\\",\\"title\\":\\"([^\\"]+)\\",\\"slug\\":\\"([^\\"]+)\\",.*?\\"cover\\":\\"([^\\"]+)\\",\\"episodeCount\\":(\d+)/g;
-        var match;
         var seenIds = {};
+        var regex = /href="\/vi\/episode\/([^"]+)"/g;
+        var match;
 
         while ((match = regex.exec(apiResponseHtml)) !== null) {
-            var id = match[3];
+            var slug = match[1];
+            if (slug.indexOf("-ep-") > -1) continue;
+            
+            var id = decodeURIComponent(slug);
             if (seenIds[id]) continue;
             seenIds[id] = true;
 
-            var title = match[2];
-            var posterUrl = match[4];
-            var episodeCount = match[5];
+            var startIdx = match.index;
+            var subStr = apiResponseHtml.substring(startIdx, startIdx + 2000);
+            
+            var altMatch = /alt="([^"]+)"/.exec(subStr);
+            var srcMatch = /src="([^"]+)"/.exec(subStr);
+
+            var title = altMatch ? altMatch[1] : id.replace(/-/g, " ");
+            var posterUrl = srcMatch ? srcMatch[1] : "";
 
             movies.push({
                 id: id,
-                title: title,
+                title: decodeURIComponent(title),
                 posterUrl: posterUrl,
                 backdropUrl: posterUrl,
                 year: 0,
                 quality: "HD",
-                episode_current: episodeCount + " tập",
+                episode_current: "Full",
                 lang: "Vietsub"
             });
         }
 
         var totalPages = 1;
-        var pageMatches = apiResponseHtml.match(/page=(\d+)/g);
-        if (pageMatches) {
-            for (var i = 0; i < pageMatches.length; i++) {
-                var m = /page=(\d+)/.exec(pageMatches[i]);
-                if (m) {
-                    var pageNum = parseInt(m[1], 10);
-                    if (pageNum > totalPages) {
-                        totalPages = pageNum;
-                    }
-                }
+        var totalCountMatch = /"totalCount"\s*:\s*(\d+)/i.exec(apiResponseHtml);
+        var pageSizeMatch = /"pageSize"\s*:\s*(\d+)/i.exec(apiResponseHtml);
+        if (totalCountMatch && pageSizeMatch) {
+            var totalCount = parseInt(totalCountMatch[1], 10);
+            var pageSize = parseInt(pageSizeMatch[1], 10);
+            if (pageSize > 0) {
+                totalPages = Math.ceil(totalCount / pageSize);
             }
         }
 
@@ -183,67 +189,60 @@ function parseMovieDetail(apiResponseHtml) {
         var description = "";
         var year = 2025;
 
-        // Parse title from HTML
         var titleMatch = /<title>([\s\S]*?)<\/title>/i.exec(apiResponseHtml);
         if (titleMatch) {
-            title = titleMatch[1].replace(/\s*-\s*PhimNgan\.TV/i, "").trim();
+            title = titleMatch[1].replace(/\s*-\s*NetShort/i, "").replace(/\s*Xem trực tuyến/i, "").trim();
         }
 
-        // Parse description from HTML
         var descMatch = /<meta\s+name="description"\s+content="([^"]+)"/i.exec(apiResponseHtml) || 
                         /<meta\s+property="og:description"\s+content="([^"]+)"/i.exec(apiResponseHtml);
         if (descMatch) {
             description = descMatch[1].trim();
         }
 
-        // Parse posterUrl from HTML
         var imgMatch = /<meta\s+property="og:image"\s+content="([^"]+)"/i.exec(apiResponseHtml) || 
                        /<meta\s+name="twitter:image"\s+content="([^"]+)"/i.exec(apiResponseHtml);
         if (imgMatch) {
             posterUrl = imgMatch[1].trim();
         }
 
-        // Parse year from datePublished
-        var yearMatch = /datePublished[\\":]+(\d{4})/i.exec(apiResponseHtml) || 
-                        /"datePublished"\s*:\s*"(\d{4})/i.exec(apiResponseHtml);
+        var yearMatch = /"uploadDate"\s*:\s*"(\d{4})/i.exec(apiResponseHtml);
         if (yearMatch) {
             year = parseInt(yearMatch[1], 10);
         }
 
-        // Parse genres
-        var genres = [];
-        var genreRegex = /href="\/genres\/([^"]+)"[^>]*>([^<]+)<\/a>/gi;
-        var gMatch;
-        while ((gMatch = genreRegex.exec(apiResponseHtml)) !== null) {
-            var gName = gMatch[2].trim();
-            if (gName && genres.indexOf(gName) === -1) {
-                genres.push(gName);
+        var baseSlug = "";
+        var canonicalMatch = /<link\s+rel="canonical"\s+href="https:\/\/netshort\.com\/vi\/episode\/([^"]+)"/i.exec(apiResponseHtml);
+        if (canonicalMatch) {
+            baseSlug = canonicalMatch[1];
+        } else {
+            var ogUrlMatch = /<meta\s+property="og:url"\s+content="https:\/\/netshort\.com\/vi\/episode\/([^"]+)"/i.exec(apiResponseHtml);
+            if (ogUrlMatch) {
+                baseSlug = ogUrlMatch[1];
             }
         }
-        var genresStr = genres.join(", ");
 
-        // Parse movieId
-        var movieIdMatch = apiResponseHtml.match(/movieId\\":\\"([a-f0-9\-]+)\\"/);
-        var movieId = movieIdMatch ? movieIdMatch[1] : "";
-
-        // Parse episodes from Next.js payload
         var episodes = [];
-        var seenOrders = {};
-        if (movieId) {
-            var epRegex = /\\"id\\":\\"([a-f0-9\-]+)\\",\\"title\\":\\"([^\\"]*)\\",\\"order\\":(\d+),.*?\\"videoUrl\\":\\"([^\\"]+)\\"/g;
+        if (baseSlug) {
+            var decodedSlug = decodeURIComponent(baseSlug);
+            var encodedSlug = encodeURIComponent(decodedSlug);
+            
+            var escDecoded = decodedSlug.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            var escEncoded = encodedSlug.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            
+            var epRegex = new RegExp('href="\\/vi\\/episode\\/(' + escDecoded + '|' + escEncoded + ')(-ep-(\\d+))?"', 'g');
             var epMatch;
-            while ((epMatch = epRegex.exec(apiResponseHtml)) !== null) {
-                var epOrder = parseInt(epMatch[3], 10);
-                var videoUrl = epMatch[4];
+            var seenOrders = {};
 
-                if (videoUrl.indexOf(movieId) > -1) {
-                    if (!seenOrders[epOrder]) {
-                        seenOrders[epOrder] = {
-                            id: videoUrl,
-                            name: "Tập " + epOrder,
-                            slug: "tap-" + epOrder
-                        };
-                    }
+            while ((epMatch = epRegex.exec(apiResponseHtml)) !== null) {
+                var epNum = epMatch[3] ? parseInt(epMatch[3], 10) : 1;
+                if (!seenOrders[epNum]) {
+                    var epSlug = baseSlug + (epMatch[2] ? epMatch[2] : "");
+                    seenOrders[epNum] = {
+                        id: "https://netshort.com/vi/episode/" + epSlug,
+                        name: "Tập " + epNum,
+                        slug: "tap-" + epNum
+                    };
                 }
             }
 
@@ -281,8 +280,8 @@ function parseMovieDetail(apiResponseHtml) {
             servers: servers,
             episode_current: episodes.length > 0 ? (episodes.length + " tập") : "",
             lang: "Vietsub",
-            category: genresStr,
-            country: "Việt Nam",
+            category: "Phim ngắn",
+            country: "Trung Quốc",
             director: "N/A",
             casts: "N/A",
             tmdbId: "",
@@ -294,70 +293,94 @@ function parseMovieDetail(apiResponseHtml) {
     }
 }
 
-function parseDetailResponse(apiResponseHtml, apiUrl) {
+function parseDetailResponse(apiResponseHtml) {
     try {
+        if (apiResponseHtml && apiResponseHtml.indexOf('"url":') > -1) {
+            return apiResponseHtml;
+        }
+        
         var streamUrl = "";
         var subtitles = [];
 
-        if (apiResponseHtml && apiResponseHtml.indexOf('"url":') > -1) {
-            var parsed = JSON.parse(apiResponseHtml);
-            streamUrl = parsed.url;
-            subtitles = parsed.subtitles || [];
-        } else if (apiResponseHtml && (apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0)) {
-            streamUrl = apiResponseHtml.trim();
-        } else if ((apiResponseHtml && apiResponseHtml.indexOf("#EXTM3U") > -1) || (apiUrl && apiUrl.indexOf(".m3u8") > -1)) {
-            streamUrl = apiUrl;
-        } else {
-            var detail = JSON.parse(parseMovieDetail(apiResponseHtml));
-            if (detail && detail.servers && detail.servers.length > 0) {
-                var firstServer = detail.servers[0];
-                if (firstServer.episodes && firstServer.episodes.length > 0) {
-                    streamUrl = firstServer.episodes[0].id || "";
-                }
-            }
+        // 1. Try to parse playVoucher for direct native playback (ExoPlayer instead of WebView embed)
+        var voucherMatch = /\\"playVoucher\\"\s*:\s*\\"([^"]+?)\\"/i.exec(apiResponseHtml);
+        if (voucherMatch) {
+            streamUrl = voucherMatch[1].replace(/\\u0026/g, "&").replace(/\\\//g, "/");
+        }
 
-            if (!streamUrl) {
-                var m3u8Match = /(https?:\/\/[^\s\"']+\.m3u8)/i.exec(apiResponseHtml);
-                if (m3u8Match) {
-                    streamUrl = m3u8Match[1];
+        // 2. Try to parse subtitleList
+        var subMatch = /\\"subtitleList\\"\s*:\s*(\[.*?\])/i.exec(apiResponseHtml);
+        if (subMatch) {
+            try {
+                var cleanedSubsJson = subMatch[1].replace(/\\"/g, '"').replace(/\\u0026/g, "&").replace(/\\\//g, "/");
+                var rawSubs = JSON.parse(cleanedSubsJson);
+                var langMap = {
+                    "vi_VN": { lang: "vi", label: "Tiếng Việt" },
+                    "en_US": { lang: "en", label: "English" },
+                    "ja_JP": { lang: "ja", label: "日本語" },
+                    "ko_KR": { lang: "ko", label: "한국어" },
+                    "th_TH": { lang: "th", label: "ไทย" },
+                    "zh_TW": { lang: "zh", label: "繁體中文" },
+                    "fr_FR": { lang: "fr", label: "Français" },
+                    "de_DE": { lang: "de", label: "Deutsch" },
+                    "pt_PT": { lang: "pt", label: "Português" },
+                    "id_ID": { lang: "id", label: "Bahasa Indonesia" },
+                    "es_ES": { lang: "es", label: "Español" },
+                    "ar_AE": { lang: "ar", label: "العربية" },
+                    "tr_TR": { lang: "tr", label: "Türkçe" },
+                    "hi_IN": { lang: "hi", label: "हिन्दी" }
+                };
+
+                for (var i = 0; i < rawSubs.length; i++) {
+                    var subItem = rawSubs[i];
+                    if (subItem && subItem.url) {
+                        var subUrl = subItem.url;
+                        var rawLang = subItem.subtitleLanguage || "";
+                        var mapped = langMap[rawLang] || { lang: rawLang.split("_")[0], label: rawLang };
+                        subtitles.push({
+                            url: subUrl,
+                            lang: mapped.lang,
+                            label: mapped.label
+                        });
+                    }
                 }
+            } catch (e) {
+                // Ignore parse errors
             }
         }
 
-        // Extract subtitles if we have a stream URL (either in streamUrl or apiUrl)
-        var targetUrl = streamUrl || apiUrl || "";
-        if (targetUrl) {
-            var match = /videos\/([a-f0-9\-]+)\/([a-f0-9\-]+)/i.exec(targetUrl);
-            if (match) {
-                var movieId = match[1];
-                var episodeId = match[2];
-                var hostIndex = targetUrl.indexOf("/videos/");
-                var host = hostIndex > -1 ? targetUrl.substring(0, hostIndex) : "https://cdn.phimngan.xyz";
-                subtitles = [
-                    {
-                        url: host + "/subtitles/" + movieId + "/" + episodeId + "/vi-VN.vtt",
-                        lang: "vi",
-                        label: "Tiếng Việt"
-                    },
-                    {
-                        url: host + "/subtitles/" + movieId + "/" + episodeId + "/en-US.vtt",
-                        lang: "en",
-                        label: "English"
-                    }
-                ];
+        if (!streamUrl) {
+            var embedMatch = /"embedUrl"\s*:\s*"([^"]+)"/i.exec(apiResponseHtml);
+            if (embedMatch) {
+                streamUrl = embedMatch[1];
             }
+        }
+
+        if (!streamUrl) {
+            var ogVideoMatch = /<meta\s+property="og:video"\s+content="([^"]+)"/i.exec(apiResponseHtml);
+            if (ogVideoMatch) {
+                streamUrl = ogVideoMatch[1];
+            }
+        }
+
+        if (!streamUrl && apiResponseHtml && (apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0)) {
+            streamUrl = apiResponseHtml.trim();
+        }
+
+        if (streamUrl) {
+            streamUrl = streamUrl.replace(/&amp;/g, "&");
         }
 
         return JSON.stringify({
             url: streamUrl,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "Referer": "https://phimngan.tv/"
+                "Referer": "https://netshort.com/"
             },
             subtitles: subtitles
         });
     } catch (error) {
-        return JSON.stringify({ url: "", headers: {}, subtitles: [] });
+        return "{}";
     }
 }
 
@@ -367,7 +390,7 @@ function parseCategoriesResponse(apiResponseJson) {
 
 function parseCountriesResponse(apiResponseJson) {
     return JSON.stringify([
-        { name: "Việt Nam", value: "viet-nam" }
+        { name: "Trung Quốc", value: "trung-quoc" }
     ]);
 }
 
