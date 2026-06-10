@@ -30,13 +30,6 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/op.js"
     },
     {
-      "id": "avdbapi",
-      "name": "AVDB JAV",
-      "version": "1.0.3",
-      "iconUrl": "https://avdbapi.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/avd.js"
-    },
-    {
       "id": "hh3d",
       "name": "HH3D - Hoạt Hình 3D",
       "version": "1.0.3",
@@ -44,32 +37,11 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/h3.js"
     },
     {
-      "id": "javhd",
-      "name": "JavHD",
-      "version": "1.0.6",
-      "iconUrl": "https://javhdz.today/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/jh.js"
-    },
-    {
       "id": "kkphim",
       "name": "KKPhim",
       "version": "1.0.1",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/kkphim.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/kk.js"
-    },
-    {
-      "id": "missav",
-      "name": "MissAV",
-      "version": "1.1.3",
-      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ma.js"
-    },
-    {
-      "id": "missav2",
-      "name": "MissAV 2",
-      "version": "1.1.2",
-      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ma2.js"
     },
     {
       "id": "nguonc",
@@ -93,32 +65,11 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/st1.js"
     },
     {
-      "id": "sextop2",
-      "name": "Sextop2",
-      "version": "1.1.5",
-      "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/sextop1.webp",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/st2.js"
-    },
-    {
-      "id": "topxx",
-      "name": "TopXX",
-      "version": "1.0.0",
-      "iconUrl": "https://topxx.vip/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/tx.js"
-    },
-    {
       "id": "vmttv",
       "name": "VMT TV",
       "version": "1.0.2",
       "iconUrl": "https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/Logo.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/vmt.js"
-    },
-    {
-      "id": "vlxx",
-      "name": "VLXX",
-      "version": "1.0.3",
-      "iconUrl": "https://vlxxsex.page/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/vx.js"
     },
     {
       "id": "rophim9",
