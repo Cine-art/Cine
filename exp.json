@@ -43,5 +43,12 @@
       "iconUrl": "https://jav.guru/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/jgr.js"
     },
+    {
+      "id": "topxx",
+      "name": "TopXX",
+      "version": "1.0.0",
+      "iconUrl": "https://topxx.vip/storage/uploads/logo/favicon-1766542707.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/tx.js"
+    },
   ]
 }
