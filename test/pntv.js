@@ -305,6 +305,8 @@ function parseDetailResponse(apiResponseHtml, apiUrl) {
             subtitles = parsed.subtitles || [];
         } else if (apiResponseHtml && (apiResponseHtml.indexOf("http://") === 0 || apiResponseHtml.indexOf("https://") === 0)) {
             streamUrl = apiResponseHtml.trim();
+        } else if ((apiResponseHtml && apiResponseHtml.indexOf("#EXTM3U") > -1) || (apiUrl && apiUrl.indexOf(".m3u8") > -1)) {
+            streamUrl = apiUrl;
         } else {
             var detail = JSON.parse(parseMovieDetail(apiResponseHtml));
             if (detail && detail.servers && detail.servers.length > 0) {
@@ -325,7 +327,7 @@ function parseDetailResponse(apiResponseHtml, apiUrl) {
         // Extract subtitles if we have a stream URL (either in streamUrl or apiUrl)
         var targetUrl = streamUrl || apiUrl || "";
         if (targetUrl) {
-            var match = /videos\/([a-f0-9\-]+)\/([a-f0-9\-]+)/.exec(targetUrl);
+            var match = /videos\/([a-f0-9\-]+)\/([a-f0-9\-]+)/i.exec(targetUrl);
             if (match) {
                 var movieId = match[1];
                 var episodeId = match[2];
