@@ -1,0 +1,25 @@
+{
+  "name": "Cine IPTV",
+  "plugins": [
+    {
+      "id": "xem",
+      "name": "Hội Quán",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/xem.jx"
+    },
+    {
+      "id": "vmttv",
+      "name": "VMTTV",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/tv.jx"
+    },
+    {
+      "id": "mytv",
+      "name": "MyTV",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/mytv.jx"
+    },
+    {
+      "id": "mpd",
+      "name": "MPD",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/mpd.jx"
+    }
+  ]
+}
