@@ -21,6 +21,13 @@
       "version": "1.0.0",
       "iconUrl": "https://netshort.com/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/ns.js"
+    },
+    {
+     "id": "vokich",
+      "name": "Võ Kịch",
+      "version": "1.0.0",
+      "iconUrl": "https://vokich.com/ic.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/vk.js"
     }
   ]
 }
