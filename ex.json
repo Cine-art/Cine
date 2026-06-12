@@ -126,6 +126,13 @@
       "version": "1.0.0",
       "iconUrl": "https://rapphim.art/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rap.js"
+    },
+    {
+      "id": "phimvietsub",
+      "name": "PhimVietsub",
+      "version": "1.0.0",
+      "iconUrl": "https://phimvietsub.run/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pvs.js"
     }
   ]
 }
