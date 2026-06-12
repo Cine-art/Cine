@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "dramangan",
         "name": "DramaNgắn",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://dramangan.org",
         "iconUrl": "https://dramangan.org/static/images/favicon.png",
         "isEnabled": true,
@@ -472,13 +472,19 @@ function parseDetailResponse(html, apiUrl) {
             isEmbed = false;
         }
         
+        var headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+        };
+        if (finalUrl.indexOf("twimg.com") === -1 && finalUrl.indexOf("twitter.com") === -1) {
+            headers["Referer"] = "https://dramangan.org/";
+        } else {
+            headers["Referer"] = "https://x.com/";
+        }
+        
         return JSON.stringify({
             url: finalUrl,
             isEmbed: isEmbed,
-            headers: {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-                "Referer": "https://dramangan.org/"
-            },
+            headers: headers,
             subtitles: []
         });
     } catch (e) {
