@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimvietsub",
         "name": "PhimVietsub",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://phimvietsub.run",
         "iconUrl": "https://phimvietsub.run/favicon.ico",
         "isEnabled": true,
@@ -32,7 +32,33 @@ function getPrimaryCategories() {
         { name: 'Phim Ngắn', slug: 'the-loai/phim-ngan' },
         { name: 'Hành Động', slug: 'the-loai/hanh-dong' },
         { name: 'Cổ Trang', slug: 'the-loai/co-trang' },
-        { name: 'Tình Cảm', slug: 'the-loai/tinh-cam' }
+        { name: 'Tình Cảm', slug: 'the-loai/tinh-cam' },
+        { name: 'Thần Thoại', slug: 'the-loai/than-thoai' },
+        { name: 'Khoa Học Viễn Tưởng', slug: 'the-loai/khoa-hoc-vien-tuong' },
+        { name: 'Giả Tưởng', slug: 'the-loai/gia-tuong' },
+        { name: 'Lịch Sử', slug: 'the-loai/lich-su' },
+        { name: 'Khoa Học', slug: 'the-loai/khoa-hoc' },
+        { name: 'Gây Cấn', slug: 'the-loai/gay-can' },
+        { name: 'Phim Hài', slug: 'the-loai/phim-hai' },
+        { name: 'Phim 18+', slug: 'the-loai/phim-18' },
+        { name: 'Lãng Mạn', slug: 'the-loai/lang-man' },
+        { name: 'Thể Thao', slug: 'the-loai/the-thao' },
+        { name: 'Âm Nhạc', slug: 'the-loai/am-nhac' },
+        { name: 'Bí ẩn', slug: 'the-loai/bi-an' },
+        { name: 'Viễn Tưởng', slug: 'the-loai/vien-tuong' },
+        { name: 'Học Đường', slug: 'the-loai/hoc-duong' },
+        { name: 'Tài Liệu', slug: 'the-loai/tai-lieu' },
+        { name: 'Võ Thuật', slug: 'the-loai/vo-thuat' },
+        { name: 'Hình Sự', slug: 'the-loai/hinh-su' },
+        { name: 'TV Shows', slug: 'the-loai/tv-shows' },
+        { name: 'Chiến Tranh', slug: 'the-loai/chien-tranh' },
+        { name: 'Gia Đình', slug: 'the-loai/gia-dinh' },
+        { name: 'Phiêu Lưu', slug: 'the-loai/phieu-luu' },
+        { name: 'Tâm Lý', slug: 'the-loai/tam-ly' },
+        { name: 'Kinh Dị', slug: 'the-loai/kinh-di' },
+        { name: 'Chính kịch', slug: 'the-loai/chinh-kich' },
+        { name: 'Hài Hước', slug: 'the-loai/hai-huoc' },
+        { name: 'Kinh Điển', slug: 'the-loai/kinh-dien' }
     ]);
 }
 
