@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimngan",
         "name": "PhimNgan.TV",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "baseUrl": "https://phimngan.tv",
         "iconUrl": "https://phimngan.tv/favicon.ico",
         "isEnabled": true,
