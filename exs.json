@@ -28,6 +28,20 @@
       "version": "1.0.0",
       "iconUrl": "https://vokich.com/ic.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/vk.js"
-    }
+    },
+    {
+     "id": "dongphimngan",
+      "name": "Động Phim Ngắn",
+      "version": "1.0.0",
+      "iconUrl": "https://dongphimngan.com/uploads/4260e165-e0c7-45e7-9ac1-6740b4f50510-pc.webp",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/dpg.js"
+    },
+    {
+     "id": "dramangan",
+      "name": "DramaNgắn",
+      "version": "1.0.0",
+      "iconUrl": "hhttps://dramangan.org/static/images/favicon.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/drm.js"
+    },
   ]
 }
