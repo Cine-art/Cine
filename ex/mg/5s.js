@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "doctruyen5s",
         "name": "Doctruyen5s",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://manga.io.vn",
         "iconUrl": "https://manga.io.vn/uploads/images/favicon.png",
         "isEnabled": true,
@@ -282,7 +282,7 @@ function parseMovieDetail(apiResponseHtml) {
         // Extract all chapter links from HTML
         var episodes = [];
         var seenSlugs = {};
-        var chapRegex = /href=["'](?:https?:\/\/manga\.io\.vn)?\/manga\/([^"'/]+)\/(chapter-[^"'/]+)["']/gi;
+        var chapRegex = /href=["'](?:https?:\/\/manga\.io\.vn)?\/(?:manga|chapters)\/([^"'/]+)\/(chapter-[^"'/]+)(?:\/(\d+))?["']/gi;
         var epMatch;
         while ((epMatch = chapRegex.exec(apiResponseHtml)) !== null) {
             var epSlug = epMatch[2];
@@ -291,7 +291,11 @@ function parseMovieDetail(apiResponseHtml) {
 
             var epName = epSlug.replace(/-/g, " ").replace(/\b\w/g, function(l){ return l.toUpperCase(); }); // "Chapter 317"
             var playId = "";
-            if (idMap[epSlug]) {
+            var urlId = epMatch[3];
+
+            if (urlId) {
+                playId = "https://manga.io.vn/ajax/image/list/chap/" + urlId;
+            } else if (idMap[epSlug]) {
                 playId = "https://manga.io.vn/ajax/image/list/chap/" + idMap[epSlug];
             } else {
                 playId = "https://manga.io.vn/manga/" + baseSlug + "/" + epSlug;
@@ -348,30 +352,75 @@ function parseMovieDetail(apiResponseHtml) {
 function parseDetailResponse(apiResponseHtml) {
     try {
         var images = [];
+        var html = "";
 
-        // Check if response is AJAX JSON response
-        if (apiResponseHtml.indexOf('{"status":') === 0 || apiResponseHtml.indexOf('{"status":') > -1) {
-            var data = JSON.parse(apiResponseHtml);
-            var html = data.html || "";
-            var imgRegex = /href=["']([^"']+)["']/g;
-            var match;
-            while ((match = imgRegex.exec(html)) !== null) {
-                var imgUrl = match[1];
-                if (imgUrl.indexOf("http") !== 0) {
-                    if (imgUrl.indexOf("//") === 0) {
-                        imgUrl = "https:" + imgUrl;
-                    } else {
-                        imgUrl = "https://manga.io.vn" + imgUrl;
-                    }
+        // If it's a JSON response (AJAX)
+        if (apiResponseHtml.trim().indexOf('{') === 0) {
+            try {
+                var data = JSON.parse(apiResponseHtml);
+                html = data.html || "";
+            } catch (jsonErr) {
+                html = apiResponseHtml;
+            }
+        } else {
+            html = apiResponseHtml;
+        }
+
+        function normalizeUrl(url) {
+            url = url.trim();
+            if (url.indexOf("http") !== 0) {
+                if (url.indexOf("//") === 0) {
+                    url = "https:" + url;
+                } else {
+                    url = "https://manga.io.vn" + (url.indexOf("/") === 0 ? "" : "/") + url;
                 }
+            }
+            return url;
+        }
+
+        // 1. Try to extract images from <img> tags first (handles lazy load src, data-src, data-cdn, data-original)
+        var imgTagRegex = /<img\s+([^>]+)>/gi;
+        var match;
+        while ((match = imgTagRegex.exec(html)) !== null) {
+            var attrs = match[1];
+            var src = getAttr(attrs, "src");
+            var dataSrc = getAttr(attrs, "data-src");
+            var dataCdn = getAttr(attrs, "data-cdn");
+            var dataOriginal = getAttr(attrs, "data-original");
+            
+            var imgUrl = dataSrc || dataCdn || dataOriginal || src;
+            if (imgUrl && imgUrl.indexOf("data:") !== 0 && imgUrl.indexOf("base64") === -1) {
+                imgUrl = normalizeUrl(imgUrl);
                 if (images.indexOf(imgUrl) === -1) {
                     images.push(imgUrl);
                 }
             }
-        } else {
-            // It's the watch page HTML (fallback for older chapters)
-            var chapIdMatch = /const\s+CHAPTER_ID\s*=\s*(\d+)/.exec(apiResponseHtml) ||
-                             /CHAPTER_ID\s*=\s*(\d+)/.exec(apiResponseHtml);
+        }
+
+        // 2. Fallback to extracting from href attributes if no images found in <img> tags
+        if (images.length === 0) {
+            var hrefRegex = /href=["']([^"']+)["']/gi;
+            while ((match = hrefRegex.exec(html)) !== null) {
+                var imgUrl = match[1];
+                if (imgUrl && 
+                    imgUrl.indexOf("javascript:") === -1 && 
+                    imgUrl.indexOf("/manga/") === -1 && 
+                    imgUrl.indexOf("/genres/") === -1 &&
+                    imgUrl.indexOf("/all-manga") === -1 &&
+                    !imgUrl.match(/\.(html|js|css)/i)
+                ) {
+                    imgUrl = normalizeUrl(imgUrl);
+                    if (images.indexOf(imgUrl) === -1) {
+                        images.push(imgUrl);
+                    }
+                }
+            }
+        }
+
+        // 3. Fallback for watch page HTML where images are loaded via AJAX with a CHAPTER_ID variable
+        if (images.length === 0) {
+            var chapIdMatch = /const\s+CHAPTER_ID\s*=\s*(\d+)/.exec(html) ||
+                             /CHAPTER_ID\s*=\s*(\d+)/.exec(html);
             if (chapIdMatch) {
                 var chapId = chapIdMatch[1];
                 var fallbackUrl = "https://manga.io.vn/ajax/image/list/chap/" + chapId;
@@ -402,4 +451,17 @@ function parseCountriesResponse(apiResponseJson) {
 
 function parseYearsResponse(apiResponseJson) {
     return JSON.stringify([]);
+}
+
+// =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
+
+function getAttr(attrs, name) {
+    var regex = new RegExp(name + '\\s*=\\s*(?:["\']([^"\']+)["\']|([^\\s>]+))', 'i');
+    var match = regex.exec(attrs);
+    if (match) {
+        return match[1] || match[2] || "";
+    }
+    return "";
 }
