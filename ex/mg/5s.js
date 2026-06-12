@@ -292,13 +292,14 @@ function parseMovieDetail(apiResponseHtml) {
             var epName = epSlug.replace(/-/g, " ").replace(/\b\w/g, function(l){ return l.toUpperCase(); }); // "Chapter 317"
             var playId = "";
             var urlId = epMatch[3];
+            var headersSuffix = "|User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36|Referer=https://manga.io.vn/";
 
             if (urlId) {
-                playId = "https://manga.io.vn/ajax/image/list/chap/" + urlId;
+                playId = "https://manga.io.vn/ajax/image/list/chap/" + urlId + headersSuffix;
             } else if (idMap[epSlug]) {
-                playId = "https://manga.io.vn/ajax/image/list/chap/" + idMap[epSlug];
+                playId = "https://manga.io.vn/ajax/image/list/chap/" + idMap[epSlug] + headersSuffix;
             } else {
-                playId = "https://manga.io.vn/manga/" + baseSlug + "/" + epSlug;
+                playId = "https://manga.io.vn/manga/" + baseSlug + "/" + epSlug + headersSuffix;
             }
 
             episodes.push({
@@ -378,53 +379,100 @@ function parseDetailResponse(apiResponseHtml) {
             return url;
         }
 
-        // 1. Try to extract images from <img> tags first (handles lazy load src, data-src, data-cdn, data-original)
-        var imgTagRegex = /<img\s+([^>]+)>/gi;
-        var match;
-        while ((match = imgTagRegex.exec(html)) !== null) {
-            var attrs = match[1];
-            var src = getAttr(attrs, "src");
-            var dataSrc = getAttr(attrs, "data-src");
-            var dataCdn = getAttr(attrs, "data-cdn");
-            var dataOriginal = getAttr(attrs, "data-original");
-            
-            var imgUrl = dataSrc || dataCdn || dataOriginal || src;
-            if (imgUrl && imgUrl.indexOf("data:") !== 0 && imgUrl.indexOf("base64") === -1) {
-                imgUrl = normalizeUrl(imgUrl);
-                if (images.indexOf(imgUrl) === -1) {
-                    images.push(imgUrl);
-                }
-            }
-        }
+        // Check if this is the watch page HTML (contains CHAPTER_ID)
+        var chapIdMatch = /const\s+CHAPTER_ID\s*=\s*(\d+)/.exec(html) ||
+                         /CHAPTER_ID\s*=\s*(\d+)/.exec(html);
 
-        // 2. Fallback to extracting from href attributes if no images found in <img> tags
-        if (images.length === 0) {
-            var hrefRegex = /href=["']([^"']+)["']/gi;
-            while ((match = hrefRegex.exec(html)) !== null) {
-                var imgUrl = match[1];
-                if (imgUrl && 
-                    imgUrl.indexOf("javascript:") === -1 && 
-                    imgUrl.indexOf("/manga/") === -1 && 
-                    imgUrl.indexOf("/genres/") === -1 &&
-                    imgUrl.indexOf("/all-manga") === -1 &&
-                    !imgUrl.match(/\.(html|js|css)/i)
-                ) {
+        if (chapIdMatch) {
+            var chapId = chapIdMatch[1];
+            var ajaxUrl = "https://manga.io.vn/ajax/image/list/chap/" + chapId;
+            
+            try {
+                // Try to perform a synchronous HTTP request to fetch the AJAX JSON response using Rhino's Java interop
+                var url = new java.net.URL(ajaxUrl);
+                var connection = url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+                connection.setRequestProperty("Referer", "https://manga.io.vn/");
+                connection.setRequestProperty("X-Requested-With", "XMLHttpRequest");
+                connection.setConnectTimeout(6000);
+                connection.setReadTimeout(6000);
+                
+                var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream(), "UTF-8"));
+                var responseText = "";
+                var line;
+                while ((line = reader.readLine()) !== null) {
+                    responseText += line;
+                }
+                reader.close();
+                
+                // Parse the response text as AJAX JSON
+                if (responseText.indexOf('{"status":') > -1) {
+                    var ajaxData = JSON.parse(responseText);
+                    var ajaxHtml = ajaxData.html || "";
+                    
+                    // Parse images from the AJAX HTML response
+                    var imgTagRegex = /<img\s+([^>]+)>/gi;
+                    var match;
+                    while ((match = imgTagRegex.exec(ajaxHtml)) !== null) {
+                        var attrs = match[1];
+                        var src = getAttr(attrs, "src");
+                        var dataSrc = getAttr(attrs, "data-src");
+                        var dataCdn = getAttr(attrs, "data-cdn");
+                        var dataOriginal = getAttr(attrs, "data-original");
+                        
+                        var imgUrl = dataSrc || dataCdn || dataOriginal || src;
+                        if (imgUrl && imgUrl.indexOf("data:") !== 0 && imgUrl.indexOf("base64") === -1) {
+                            imgUrl = normalizeUrl(imgUrl);
+                            if (images.indexOf(imgUrl) === -1) {
+                                images.push(imgUrl);
+                            }
+                        }
+                    }
+                }
+            } catch (netError) {
+                // If Java interop fails or is sandboxed, fallback to returning the AJAX URL with headers
+                var headersSuffix = "|User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36|Referer=https://manga.io.vn/|X-Requested-With=XMLHttpRequest";
+                images.push(ajaxUrl + headersSuffix);
+            }
+        } else {
+            // It's the AJAX HTML response, extract images directly
+            var imgTagRegex = /<img\s+([^>]+)>/gi;
+            var match;
+            while ((match = imgTagRegex.exec(html)) !== null) {
+                var attrs = match[1];
+                var src = getAttr(attrs, "src");
+                var dataSrc = getAttr(attrs, "data-src");
+                var dataCdn = getAttr(attrs, "data-cdn");
+                var dataOriginal = getAttr(attrs, "data-original");
+                
+                var imgUrl = dataSrc || dataCdn || dataOriginal || src;
+                if (imgUrl && imgUrl.indexOf("data:") !== 0 && imgUrl.indexOf("base64") === -1) {
                     imgUrl = normalizeUrl(imgUrl);
                     if (images.indexOf(imgUrl) === -1) {
                         images.push(imgUrl);
                     }
                 }
             }
-        }
 
-        // 3. Fallback for watch page HTML where images are loaded via AJAX with a CHAPTER_ID variable
-        if (images.length === 0) {
-            var chapIdMatch = /const\s+CHAPTER_ID\s*=\s*(\d+)/.exec(html) ||
-                             /CHAPTER_ID\s*=\s*(\d+)/.exec(html);
-            if (chapIdMatch) {
-                var chapId = chapIdMatch[1];
-                var fallbackUrl = "https://manga.io.vn/ajax/image/list/chap/" + chapId;
-                images.push(fallbackUrl);
+            // Fallback to extracting from href attributes
+            if (images.length === 0) {
+                var hrefRegex = /href=["']([^"']+)["']/gi;
+                while ((match = hrefRegex.exec(html)) !== null) {
+                    var imgUrl = match[1];
+                    if (imgUrl && 
+                        imgUrl.indexOf("javascript:") === -1 && 
+                        imgUrl.indexOf("/manga/") === -1 && 
+                        imgUrl.indexOf("/genres/") === -1 &&
+                        imgUrl.indexOf("/all-manga") === -1 &&
+                        !imgUrl.match(/\.(html|js|css)/i)
+                    ) {
+                        imgUrl = normalizeUrl(imgUrl);
+                        if (images.indexOf(imgUrl) === -1) {
+                            images.push(imgUrl);
+                        }
+                    }
+                }
             }
         }
 
