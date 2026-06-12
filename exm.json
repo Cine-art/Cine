@@ -35,13 +35,6 @@
       "version": "1.0.1",
       "iconUrl": "https://misskon.com/img/logo.2026.v5.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/mk.js"
-    },
-    {
-		"id": "doctruyen5s",
-		"name": "Doctruyen5s",
-		"version": "1.0.1",
-      "iconUrl": "https://manga.io.vn/uploads/images/favicon.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/5s.js"
     }
 	  ]
 }
