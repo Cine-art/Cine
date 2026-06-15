@@ -8,7 +8,7 @@ function getManifest() {
         "name": "PhimViVu",
         "version": "1.0.0",
         "baseUrl": "https://phimvivu.lol",
-        "iconUrl": "https://phimvivu.lol/wp-content/uploads/2024/09/cropped-favicon-32x32.png",
+        "iconUrl": "https://phimvivu.lol/wp-content/uploads/2025/08/cropped-FAV_VIVU_2025-32x32.png",
         "isEnabled": true,
         "type": "MOVIE",
         "layoutType": "GRID"
