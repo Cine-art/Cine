@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 26,
+    "latestVersionCode": 27,
 	"forceupdate": false,
-    "latestVersionName": "1.0",
-    "releaseNotes": "Add short",
+    "latestVersionName": "1.1",
+    "releaseNotes": "New UI Beta",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
