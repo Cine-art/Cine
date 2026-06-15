@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "javhd",
         "name": "JavHD",
-        "version": "1.0.6",
+        "version": "1.0.7",
         "baseUrl": "https://javhdz.today",
         "iconUrl": "https://javhdz.today/favicon-32x32.png",
         "isEnabled": true,
@@ -42,6 +42,106 @@ function getPrimaryCategories() {
 
 function getFilterConfig() {
     return JSON.stringify({
+        category: [
+            { "name": "Jav Sub", "value": "jav-sub" },
+            { "name": "Uncensored JAV", "value": "uncensored-jav" },
+            { "name": "Chinese Subtitle", "value": "chinese-subtitle" },
+            { "name": "Reducing Mosaic", "value": "reducing-mosaic" },
+            { "name": "Amateur", "value": "amateur" },
+            { "name": "Creampie", "value": "creampie" },
+            { "name": "Big tits", "value": "big-tits" },
+            { "name": "Married Woman", "value": "married-woman" },
+            { "name": "Beautiful Girl", "value": "beautiful-girl" },
+            { "name": "Mature Woman", "value": "mature-woman" },
+            { "name": "Squirting", "value": "squirting" },
+            { "name": "Nasty", "value": "nasty" },
+            { "name": "Hardcore", "value": "hardcore" },
+            { "name": "BBW", "value": "bbw" },
+            { "name": "Breasts", "value": "breasts" },
+            { "name": "Bukkake", "value": "bukkake" },
+            { "name": "Cosplay", "value": "cosplay" },
+            { "name": "Cowgirl", "value": "cowgirl" },
+            { "name": "Debut Production", "value": "debut-production" },
+            { "name": "Deep Throating", "value": "deep-throating" },
+            { "name": "Shaved", "value": "shaved" },
+            { "name": "Massage", "value": "massage" },
+            { "name": "Sister", "value": "sister" },
+            { "name": "Documentary", "value": "documentary" },
+            { "name": "Solowork", "value": "solowork" },
+            { "name": "Titty Fuck", "value": "titty-fuck" },
+            { "name": "Young Wife", "value": "young-wife" },
+            { "name": "Cuckold", "value": "cuckold" },
+            { "name": "7mmtv", "value": "7mmtv" },
+            { "name": "Anchorwoman", "value": "anchorwoman" },
+            { "name": "Asian", "value": "asian" },
+            { "name": "Avgle", "value": "avgle" },
+            { "name": "Bestjav", "value": "bestjav" },
+            { "name": "Busty Fetish", "value": "busty-fetish" },
+            { "name": "Car Sex", "value": "car-sex" },
+            { "name": "Dead Drunk", "value": "dead-drunk" },
+            { "name": "Dirty Words", "value": "dirty-words" },
+            { "name": "Drama", "value": "drama" },
+            { "name": "English Sub Jav", "value": "eng-sub-jav" },
+            { "name": "Facials", "value": "facials" },
+            { "name": "Female Doctor", "value": "female-doctor" },
+            { "name": "Fighting Action", "value": "fighting-action" },
+            { "name": "Glasses", "value": "glasses" },
+            { "name": "Handjob", "value": "handjob" },
+            { "name": "Hentai", "value": "hentai" },
+            { "name": "Huge Butt", "value": "huge-butt" },
+            { "name": "Humiliation", "value": "humiliation" },
+            { "name": "Incest", "value": "incest" },
+            { "name": "Jable", "value": "jable" },
+            { "name": "Japan Sex", "value": "japan-sex" },
+            { "name": "Jav Censored", "value": "jav-censored" },
+            { "name": "Jav Guru", "value": "jav-guru" },
+            { "name": "Jav Porn", "value": "jav-porn" },
+            { "name": "Jav Tube", "value": "jav-tube" },
+            { "name": "JavBangers", "value": "javbangers" },
+            { "name": "Javct", "value": "javct" },
+            { "name": "Javfinder", "value": "javfinder" },
+            { "name": "Javgg", "value": "javgg" },
+            { "name": "Javhub", "value": "javhub" },
+            { "name": "Javlibrary", "value": "javlibrary" },
+            { "name": "Javmost", "value": "javmost" },
+            { "name": "Javtiful", "value": "javtiful" },
+            { "name": "Javtrailers", "value": "javtrailers" },
+            { "name": "Kimono", "value": "kimono" },
+            { "name": "Kiss", "value": "kiss" },
+            { "name": "Leg Fetish", "value": "leg-fetish" },
+            { "name": "Lesbian", "value": "lesbian" },
+            { "name": "Lingerie", "value": "lingerie" },
+            { "name": "Missav", "value": "missav" },
+            { "name": "Mother", "value": "mother" },
+            { "name": "Nampa", "value": "nampa" },
+            { "name": "Njav", "value": "njav" },
+            { "name": "Omnibus", "value": "omnibus" },
+            { "name": "Outdoors", "value": "outdoors" },
+            { "name": "Piss Drinking", "value": "piss-drinking" },
+            { "name": "Planning", "value": "planning" },
+            { "name": "Pornhub", "value": "pornhub" },
+            { "name": "POV", "value": "pov" },
+            { "name": "Promiscuity", "value": "promiscuity" },
+            { "name": "Prostitutes", "value": "prostitutes" },
+            { "name": "Rape", "value": "rape" },
+            { "name": "Restraints", "value": "restraints" },
+            { "name": "Risky Mosaic", "value": "risky-mosaic" },
+            { "name": "School", "value": "school" },
+            { "name": "Sextb", "value": "sextb" },
+            { "name": "Slender", "value": "slender" },
+            { "name": "Sport", "value": "sport" },
+            { "name": "Supjav", "value": "supjav" },
+            { "name": "Teacher", "value": "teacher" },
+            { "name": "Thisav", "value": "thisav" },
+            { "name": "Top most searched Jav movies on the internet", "value": "top-most-searched-jav-movies-on-the-internet" },
+            { "name": "Toy", "value": "toy" },
+            { "name": "Various Professions", "value": "various-professions" },
+            { "name": "Virgin Man", "value": "virgin-man" },
+            { "name": "Vjav", "value": "vjav" },
+            { "name": "Xhamster", "value": "xhamster" },
+            { "name": "Xnxx", "value": "xnxx" },
+            { "name": "Xvideos", "value": "xvideos" }
+        ],
         sort: [
             { name: 'Recent', value: 'recent' },
             { name: 'Popular', value: 'popular' },
@@ -61,6 +161,10 @@ function getUrlList(slug, filtersJson) {
         var page = filters.page || 1;
         var sort = filters.sort || "recent";
         var baseUrl = "https://javhdz.today";
+
+        if (filters.category) {
+            slug = filters.category;
+        }
 
         // Map homepage sections to their respective list page slugs
         var sectionCategoryMap = {
@@ -333,7 +437,7 @@ function parseMovieDetail(html) {
     }
 }
 
-function parseDetailResponse(html) {
+function parseDetailResponse(html, detailUrl) {
     try {
         var firstEmbed = "";
         var serverRegex = /<button[^>]*class="button_choice_server"[^>]*data-embed="([^"]+)"/i;
@@ -344,10 +448,24 @@ function parseDetailResponse(html) {
             } catch (e) {
                 firstEmbed = match[1];
             }
+        } else {
+            firstEmbed = detailUrl || "";
+        }
+
+        var isEmbed = false;
+        if (firstEmbed) {
+            var lowerUrl = firstEmbed.toLowerCase();
+            if (lowerUrl.indexOf(".m3u8") === -1 && 
+                lowerUrl.indexOf(".mp4") === -1 && 
+                lowerUrl.indexOf(".mpd") === -1 && 
+                lowerUrl.indexOf(".mkv") === -1) {
+                isEmbed = true;
+            }
         }
 
         return JSON.stringify({
             url: firstEmbed,
+            isEmbed: isEmbed,
             headers: { 
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36", 
                 "Referer": "https://javhdz.today" 
@@ -357,6 +475,153 @@ function parseDetailResponse(html) {
     } catch (error) {
         return "{}";
     }
+}
+
+function parseEmbedResponse(embedHtml, embedUrl) {
+    try {
+        var lowerUrl = embedUrl.toLowerCase();
+        
+        // 1. Turbovid
+        if (lowerUrl.indexOf("turbovid") > -1 || lowerUrl.indexOf("turboviplay") > -1) {
+            var urlPlayMatch = embedHtml.match(/var\s+urlPlay\s*=\s*['"]([^'"]+)['"]/);
+            if (urlPlayMatch && urlPlayMatch[1]) {
+                return JSON.stringify({
+                    url: urlPlayMatch[1],
+                    isEmbed: false,
+                    headers: {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Referer": embedUrl
+                    }
+                });
+            }
+        }
+        
+        // 2. Streamtape
+        if (lowerUrl.indexOf("streamtape") > -1) {
+            var botlinkMatch = embedHtml.match(/document\.getElementById\('botlink'\)\.innerHTML\s*=\s*['"]([^'"]+)['"]\s*\+\s*\(['"]([^'"]+)['"]\)([\s\S]*?);/);
+            if (botlinkMatch) {
+                var base = botlinkMatch[1];
+                var token = botlinkMatch[2];
+                var ops = botlinkMatch[3];
+                
+                var subRegex = /\.substring\((\d+)\)/g;
+                var subMatch;
+                while ((subMatch = subRegex.exec(ops)) !== null) {
+                    var start = parseInt(subMatch[1], 10);
+                    token = token.substring(start);
+                }
+                
+                var streamUrl = base + token;
+                if (streamUrl.indexOf("//") === 0) {
+                    streamUrl = "https:" + streamUrl;
+                }
+                if (streamUrl.indexOf("stream=1") === -1) {
+                    streamUrl += (streamUrl.indexOf("?") > -1 ? "&" : "?") + "stream=1";
+                }
+                return JSON.stringify({
+                    url: streamUrl,
+                    isEmbed: false,
+                    headers: {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Referer": "https://streamtape.com/"
+                    }
+                });
+            }
+        }
+        
+        // 3. Cloudwish
+        if (lowerUrl.indexOf("cloudwish") > -1) {
+            var unpacked = unpackPacker(embedHtml);
+            var linksMatch = unpacked.match(/"hls4"\s*:\s*"([^"]+)"/) || 
+                             unpacked.match(/"hls2"\s*:\s*"([^"]+)"/) ||
+                             unpacked.match(/"hls3"\s*:\s*"([^"]+)"/);
+            if (linksMatch && linksMatch[1]) {
+                var hlsUrl = linksMatch[1];
+                if (hlsUrl.indexOf('/') === 0) {
+                    var hostMatch = embedUrl.match(/^(https?:\/\/[^/]+)/);
+                    if (hostMatch) {
+                        hlsUrl = hostMatch[1] + hlsUrl;
+                    }
+                }
+                return JSON.stringify({
+                    url: hlsUrl,
+                    isEmbed: false,
+                    headers: {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Referer": embedUrl
+                    }
+                });
+            }
+        }
+        
+        // Generic Fallback search
+        var m3u8Match = embedHtml.match(/["'](https?:\/\/[^"'\s]+\.m3u8[^"'\s]*)["']/i) ||
+                        embedHtml.match(/file\s*:\s*["']([^"'\s]+\.m3u8[^"'\s]*)["']/i);
+        if (m3u8Match && m3u8Match[1]) {
+            return JSON.stringify({
+                url: m3u8Match[1].replace(/\\/g, ''),
+                isEmbed: false,
+                headers: {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                    "Referer": embedUrl
+                }
+            });
+        }
+        
+        var mp4Match = embedHtml.match(/["'](https?:\/\/[^"'\s]+\.mp4[^"'\s]*)["']/i) ||
+                       embedHtml.match(/file\s*:\s*["']([^"'\s]+\.mp4[^"'\s]*)["']/i);
+        if (mp4Match && mp4Match[1]) {
+            return JSON.stringify({
+                url: mp4Match[1].replace(/\\/g, ''),
+                isEmbed: false,
+                headers: {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                    "Referer": embedUrl
+                }
+            });
+        }
+        
+        // Fallback to original embed url
+        return JSON.stringify({
+            url: embedUrl,
+            isEmbed: false,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Referer": "https://javhdz.today"
+            }
+        });
+    } catch(e) {
+        return JSON.stringify({
+            url: embedUrl,
+            isEmbed: false,
+            headers: {}
+        });
+    }
+}
+
+function unpackPacker(html) {
+    var pRegex = /eval\(function\(p,a,c,k,e,d\)[\s\S]*?\}\('([\s\S]*?)',\s*(\d+),\s*(\d+),\s*'([\s\S]*?)'\.split\('\|'\)/;
+    var match = html.match(pRegex);
+    if (!match) return html;
+    
+    var p = match[1];
+    var a = parseInt(match[2], 10);
+    var c = parseInt(match[3], 10);
+    var k = match[4].split('|');
+    
+    var e = function(c) {
+        return (c < a ? '' : e(parseInt(c / a, 10))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+    };
+    
+    var d = {};
+    while (c--) {
+        d[e(c)] = k[c] || e(c);
+    }
+    
+    var result = p.replace(/\b\w+\b/g, function(val) {
+        return d[val] || val;
+    });
+    return result;
 }
 
 function parseCategoriesResponse(html) {
