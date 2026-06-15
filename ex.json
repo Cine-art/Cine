@@ -140,6 +140,13 @@
       "version": "1.0.0",
       "iconUrl": "https://phimvivu.lol/wp-content/uploads/2025/08/cropped-FAV_VIVU_2025-32x32.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pvv.js"
+    },
+    {
+      "id": "phimtv",
+      "name": "PhimTV",
+      "version": "1.0.0",
+      "iconUrl": "https://phimtv.cv/1day2love/favicon.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ptv.js"
     }
   ]
 }
