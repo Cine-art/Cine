@@ -10,7 +10,7 @@ function getManifest() {
         "baseUrl": "https://gamomephim.com",
         "iconUrl": "https://gamomephim.com/favicon.ico",
         "isEnabled": true,
-        "type": "MOVIE"
+        "type": "SHORT"
     });
 }
 
