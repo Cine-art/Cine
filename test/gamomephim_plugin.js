@@ -10,7 +10,7 @@ function getManifest() {
         "baseUrl": "https://gamomephim.com",
         "iconUrl": "https://gamomephim.com/favicon.ico",
         "isEnabled": true,
-        "type": "SHORT"
+        "type": "MOVIE"
     });
 }
 
@@ -48,8 +48,35 @@ function getPrimaryCategories() {
 
 function getFilterConfig() {
     return JSON.stringify({
+        category: [
+            { name: 'Tất cả', value: '' },
+            { name: 'Cổ Trang', value: 'co-trang' },
+            { name: 'Dân Quốc', value: 'dan-quoc' },
+            { name: 'Hiện Đại', value: 'hien-dai' },
+            { name: 'Hài Hước', value: 'hai-huoc' },
+            { name: 'Trọng Sinh', value: 'trong-sinh' },
+            { name: 'Xuyên Không', value: 'xuyen-khong' },
+            { name: 'Chữa Lành', value: 'chua-lanh' },
+            { name: 'Cưới Trước Yêu Sau', value: 'cuoi-truoc-yeu-sau' },
+            { name: 'Gương Vỡ Lại Lành', value: 'guong-vo-lai-lanh' },
+            { name: 'Thanh Xuân', value: 'thanh-xuan' },
+            { name: 'Trà Xanh Nam', value: 'tra-xanh-nam' },
+            { name: 'Yêu Thầm', value: 'yeu-tham' }
+        ],
         sort: [
-            { name: 'Mới cập nhật', value: 'update' }
+            { name: 'Mới cập nhật', value: 'update' },
+            { name: 'Thịnh hành', value: 'trending' },
+            { name: 'Bảng xếp hạng', value: 'bxh' }
+        ],
+        status: [
+            { name: 'Tất cả', value: 'all' },
+            { name: 'Trọn bộ (FULL)', value: 'full' },
+            { name: 'Đang cập nhật', value: 'updating' }
+        ],
+        format: [
+            { name: 'Tất cả', value: 'all' },
+            { name: 'Vietsub', value: 'vietsub' },
+            { name: 'Thuyết Minh', value: 'thuyet-minh' }
         ]
     });
 }
@@ -65,16 +92,17 @@ function getUrlList(slug, filtersJson) {
         var baseUrl = "https://gamomephim.com";
         var path = "";
 
-        if (filters.category) {
-            path = "/the-loai/" + filters.category;
-        } else if (slug === "phim-moi-cap-nhat") {
-            path = "/phim-moi";
-        } else if (slug === "phim-full") {
-            path = "/phim-ngan";
-        } else if (slug === "ban-xep-hang") {
+        // Determine category
+        var category = filters.category || (slug && slug !== "phim-moi-cap-nhat" && slug !== "phim-full" && slug !== "ban-xep-hang" ? slug : "");
+
+        if (category) {
+            path = "/the-loai/" + category;
+        } else if (filters.sort === "bxh" || slug === "ban-xep-hang") {
             path = "/ban-xep-hang";
+        } else if (filters.status === "full" || slug === "phim-full") {
+            path = "/phim-ngan";
         } else {
-            path = "/the-loai/" + slug;
+            path = "/phim-moi";
         }
 
         var url = baseUrl + path;
