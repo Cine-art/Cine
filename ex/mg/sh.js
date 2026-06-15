@@ -6,9 +6,9 @@ function getManifest() {
     return JSON.stringify({
         "id": "sayhentai",
         "name": "SayHentai",
-        "version": "1.0.4",
-        "baseUrl": "https://sayhentai.sh",
-        "iconUrl": "https://sayhentai.sh/favicon-32x32.png",
+        "version": "1.0.5",
+        "baseUrl": "https://sayhentai.cx",
+        "iconUrl": "https://sayhentai.cx/favicon-32x32.png",
         "isEnabled": true,
         "isAdult": true,
         "type": "MANGA",
@@ -41,10 +41,71 @@ function getFilterConfig() {
             { name: 'Lượt xem', value: 'views' }
         ],
         category: [
+            { name: "Ngực Lớn", value: "nguc-lon" },
+            { name: "18+", value: "18" },
+            { name: "Manga", value: "manga" },
+            { name: "One shot", value: "one-shot" },
+            { name: "Doujinshi", value: "doujinshi" },
+            { name: "Oneshot", value: "oneshot" },
+            { name: "NTR", value: "ntr" },
+            { name: "Không Che", value: "khong-che" },
+            { name: "Nữ Sinh", value: "nu-sinh" },
+            { name: "Adult", value: "adult" },
+            { name: "Group", value: "group" },
             { name: "Manhwa", value: "manhwa" },
-            { name: "Truyện Màu", value: "truyen-mau" },
+            { name: "Hậu Môn", value: "hau-mon" },
+            { name: "Series", value: "series" },
+            { name: "Hãm Hiếp", value: "ham-hiep" },
+            { name: "Housewife", value: "housewife" },
+            { name: "Bạo Dâm", value: "bao-dam" },
+            { name: "Milf", value: "milf" },
+            { name: "Harem", value: "harem" },
+            { name: "Ngực Nhỏ", value: "nguc-nho" },
+            { name: "Drama", value: "drama" },
+            { name: "Romance", value: "romance" },
+            { name: "Chơi Hai Lỗ", value: "choi-hai-lo" },
+            { name: "Mind Break", value: "mind-break" },
+            { name: "Ecchi", value: "ecchi" },
+            { name: "Smut", value: "smut" },
+            { name: "Loạn Luân", value: "loan-luan" },
+            { name: "Giáo Viên", value: "giao-vien" },
+            { name: "Lão Già Dâm", value: "lao-gia-dam" },
+            { name: "Mature", value: "mature" },
+            { name: "Webtoon", value: "webtoon" },
+            { name: "Loli", value: "loli" },
+            { name: "School Life", value: "school-life" },
+            { name: "Gangbang", value: "gangbang" },
+            { name: "Rape", value: "rape" },
+            { name: "Comedy", value: "comedy" },
+            { name: "Fantasy", value: "fantasy" },
+            { name: "Nô Lệ", value: "no-le" },
+            { name: "Gender Bender", value: "gender-bender" },
             { name: "Yuri", value: "yuri" },
-            { name: "NTR", value: "ntr" }
+            { name: "Supernatural", value: "supernatural" },
+            { name: "Yaoi", value: "yaoi" },
+            { name: "3D", value: "3d" },
+            { name: "Virgin", value: "virgin" },
+            { name: "Y Tá", value: "y-ta" },
+            { name: "Action", value: "action" },
+            { name: "Old Man", value: "old-man" },
+            { name: "Slice of Life", value: "slice-of-life" },
+            { name: "Seinen", value: "seinen" },
+            { name: "Psychological", value: "psychological" },
+            { name: "Shoujo", value: "shoujo" },
+            { name: "Historical", value: "historical" },
+            { name: "Horror", value: "horror" },
+            { name: "Manhua", value: "manhua" },
+            { name: "Josei", value: "josei" },
+            { name: "Mystery", value: "mystery" },
+            { name: "Kinh Dị", value: "kinh-di" },
+            { name: "Shounen", value: "shounen" },
+            { name: "Sports", value: "sports" },
+            { name: "Mecha", value: "mecha" },
+            { name: "Sci-fi", value: "sci-fi" },
+            { name: "Tragedy", value: "tragedy" },
+            { name: "Detective", value: "detective" },
+            { name: "Martial Arts", value: "martial-arts" },
+            { name: "Shoujo Ai", value: "shoujo-ai" }
         ]
     });
 }
@@ -56,7 +117,7 @@ function getFilterConfig() {
 function getUrlList(slug, filtersJson) {
     var filters = JSON.parse(filtersJson || "{}");
     var page = filters.page || 1;
-    var baseUrl = "https://sayhentai.sh";
+    var baseUrl = "https://sayhentai.cx";
 
     if (filters.category) {
         return baseUrl + "/genre/" + filters.category + "?page=" + page;
@@ -76,17 +137,16 @@ function getUrlList(slug, filtersJson) {
 function getUrlSearch(keyword, filtersJson) {
     var filters = JSON.parse(filtersJson || "{}");
     var page = filters.page || 1;
-    // WordPress Madara search structure
-    return "https://sayhentai.sh/page/" + page + "/?s=" + encodeURIComponent(keyword) + "&post_type=wp-manga";
+    return "https://sayhentai.cx/search?s=" + encodeURIComponent(keyword) + "&page=" + page;
 }
 
 function getUrlDetail(slug) {
     if (!slug) return "";
     if (slug.indexOf("http") === 0) return slug;
-    return "https://sayhentai.sh/" + slug + (slug.endsWith('.html') ? "" : ".html");
+    return "https://sayhentai.cx/" + slug + (slug.endsWith('.html') ? "" : ".html");
 }
 
-function getUrlCategories() { return "https://sayhentai.sh/"; }
+function getUrlCategories() { return "https://sayhentai.cx/"; }
 function getUrlCountries() { return ""; }
 function getUrlYears() { return ""; }
 
@@ -129,7 +189,7 @@ function parseListResponse(html) {
         if (!linkMatch) continue;
 
         var fullUrl = linkMatch[1];
-        var slug = fullUrl.replace("https://sayhentai.sh/", "").replace(/\/$/, "");
+        var slug = fullUrl.replace("https://sayhentai.cx/", "").replace(/\/$/, "");
 
         // Extract Title
         var titleMatch = itemHtml.match(/title="([^"]+)"/i) ||
@@ -144,9 +204,9 @@ function parseListResponse(html) {
 
         if (thumb && thumb.indexOf("http") !== 0) {
             if (thumb.indexOf("/") === 0) {
-                thumb = "https://sayhentai.sh" + thumb;
+                thumb = "https://sayhentai.cx" + thumb;
             } else {
-                thumb = "https://sayhentai.sh/" + thumb;
+                thumb = "https://sayhentai.cx/" + thumb;
             }
         }
 
@@ -238,7 +298,7 @@ function parseMovieDetail(html) {
         while ((cMatch = chapterRegex.exec(html)) !== null) {
             var cUrl = cMatch[1];
             var cTitle = PluginUtils.cleanText(cMatch[2]);
-            var cSlug = cUrl.replace("https://sayhentai.sh/", "").replace(/\/$/, "");
+            var cSlug = cUrl.replace("https://sayhentai.cx/", "").replace(/\/$/, "");
 
             chapters.push({
                 id: cUrl, // Using full URL as ID for reader extraction
@@ -312,7 +372,7 @@ function parseDetailResponse(html) {
             images: images,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "Referer": "https://sayhentai.sh/"
+                "Referer": "https://sayhentai.cx/"
             }
         });
     } catch (e) {
@@ -325,7 +385,7 @@ function parseCategoriesResponse(html) {
     var catRegex = /<ul[^>]*class="genres-menu[^"]*"[^>]*>([\s\S]*?)<\/ul>/i;
     var block = html.match(catRegex);
     if (block) {
-        var linkRegex = /<a[^>]+href="https:\/\/sayhentai\.sh\/genre\/([^"\/]+)"[^>]*>([^<]+)<\/a>/gi;
+        var linkRegex = /<a[^>]+href="https:\/\/sayhentai\.cx\/genre\/([^"\/]+)"[^>]*>([^<]+)<\/a>/gi;
         var m;
         while ((m = linkRegex.exec(block[1])) !== null) {
             categories.push({ name: PluginUtils.cleanText(m[2]), slug: "genre/" + m[1] });
