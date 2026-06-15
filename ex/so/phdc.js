@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimnganhdc",
         "name": "PhimNganHDC",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://phimnganhdc.com",
         "iconUrl": "https://phimnganhdc.com/favicon.ico",
         "isEnabled": true,
@@ -43,6 +43,63 @@ function getPrimaryCategories() {
 
 function getFilterConfig() {
     return JSON.stringify({
+        category: [
+            { name: "Huyền Huyễn", value: "huyen-huyen" },
+            { name: "Tiên Hiệp", value: "tien-hiep" },
+            { name: "Xuyên Không", value: "xuyen-khong" },
+            { name: "Chuyển Thể", value: "chuyen-the" },
+            { name: "Boylove", value: "boy-love" },
+            { name: "Phim Ngắn", value: "phim-ngan" },
+            { name: "Phá Án", value: "pha-an" },
+            { name: "Dân Quốc", value: "dan-quoc" },
+            { name: "Y Khoa", value: "y-khoa" },
+            { name: "Ngôn Tình", value: "ngon-tinh" },
+            { name: "Ngược Luyến", value: "nguoc-luyen" },
+            { name: "Nghề Nghiệp", value: "nghe-nghiep" },
+            { name: "Đô Thị", value: "do-thi" },
+            { name: "Hiện Đại", value: "hien-dai" },
+            { name: "Tội Phạm", value: "toi-pham" },
+            { name: "Lãng Mạn", value: "lang-man" },
+            { name: "Phim Hài", value: "phim-hai" },
+            { name: "Khoa Học Viễn Tưởng", value: "khoa-hoc-vien-tuong" },
+            { name: "Giả Tưởng", value: "gia-tuong" },
+            { name: "Gây Cấn", value: "gay-can" },
+            { name: "Lịch Sử", value: "lich-su" },
+            { name: "Xuyên Sách", value: "xuyen-sach" },
+            { name: "Hệ Thống", value: "he-thong" },
+            { name: "Báo Thù", value: "bao-thu" },
+            { name: "Kỳ Ảo", value: "ky-ao" },
+            { name: "Ngọt Sủng", value: "ngot-sung" },
+            { name: "Vả Mặt Tra Nam", value: "va-mat-tra-nam" },
+            { name: "Trọng Sinh", value: "trong-sinh" },
+            { name: "Có con", value: "co-con" },
+            { name: "Cưới Trước Yêu Sau", value: "cuoi-truoc-yeu-sau" },
+            { name: "Truy Thê", value: "truy-the" },
+            { name: "Hành động", value: "hanh-dong" },
+            { name: "Hài hước", value: "hai-huoc" },
+            { name: "Học đường", value: "hoc-duong" },
+            { name: "Cổ trang", value: "co-trang" },
+            { name: "Kinh dị", value: "kinh-di" },
+            { name: "Tình cảm", value: "tinh-cam" },
+            { name: "Võ thuật", value: "vo-thuat" },
+            { name: "Phiêu lưu", value: "phieu-luu" },
+            { name: "Viễn tưởng", value: "vien-tuong" },
+            { name: "Chính kịch", value: "chinh-kich" },
+            { name: "Thể thao", value: "the-thao" },
+            { name: "Âm nhạc", value: "am-nhac" },
+            { name: "Khoa học", value: "khoa-hoc" },
+            { name: "Tâm lý", value: "tam-ly" },
+            { name: "Hình sự", value: "hinh-su" },
+            { name: "Bí ẩn", value: "bi-an" },
+            { name: "Gia đình", value: "gia-dinh" },
+            { name: "Hoạt hình", value: "hoat-hinh" },
+            { name: "TV Shows", value: "tv-shows" }
+        ],
+        country: [
+            { name: "Hàn Quốc", value: "han-quoc" },
+            { name: "Trung Quốc", value: "trung-quoc" },
+            { name: "Thái Lan", value: "thai-lan" }
+        ],
         sort: [
             { name: 'Mới cập nhật', value: 'update' }
         ]
@@ -456,8 +513,20 @@ function parseDetailResponse(apiResponseHtml) {
             streamUrl = "https:" + streamUrl;
         }
 
+        var isEmbed = false;
+        if (streamUrl) {
+            var lowerUrl = streamUrl.toLowerCase();
+            if (lowerUrl.indexOf(".m3u8") === -1 && 
+                lowerUrl.indexOf(".mp4") === -1 && 
+                lowerUrl.indexOf(".mpd") === -1 && 
+                lowerUrl.indexOf(".mkv") === -1) {
+                isEmbed = true;
+            }
+        }
+
         return JSON.stringify({
             url: streamUrl,
+            isEmbed: isEmbed,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 "Referer": "https://phimnganhdc.com/"
@@ -465,6 +534,100 @@ function parseDetailResponse(apiResponseHtml) {
             subtitles: []
         });
     } catch (error) {
+        return "{}";
+    }
+}
+
+function parseEmbedResponse(embedHtml, embedUrl) {
+    try {
+        var lowerUrl = embedUrl.toLowerCase();
+        
+        // --- CASE 1: play.streamxemphimhd.site (HDC Server) ---
+        if (lowerUrl.indexOf("streamxemphimhd.site") > -1) {
+            // Sub-case A: We are on the player iframe page (e.g. /video/[id])
+            if (lowerUrl.indexOf("/video/") > -1) {
+                var idMatch = /\/video\/([a-zA-Z0-9]+)/.exec(embedUrl);
+                if (idMatch) {
+                    var id = idMatch[1];
+                    var postUrl = "https://play.streamxemphimhd.site/player/index.php?data=" + id + "&do=getVideo";
+                    var postBody = "hash=" + id + "&r=https%3A%2F%2Fphimnganhdc.com%2F";
+                    return JSON.stringify({
+                        url: postUrl,
+                        isEmbed: true,
+                        postBody: postBody,
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                            "Referer": embedUrl,
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Origin": "https://play.streamxemphimhd.site"
+                        }
+                    });
+                }
+            }
+            // Sub-case B: We received the JSON response from index.php?do=getVideo
+            else if (lowerUrl.indexOf("getvideo") > -1) {
+                var jData = JSON.parse(embedHtml);
+                if (jData.hls && jData.securedLink) {
+                    return JSON.stringify({
+                        url: jData.securedLink,
+                        isEmbed: false,
+                        headers: {
+                            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                            "Referer": "https://play.streamxemphimhd.site/"
+                        }
+                    });
+                } else if (jData.videoSource) {
+                    return JSON.stringify({
+                        url: jData.videoSource,
+                        isEmbed: false,
+                        headers: {
+                            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                            "Referer": "https://play.streamxemphimhd.site/"
+                        }
+                    });
+                }
+            }
+        }
+        
+        // --- CASE 2: tiktok.phimhdc.com (FHDC Server) ---
+        if (lowerUrl.indexOf("tiktok.phimhdc.com") > -1) {
+            // Sub-case A: Embed page containing edgeplayer iframe
+            if (lowerUrl.indexOf("/embed/") > -1) {
+                var keyMatch = /key=([a-zA-Z0-9\-]+)/.exec(embedHtml);
+                if (keyMatch) {
+                    var key = keyMatch[1];
+                    var edgePlayerUrl = "https://tiktok.phimhdc.com/edgeplayer.html?pv=16&key=" + key + "&delivery=direct";
+                    return JSON.stringify({
+                        url: edgePlayerUrl,
+                        isEmbed: true,
+                        headers: {
+                            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                            "Referer": embedUrl
+                        }
+                    });
+                }
+            }
+            // Sub-case B: Edge player page itself, resolve directly to iOS delivery stream
+            else if (lowerUrl.indexOf("edgeplayer.html") > -1) {
+                var keyMatch = /key=([a-zA-Z0-9\-]+)/.exec(embedUrl);
+                if (keyMatch) {
+                    var key = keyMatch[1];
+                    var m3u8Url = "https://tiktok.phimhdc.com/video/" + key + "/master.m3u8?delivery=ios";
+                    return JSON.stringify({
+                        url: m3u8Url,
+                        isEmbed: false,
+                        headers: {
+                            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1",
+                            "Referer": embedUrl
+                        }
+                    });
+                }
+            }
+        }
+
+        return "{}";
+    } catch (e) {
         return "{}";
     }
 }
