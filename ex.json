@@ -147,6 +147,13 @@
       "version": "1.0.0",
       "iconUrl": "https://phimtv.cv/1day2love/favicon.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ptv.js"
+    },
+    { 
+      "id": "newphim",
+      "name": "Newphim",
+      "version": "1.0.0",
+      "iconUrl": "https://www.newphim.net/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/np.js"
     }
   ]
 }
