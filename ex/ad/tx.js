@@ -6,11 +6,12 @@ function getManifest() {
     return JSON.stringify({
         "id": "topxx",
         "name": "TopXX",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://topxx.vip",
-        "iconUrl": "https://topxx.vip/storage/uploads/logo/favicon-1766542707.png",
+        "iconUrl": "https://topxx.vip/favicon.ico",
         "isEnabled": true,
         "isAdult": true,
+        "layoutType": "HORIZONTAL",
         "type": "MOVIE"
     });
 }
@@ -37,6 +38,29 @@ function getFilterConfig() {
     return JSON.stringify({
         sort: [
             { name: 'Mới cập nhật', value: 'latest' }
+        ],
+        category: [
+            { name: "Việt Sub", value: "NMf5df5FMg" },
+            { name: "Trung Quốc", value: "c5eZ6rqYV9" },
+            { name: "Hàn Quốc", value: "rRtc6LLAbQ" },
+            { name: "Nhật Bản", value: "vQMGvwTw5G" },
+            { name: "Hentai 18+", value: "NqlIpFB5ov" },
+            { name: "Không che", value: "vdDkXwQsHi" },
+            { name: "Tập thể", value: "1UhBBr5pNM" },
+            { name: "Âu Mỹ", value: "oHJZdhXKfM" },
+            { name: "Xnxx", value: "bXBvvD9LsZ" },
+            { name: "Sex 3D", value: "8Vfsvu32pK" },
+            { name: "Hậu môn", value: "Xui7LA29qG" },
+            { name: "Chubby", value: "Tfb414BtWs" },
+            { name: "Vú to", value: "Zra9KRVRCg" },
+            { name: "Sex Less", value: "pT6tycCjov" },
+            { name: "Sex Gay", value: "VEUhHwz43a" },
+            { name: "Sex Nga", value: "b5GCie5Ay2" },
+            { name: "Amateur", value: "ymGqcXZTP4" },
+            { name: "Gangbang", value: "8q5PMSZayq" },
+            { name: "Sex Tự Quay", value: "Md4g14eRMB" },
+            { name: "4K", value: "OlKihX7Ap0" },
+            { name: "Việt Nam", value: "eSrvCfiPJc" }
         ]
     });
 }
