@@ -124,7 +124,7 @@
       "id": "rapphim",
       "name": "RapPhim",
       "version": "1.0.0",
-      "iconUrl": "https://phimvivu.lol/wp-content/uploads/2024/09/cropped-favicon-32x32.png",
+      "iconUrl": "https://rapphim.art/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rap.js"
     },
     {
@@ -138,7 +138,7 @@
       "id": "phimvivu",
       "name": "PhimViVu",
       "version": "1.0.0",
-      "iconUrl": "hhttps://phimvivu.lol/wp-content/uploads/2024/09/cropped-favicon-32x32.png",
+      "iconUrl": "https://phimvivu.lol/wp-content/uploads/2025/08/cropped-FAV_VIVU_2025-32x32.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pvv.js"
     }
   ]
