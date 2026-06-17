@@ -65,10 +65,10 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/vmt.js"
     },
     {
-      "id": "rophim9",
-      "name": "RoPhim9",
-      "version": "1.0.0",
-      "iconUrl": "https://rophim9.org/favicon.ico",
+     "id": "rophim9",
+      "name": "Rổ Phim 9",
+      "version": "1.0.1",,
+      "iconUrl": "https://rophimz.one/statics/images/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/rp9.js"
     },
     {
