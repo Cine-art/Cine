@@ -8,7 +8,7 @@ function getManifest() {
         "name": "Newphim",
         "version": "1.0.0",
         "baseUrl": "https://www.newphim.net",
-        "iconUrl": "https://www.newphim.net/favicon.ico",
+        "iconUrl": "https://www.newphim.net/storage/files/Logo/logo_newphimnet.png",
         "isEnabled": true,
         "type": "MOVIE"
     });
