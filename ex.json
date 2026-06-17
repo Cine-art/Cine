@@ -152,7 +152,7 @@
       "id": "newphim",
       "name": "Newphim",
       "version": "1.0.0",
-      "iconUrl": "https://www.newphim.net/favicon.ico",
+      "iconUrl": "https://www.newphim.net/storage/files/Logo/logo_newphimnet.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/np.js"
     }
   ]
