@@ -4,7 +4,7 @@
 
 function getManifest() {
     return JSON.stringify({
-        "id": "phimmoivide",
+        "id": "phimmoivideo",
         "name": "Phim Mới Video",
         "version": "1.0.0",
         "baseUrl": "https://phimmoi.video",
