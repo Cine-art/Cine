@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "nguonc",
         "name": "Nguồn C",
-        "version": "1.1.2",
+        "version": "1.1.3",
         "baseUrl": "https://phim.nguonc.com",
         "iconUrl": "https://phim.nguonc.com/public/images/Logo/logonc.png",
         "isEnabled": true,
@@ -35,7 +35,59 @@ function getPrimaryCategories() {
 }
 
 function getFilterConfig() {
+    var categories = [
+        { name: 'Tất cả thể loại', value: '' },
+        { name: 'Hành Động', value: 'hanh-dong' },
+        { name: 'Phiêu Lưu', value: 'phieu-luu' },
+        { name: 'Hoạt Hình', value: 'hoat-hinh' },
+        { name: 'Hài Hước', value: 'hai-huoc' },
+        { name: 'Hình Sự', value: 'hinh-su' },
+        { name: 'Tài Liệu', value: 'tai-lieu' },
+        { name: 'Chính Kịch', value: 'chinh-kich' },
+        { name: 'Gia Đình', value: 'gia-dinh' },
+        { name: 'Giả Tưởng', value: 'gia-tuong' },
+        { name: 'Lịch Sử', value: 'lich-su' },
+        { name: 'Kinh Dị', value: 'kinh-di' },
+        { name: 'Nhạc', value: 'nhac' },
+        { name: 'Bí Ẩn', value: 'bi-an' },
+        { name: 'Tình Cảm', value: 'tinh-cam' },
+        { name: 'Khoa Học', value: 'khoa-hoc' },
+        { name: 'Viễn Tưởng', value: 'vien-tuong' },
+        { name: 'Thần Thoại', value: 'than-thoai' },
+        { name: 'Chiến Tranh', value: 'chien-tranh' },
+        { name: 'Cổ Trang', value: 'co-trang' },
+        { name: 'Võ Thuật', value: 'vo-thuat' }
+    ];
+
+    var countries = [
+        { name: 'Tất cả quốc gia', value: '' },
+        { name: 'Trung Quốc', value: 'trung-quoc' },
+        { name: 'Hàn Quốc', value: 'han-quoc' },
+        { name: 'Nhật Bản', value: 'nhat-ban' },
+        { name: 'Mỹ', value: 'my' },
+        { name: 'Âu Mỹ', value: 'au-my' },
+        { name: 'Việt Nam', value: 'viet-nam' },
+        { name: 'Thái Lan', value: 'thai-lan' },
+        { name: 'Ấn Độ', value: 'an-do' },
+        { name: 'Hồng Kông', value: 'hong-kong' },
+        { name: 'Đài Loan', value: 'dai-loan' },
+        { name: 'Anh', value: 'anh' },
+        { name: 'Pháp', value: 'phap' },
+        { name: 'Canada', value: 'canada' },
+        { name: 'Quốc Gia Khác', value: 'quoc-gia-khac' }
+    ];
+
+    var years = [{ name: 'Tất cả năm', value: '' }];
+    var currentYear = 2026;
+    for (var i = 0; i < 15; i++) {
+        var yearStr = (currentYear - i).toString();
+        years.push({ name: yearStr, value: yearStr });
+    }
+
     return JSON.stringify({
+        category: categories,
+        country: countries,
+        year: years,
         sort: [
             { name: 'Mới cập nhật', value: 'update' }
         ]
@@ -57,6 +109,8 @@ function getUrlList(slug, filtersJson) {
             path = "/the-loai/" + filters.category;
         } else if (filters.country) {
             path = "/quoc-gia/" + filters.country;
+        } else if (filters.year) {
+            path = "/nam-phat-hanh/" + filters.year;
         } else if (slug === "phim-bo" || slug === "phim-le" || slug === "hoat-hinh" || slug === "tv-shows") {
             path = "/danh-sach/" + slug;
         } else {
@@ -148,7 +202,7 @@ function parseMovieDetail(apiResponseJson) {
             if (server.items) {
                 server.items.forEach(function (ep) {
                     episodes.push({
-                        id: ep.m3u8 || ep.embed || "",
+                        id: ep.embed || ep.m3u8 || "",
                         name: ep.name,
                         slug: ep.slug
                     });
@@ -198,26 +252,80 @@ function parseMovieDetail(apiResponseJson) {
     } catch (error) { return "null"; }
 }
 
-function parseDetailResponse(apiResponseJson) {
+function parseDetailResponse(apiResponseHtmlOrJson, playUrl) {
     try {
-        var response = JSON.parse(apiResponseJson);
-        var movie = response.movie || {};
-        var episodes = movie.episodes || [];
+        if (!apiResponseHtmlOrJson) return "{}";
 
-        var streamUrl = "";
-        if (episodes.length > 0) {
-            var firstServer = episodes[0];
-            if (firstServer.items && firstServer.items.length > 0) {
-                streamUrl = firstServer.items[0].m3u8 || firstServer.items[0].embed || "";
+        // If the input is already a direct stream URL
+        if (apiResponseHtmlOrJson.indexOf("https://") === 0 && (apiResponseHtmlOrJson.indexOf(".m3u8") > -1 || apiResponseHtmlOrJson.indexOf(".m3u9") > -1)) {
+            return JSON.stringify({
+                url: apiResponseHtmlOrJson,
+                headers: {
+                    "Referer": "https://phim.nguonc.com/",
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                },
+                subtitles: []
+            });
+        }
+
+        // 1. Detect if it is the watch page HTML or player page containing streamc payload
+        var obfMatch = /data-obf="([^"]+)"/.exec(apiResponseHtmlOrJson);
+        if (obfMatch) {
+            var obfValue = obfMatch[1];
+            var decoded = base64Decode(obfValue);
+            var streamData = JSON.parse(decoded);
+            var sub = streamData.sUb;
+
+            var baseDomain = "https://embed13.streamc.xyz";
+            if (playUrl) {
+                var domainMatch = /^(https?:\/\/[^\/]+)/.exec(playUrl);
+                if (domainMatch) {
+                    baseDomain = domainMatch[1];
+                }
+            } else {
+                var domainMatch = /https?:\/\/[^\/]*streamc[^\/]+/i.exec(apiResponseHtmlOrJson);
+                if (domainMatch) {
+                    baseDomain = domainMatch[0];
+                }
+            }
+
+            var streamUrl = baseDomain + "/" + sub + ".m3u9";
+
+            return JSON.stringify({
+                url: streamUrl,
+                headers: {
+                    "Referer": playUrl || baseDomain + "/",
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                },
+                subtitles: []
+            });
+        }
+
+        // 2. Fallback: Parse movie detail response JSON if the app passes detail JSON first
+        if (apiResponseHtmlOrJson.trim().indexOf("{") === 0) {
+            var response = JSON.parse(apiResponseHtmlOrJson);
+            var movie = response.movie || {};
+            var episodes = movie.episodes || [];
+            var streamUrl = "";
+            if (episodes.length > 0) {
+                var firstServer = episodes[0];
+                if (firstServer.items && firstServer.items.length > 0) {
+                    streamUrl = firstServer.items[0].embed || firstServer.items[0].m3u8 || "";
+                }
+            }
+            if (streamUrl) {
+                return JSON.stringify({
+                    url: streamUrl,
+                    headers: { "User-Agent": "Mozilla/5.0", "Referer": "https://phim.nguonc.com" },
+                    subtitles: []
+                });
             }
         }
 
-        return JSON.stringify({
-            url: streamUrl,
-            headers: { "User-Agent": "Mozilla/5.0", "Referer": "https://phim.nguonc.com" },
-            subtitles: []
-        });
-    } catch (error) { return "{}"; }
+        return "{}";
+    } catch (error) {
+        return "{}";
+    }
 }
 
 function parseCategoriesResponse(apiResponseJson) {
@@ -274,4 +382,22 @@ function parseYearsResponse(apiResponseJson) {
         years.push({ name: yearStr, value: yearStr });
     }
     return JSON.stringify(years);
+}
+
+function base64Decode(str) {
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var output = '';
+    str = String(str).replace(/=+$/, '');
+    if (str.length % 4 == 1) {
+        throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+    }
+    for (
+        var bc = 0, bs, buffer, idx = 0;
+        buffer = str.charAt(idx++);
+        ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer,
+            bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
+    ) {
+        buffer = chars.indexOf(buffer);
+    }
+    return output;
 }
