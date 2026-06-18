@@ -2,27 +2,6 @@
   "name": "Cine",
   "plugins": [
     {
-      "id": "cinemabz",
-      "name": "CinemaBZ",
-      "version": "1.0.0",
-      "iconUrl": "https://cinema.bz/logo-icon.svg",
-      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/ex/cinema.js"
-    },
-    {
-      "id": "wmovies",
-      "name": "Wmovies",
-      "version": "1.0.1",
-      "iconUrl": "https://wmovies.org/favicon.ico",
-      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/ex/wmovies_plugin.js"
-    },
-    {
-      "id": "fmoviess",
-      "name": "FMovies",
-      "version": "1.0.0",
-      "iconUrl": "https://fmoviess.org/icon/favicon-32x32.png",
-      "scriptUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/ex/fm.js"
-    },
-    {
       "id": "ophim",
       "name": "OPhim",
       "version": "1.0.4",
