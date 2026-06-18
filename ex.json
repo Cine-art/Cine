@@ -133,6 +133,13 @@
       "version": "1.0.0",
       "iconUrl": "https://www.newphim.net/storage/files/Logo/logo_newphimnet.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/np.js"
+    },
+    { 
+      "id": "phimmoivideo",
+      "name": "Phim Mới Video",
+      "version": "1.0.0",
+      "iconUrl": "https://phimmoi.video/images/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pmv.js"
     }
   ]
 }
