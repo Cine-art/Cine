@@ -137,7 +137,7 @@
     { 
       "id": "phimmoivideo",
       "name": "Phim Mới Video",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "iconUrl": "https://phimmoi.video/images/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pmv.js"
     }
