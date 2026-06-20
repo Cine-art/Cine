@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "missav123",
         "name": "MissAV123",
-        "version": "1.1.6",
+        "version": "1.1.7",
         "baseUrl": "https://missav.media",
         "referrer": "https://missav123.com/",
         "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
@@ -758,8 +758,8 @@ function parseMovieDetail(html, pageUrl) {
             // Để PlayerViewModel gọi getStreamLink() → headers Referer được gắn
             // surrit.com yêu cầu Referer header, nếu gọi trực tiếp sẽ bị 403
             var episodeId = pageUrl || streamUrl;
-            if (episodeId && episodeId.indexOf(".m3u8") === -1 && episodeId.indexOf(".mp4") === -1) {
-                episodeId += "#.m3u8";
+            if (episodeId && episodeId.indexOf(".m3u") === -1 && episodeId.indexOf(".mp4") === -1) {
+                episodeId += "#.m3u";
             }
             servers.push({
                 name: "Stream",
