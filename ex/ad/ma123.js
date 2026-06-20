@@ -6,13 +6,13 @@ function getManifest() {
     return JSON.stringify({
         "id": "missav123",
         "name": "MissAV123",
-        "version": "1.1.4",
+        "version": "1.1.5",
         "baseUrl": "https://missav.media",
         "referrer": "https://missav123.com/",
         "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
         "isEnabled": true,
         "isAdult": true,
-        "type": "VIDEO",
+        "type": "MOVIE",
         "layoutType": "HORIZONTAL",
         "subtitleCat": true
     });
@@ -857,6 +857,7 @@ function parseDetailResponse(html) {
 
     return JSON.stringify({
         url: streamUrl,
+        isEmbed: false,
         headers: {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": "https://missav123.com/",
