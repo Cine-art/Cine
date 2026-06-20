@@ -6,9 +6,9 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimvietsub",
         "name": "PhimVietsub",
-        "version": "1.0.1",
-        "baseUrl": "https://phimvietsub.run",
-        "iconUrl": "https://phimvietsub.run/favicon.ico",
+        "version": "1.0.3",
+        "baseUrl": "https://phimvietsub.im",
+        "iconUrl": "https://phimvietsub.im/favicon.ico",
         "isEnabled": true,
         "type": "MOVIE",
         "layoutType": "GRID"
@@ -131,7 +131,7 @@ function getUrlList(slug, filtersJson) {
         }
         
         activeSlug = activeSlug.replace(/^\//, "").replace(/\/$/, "");
-        var url = "https://phimvietsub.run/";
+        var url = "https://phimvietsub.im/";
         if (activeSlug) {
             url += activeSlug;
         }
@@ -140,7 +140,7 @@ function getUrlList(slug, filtersJson) {
         }
         return url;
     } catch (e) {
-        return "https://phimvietsub.run/";
+        return "https://phimvietsub.im/";
     }
 }
 
@@ -148,13 +148,13 @@ function getUrlSearch(keyword, filtersJson) {
     try {
         var filters = JSON.parse(filtersJson || "{}");
         var page = filters.page || 1;
-        var url = "https://phimvietsub.run/?search=" + encodeURIComponent(keyword);
+        var url = "https://phimvietsub.im/?search=" + encodeURIComponent(keyword);
         if (page > 1) {
             url += "&page=" + page;
         }
         return url;
     } catch (e) {
-        return "https://phimvietsub.run/?search=" + encodeURIComponent(keyword);
+        return "https://phimvietsub.im/?search=" + encodeURIComponent(keyword);
     }
 }
 
@@ -164,19 +164,19 @@ function getUrlDetail(slug) {
         return slug;
     }
     var cleanSlug = slug.replace(/^\//, "");
-    return "https://phimvietsub.run/" + cleanSlug;
+    return "https://phimvietsub.im/" + cleanSlug;
 }
 
 function getUrlCategories() {
-    return "https://phimvietsub.run";
+    return "https://phimvietsub.im";
 }
 
 function getUrlCountries() {
-    return "https://phimvietsub.run";
+    return "https://phimvietsub.im";
 }
 
 function getUrlYears() {
-    return "https://phimvietsub.run";
+    return "https://phimvietsub.im";
 }
 
 // =============================================================================
@@ -211,7 +211,7 @@ function parseListResponse(html) {
                 return;
             }
             
-            slug = slug.replace('https://phimvietsub.run/', '').replace(/^\//, '');
+            slug = slug.replace(/^https?:\/\/[^\/]+\//i, '').replace(/^\//, '');
             
             if (!foundSlugs[slug]) {
                 var itemObj = {
@@ -243,7 +243,7 @@ function parseListResponse(html) {
             }
         }
 
-        var parts = html.split('href="https://phimvietsub.run/');
+        var parts = html.split(/href="(?:https?:\/\/[^\/]+)?\//i);
         for (var i = 1; i < parts.length; i++) {
             var itemHtml = parts[i];
             var slugMatch = itemHtml.match(/^([^"'\s>]+)/);
@@ -425,7 +425,7 @@ function parseMovieDetail(html) {
             if (!serverName) continue;
             
             var episodes = [];
-            var epRegex = /href="https:\/\/phimvietsub\.run\/([^"]+)"[\s\S]*?video-item-name[^>]*>([\s\S]*?)<\/div>/gi;
+            var epRegex = /href="(?:https?:\/\/[^\/]+)?\/([^"]+)"[\s\S]*?video-item-name[^>]*>([\s\S]*?)<\/div>/gi;
             var epMatch;
             var seenEpUrls = {};
             while (epMatch = epRegex.exec(paneHtml)) {
@@ -438,9 +438,9 @@ function parseMovieDetail(html) {
                 
                 if (!seenEpUrls[epUrl]) {
                     episodes.push({
-                        id: 'https://phimvietsub.run/' + epUrl,
+                        id: 'https://phimvietsub.im/' + epUrl.replace(/^\//, ''),
                         name: epName || "Tập",
-                        slug: epUrl
+                        slug: epUrl.replace(/^\//, '')
                     });
                     seenEpUrls[epUrl] = true;
                 }
@@ -457,12 +457,15 @@ function parseMovieDetail(html) {
         }
         
         if (servers.length === 0) {
-            var singleEpMatch = html.match(/href="(https:\/\/phimvietsub\.run\/[^"]+\/tap-[^"]+)"[^>]*class="[^"]*btn-s[^"]*"/i) ||
-                                html.match(/class="[^"]*btn-s[^"]*"[^>]*href="(https:\/\/phimvietsub\.run\/[^"]+\/tap-[^"]+)"/i) ||
-                                html.match(/href="(https:\/\/phimvietsub\.run\/[^"]+\/tap-[^"]+)"/i);
+            var singleEpMatch = html.match(/href="((?:https?:\/\/[^\/]+)?\/[^"]+\/tap-[^"]+)"[^>]*class="[^"]*btn-s[^"]*"/i) ||
+                                html.match(/class="[^"]*btn-s[^"]*"[^>]*href="((?:https?:\/\/[^\/]+)?\/[^"]+\/tap-[^"]+)"/i) ||
+                                html.match(/href="((?:https?:\/\/[^\/]+)?\/[^"]+\/tap-[^"]+)"/i);
             if (singleEpMatch) {
                 var epUrl = singleEpMatch[1];
-                var epSlug = epUrl.replace('https://phimvietsub.run/', '');
+                if (epUrl.indexOf('http') !== 0) {
+                    epUrl = 'https://phimvietsub.im' + (epUrl.charAt(0) === '/' ? '' : '/') + epUrl;
+                }
+                var epSlug = epUrl.replace(/^https?:\/\/[^\/]+\//i, '');
                 servers.push({
                     name: "Mặc định",
                     episodes: [{
@@ -548,7 +551,7 @@ function parseDetailResponse(html, apiUrl) {
             isEmbed: isEmbed,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-                "Referer": "https://phimvietsub.run/"
+                "Referer": "https://phimvietsub.im/"
             },
             subtitles: []
         });
