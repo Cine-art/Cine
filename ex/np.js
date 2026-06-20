@@ -10,6 +10,7 @@ function getManifest() {
         "baseUrl": "https://www.newphim.net",
         "iconUrl": "https://www.newphim.net/storage/files/Logo/logo_newphimnet.png",
         "isEnabled": true,
+        "hasDownload": true,
         "type": "MOVIE"
     });
 }
