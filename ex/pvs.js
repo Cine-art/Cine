@@ -10,6 +10,7 @@ function getManifest() {
         "baseUrl": "https://phimvietsub.im",
         "iconUrl": "https://phimvietsub.im/favicon.ico",
         "isEnabled": true,
+        "hasDownload": true,
         "type": "MOVIE",
         "layoutType": "GRID"
     });
