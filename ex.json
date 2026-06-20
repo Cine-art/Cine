@@ -109,8 +109,8 @@
     {
       "id": "phimvietsub",
       "name": "PhimVietsub",
-      "version": "1.0.1",
-      "iconUrl": "https://phimvietsub.run/favicon.ico",
+      "version": "1.0.3",
+      "iconUrl": "https://phimvietsub.im/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/pvs.js"
     },
     {
