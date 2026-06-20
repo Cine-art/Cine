@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "newphim",
         "name": "Newphim",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://www.newphim.net",
         "iconUrl": "https://www.newphim.net/storage/files/Logo/logo_newphimnet.png",
         "isEnabled": true,
