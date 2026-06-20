@@ -7,8 +7,8 @@ function getManifest() {
         "id": "phimmoivideo",
         "name": "Phim Mới Video",
         "version": "1.0.1",
-        "baseUrl": "https://phimmoi.video",
-        "iconUrl": "https://phimmoi.video/images/favicon.ico",
+        "baseUrl": "https://phimmoichill.buzz/",
+        "iconUrl": "https://phimmoichill.buzz/images/favicon.ico",
         "isEnabled": true,
         "type": "MOVIE"
     });
