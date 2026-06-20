@@ -53,7 +53,7 @@
      {
       "id": "missav123",
       "name": "MissAV 123",
-      "version": "1.1.7",
+      "version": "1.1.8",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma123.js"
     },
