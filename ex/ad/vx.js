@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "vlxx",
         "name": "VLXX",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "baseUrl": "https://vlxx.moi",
         "iconUrl": "https://vlxxsex.page/favicon.ico",
         "isEnabled": true,
@@ -217,7 +217,7 @@ function parseMovieDetail(html) {
             servers.push({
                 name: "Server #" + serverId,
                 episodes: [{
-                    id: pageUrl + "#s" + serverId,
+                    id: pageUrl + "#s" + serverId + "#.m3u",
                     name: "Full",
                     slug: "full-s" + serverId
                 }]
@@ -229,7 +229,7 @@ function parseMovieDetail(html) {
             servers.push({
                 name: "Server #1",
                 episodes: [{
-                    id: pageUrl + "#s1",
+                    id: pageUrl + "#s1#.m3u",
                     name: "Full",
                     slug: "full"
                 }]
