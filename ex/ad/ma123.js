@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "missav123",
         "name": "MissAV123",
-        "version": "1.1.7",
+        "version": "1.1.8",
         "baseUrl": "https://missav.media",
         "referrer": "https://missav123.com/",
         "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
@@ -799,8 +799,25 @@ function parseMovieDetail(html, pageUrl) {
             previewUrl: previewUrl || ""
         });
     } catch (e) {
-        return "null";
+        return JSON.stringify({
+            id: "", title: "Lỗi tải dữ liệu", description: e.message || String(e), servers: []
+        });
     }
+}
+
+function parseEpisodeResponse(html, url) {
+    var cleanUrl = url;
+    if (cleanUrl && cleanUrl.indexOf("#.m3u") !== -1) {
+        cleanUrl = cleanUrl.replace("#.m3u", "");
+    }
+    return JSON.stringify({
+        url: cleanUrl,
+        headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Referer": "https://missav123.com/",
+            "Origin": "https://missav123.com"
+        }
+    });
 }
 
 function parseDetailResponse(html) {
