@@ -6,10 +6,11 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimvivu",
         "name": "PhimViVu",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://phimvivu.lol",
         "iconUrl": "https://phimvivu.lol/wp-content/uploads/2025/08/cropped-FAV_VIVU_2025-32x32.png",
         "isEnabled": true,
+        "hasDownload": true,
         "type": "MOVIE",
         "layoutType": "GRID"
     });
