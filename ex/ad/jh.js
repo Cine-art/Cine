@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "javhd",
         "name": "JavHD",
-        "version": "1.0.7",
+        "version": "1.0.8",
         "baseUrl": "https://javhdz.today",
         "iconUrl": "https://javhdz.today/favicon-32x32.png",
         "isEnabled": true,
@@ -399,7 +399,7 @@ function parseMovieDetail(html) {
                     name: serverName,
                     episodes: [
                         {
-                            id: embedUrl,
+                            id: embedUrl + "#.m3u",
                             name: "Full",
                             slug: "full"
                         }
@@ -450,6 +450,10 @@ function parseDetailResponse(html, detailUrl) {
             }
         } else {
             firstEmbed = detailUrl || "";
+        }
+
+        if (firstEmbed) {
+            firstEmbed = firstEmbed.replace("#.m3u", "");
         }
 
         var isEmbed = false;
