@@ -63,6 +63,13 @@
       "version": "1.1.2",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma2.js"
+    },
+     {
+      "id": "18jav",
+      "name": "18JAV",
+      "version": "1.0.0",
+      "iconUrl": "https://cdn.18jav.tv/assets/icon/favicon.ico",,
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/18av.js"
     }
   ]
 }
