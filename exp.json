@@ -77,7 +77,13 @@
       "version": "1.0.0",
       "iconUrl": "https://kissjav.li/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/kia.js"
+    },
+     {
+      "id": "beeg",
+      "name": "Beeg",
+      "version": "1.0.0",
+      "iconUrl": "https://beeg.com/assets/favicon.svg",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/bee.js"
     }
-    
   ]
 }
