@@ -6,7 +6,7 @@ function getManifest() {
     return JSON.stringify({
         "id": "phimmoivideo",
         "name": "Phim Mới Video",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "baseUrl": "https://phimmoi.video",
         "iconUrl": "https://phimmoi.video/images/favicon.ico",
         "isEnabled": true,
@@ -83,6 +83,25 @@ function getFilterConfig() {
 // URL GENERATION
 // =============================================================================
 
+function getBaseUrl() {
+    try {
+        var manifest = JSON.parse(getManifest());
+        return manifest.baseUrl || "https://phimmoi.video";
+    } catch (e) {
+        return "https://phimmoi.video";
+    }
+}
+
+function getApiUrl() {
+    var base = getBaseUrl();
+    if (base.indexOf("https://") === 0) {
+        return "https://cdn." + base.substring(8);
+    } else if (base.indexOf("http://") === 0) {
+        return "http://cdn." + base.substring(7);
+    }
+    return base;
+}
+
 function getUrlList(slug, filtersJson) {
     try {
         var filters = JSON.parse(filtersJson || "{}");
@@ -112,9 +131,9 @@ function getUrlList(slug, filtersJson) {
             query.push("order=desc");
         }
         
-        return "https://cdn.phimmoi.video/api/v1/filter/movies?" + query.join("&");
+        return getApiUrl() + "/api/v1/filter/movies?" + query.join("&");
     } catch (e) {
-        return "https://cdn.phimmoi.video/api/v1/filter/movies?sort=views&order=desc&page=1&limit=20";
+        return getApiUrl() + "/api/v1/filter/movies?sort=views&order=desc&page=1&limit=20";
     }
 }
 
@@ -123,30 +142,31 @@ function getUrlSearch(keyword, filtersJson) {
         var filters = JSON.parse(filtersJson || "{}");
         var page = filters.page || 1;
         var limit = filters.limit || 20;
-        return "https://cdn.phimmoi.video/api/v1/search?keyword=" + encodeURIComponent(keyword) + "&page=" + page + "&limit=" + limit;
+        return getApiUrl() + "/api/v1/search?keyword=" + encodeURIComponent(keyword) + "&page=" + page + "&limit=" + limit;
     } catch (e) {
-        return "https://cdn.phimmoi.video/api/v1/search?keyword=" + encodeURIComponent(keyword) + "&page=1&limit=20";
+        return getApiUrl() + "/api/v1/search?keyword=" + encodeURIComponent(keyword) + "&page=1&limit=20";
     }
 }
 
 function getUrlDetail(slug) {
-    if (!slug) return "https://phimmoi.video";
+    var base = getBaseUrl();
+    if (!slug) return base;
     if (slug.indexOf("http") === 0) {
         return slug;
     }
-    return "https://phimmoi.video/phim/" + slug;
+    return base + "/phim/" + slug;
 }
 
 function getUrlCategories() {
-    return "https://phimmoi.video";
+    return getBaseUrl();
 }
 
 function getUrlCountries() {
-    return "https://phimmoi.video";
+    return getBaseUrl();
 }
 
 function getUrlYears() {
-    return "https://phimmoi.video";
+    return getBaseUrl();
 }
 
 // =============================================================================
@@ -254,7 +274,7 @@ function parseMovieDetail(html) {
             
             var absUrl = href;
             if (absUrl.indexOf("http") !== 0) {
-                absUrl = "https://phimmoi.video" + absUrl;
+                absUrl = getBaseUrl() + absUrl;
             }
             
             var serverName = "Default";
@@ -364,7 +384,7 @@ function parseDetailResponse(html, playUrl) {
                     url: streamUrl,
                     headers: {
                         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                        "Referer": playUrl || "https://phimmoi.video/"
+                        "Referer": playUrl || (getBaseUrl() + "/")
                     },
                     subtitles: []
                 });
@@ -379,7 +399,7 @@ function parseDetailResponse(html, playUrl) {
                 url: embedUrl,
                 headers: {
                     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                    "Referer": playUrl || "https://phimmoi.video/"
+                    "Referer": playUrl || (getBaseUrl() + "/")
                 },
                 subtitles: []
             });
