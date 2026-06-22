@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 31,
+    "latestVersionCode": 32,
 	"forceupdate": false,
-    "latestVersionName": "121",
+    "latestVersionName": "1.2",
     "releaseNotes": "New UI Beta - Download func",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
