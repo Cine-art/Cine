@@ -8,7 +8,7 @@ function getManifest() {
         "name": "TruyenFull",
         "version": "1.0.0",
         "baseUrl": "https://truyenfull.today",
-        "iconUrl": "https://dl.memuplay.com/new_market/img/app.truyenfull.vn.icon.2025-01-02-03-19-33.png",
+        "iconUrl": "https://truyenfull.today/favicons/favicon-192x192.png",
         "isEnabled": true,
         "type": "NOVEL"
     });
@@ -36,7 +36,57 @@ function getPrimaryCategories() {
 }
 
 function getFilterConfig() {
-    return JSON.stringify({});
+    return JSON.stringify({
+		category: [
+		{ "name": "Tiên Hiệp", "slug": "the-loai/tien-hiep" },
+        { "name": "Kiếm Hiệp", "slug": "the-loai/kiem-hiep" },
+        { "name": "Ngôn Tình", "slug": "the-loai/ngon-tinh" },
+        { "name": "Đam Mỹ", "slug": "the-loai/dam-my" },
+        { "name": "Huyền Huyễn", "slug": "the-loai/huyen-huyen" },
+        { "name": "Dị Giới", "slug": "the-loai/di-gioi" },
+        { "name": "Xuyên Không", "slug": "the-loai/xuyen-khong" },
+        { "name": "Đô Thị", "slug": "the-loai/do-thi" },
+		{ "name": "Quan Trường", "slug": "the-loai/quan-truong" },
+		{ "name": "Chủ Công", "slug": "the-loai/chu-cong" },
+        { "name": "Võng Du", "slug": "the-loai/vong-du" },
+        { "name": "Khoa Huyễn", "slug": "the-loai/khoa-huyen" },
+		{ "name": "Hệ Thống", "slug": "the-loai/he-thong" },
+		{ "name": "Huyền Huyễn", "slug": "the-loai/huyen-huyen" },
+        { "name": "Dị Giới", "slug": "the-loai/di-gioi" },
+		{ "name": "Dị Năng", "slug": "the-loai/di-nang" },
+		{ "name": "Sắc", "slug": "the-loai/sac" },
+        { "name": "Quân Sự", "slug": "the-loai/quan-su" },
+        { "name": "Lịch Sử", "slug": "the-loai/lich-su" },
+		{ "name": "Xuyên Sách", "slug": "the-loai/xuyen-sach" },
+		{ "name": "Xuyên Nhanh", "slug": "the-loai/xuyen-nhanh" },
+		{ "name": "Cận Đại", "slug": "the-loai/can-dai" },
+        { "name": "Trọng Sinh", "slug": "the-loai/trong-sinh" },
+        { "name": "Trinh Thám", "slug": "the-loai/trinh-tham" },
+		{ "name": "Thám Hiểm", "slug": "the-loai/tham-hiem" },
+		{ "name": "Linh Dị", "slug": "the-loai/linh-di" },
+        { "name": "Ngược", "slug": "the-loai/nguoc" },
+		{ "name": "Sủng", "slug": "the-loai/sung" },
+		{ "name": "Cung Đấu", "slug": "the-loai/cung-dau" },
+        { "name": "Nữ Cường", "slug": "the-loai/nu-cuong" },
+        { "name": "Gia Đấu", "slug": "the-loai/gia-dau" },
+		{ "name": "Đông Phương", "slug": "the-loai/dong-phuong" },
+		{ "name": "Đô Thị", "slug": "the-loai/do-thi" },
+        { "name": "Bách Hợp", "slug": "the-loai/bach-hop" },
+		{ "name": "Hài Hước", "slug": "the-loai/hai-huoc" },
+		{ "name": "Điền Văn", "slug": "the-loai/dien-van" },
+		{ "name": "Cổ Đại", "slug": "the-loai/co-dai" },
+        { "name": "Mạt Thế", "slug": "the-loai/mat-the" },
+        { "name": "Truyện Teen", "slug": "the-loai/truyen-teen" },
+		{ "name": "Phương Tây", "slug": "the-loai/phuong-tay" },
+		{ "name": "Nữ Phụ", "slug": "the-loai/nu-phu" },
+        { "name": "Light Novel", "slug": "the-loai/light-novel" },
+		{ "name": "Việt Nam", "slug": "the-loai/viet-nam" },
+		{ "name": "Tương Lai", "slug": "the-loai/tuong-lai" },
+        { "name": "Đoản Văn", "slug": "the-loai/doan-van" },
+		{ "name": "Review Sách", "slug": "the-loai/truyen-ngan" },
+		{ "name": "Khác", "slug": "the-loai/khac" }
+        ]
+	});
 }
 
 // =============================================================================
