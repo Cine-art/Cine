@@ -8,5 +8,12 @@
       "iconUrl": "https://dl.memuplay.com/new_market/img/app.truyenfull.vn.icon.2025-01-02-03-19-33.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/trf.js"
     },
+    {
+      "id": "gogzone",
+      "name": "GoG Zone",
+      "version": "1.0.0",
+      "iconUrl": "https://gog.zone/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/gog.js"
+    },
   ]
 }
