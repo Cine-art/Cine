@@ -306,10 +306,11 @@ function parseMovieDetail(htmlContent, apiUrl) {
 
     // Chapters
     var episodes = [];
-    var listChapBlock = /<ul[^>]*class="list-chapter"[^>]*>([\s\S]*?)<\/ul>/ig;
+    var listChapBlockRegex = /<ul[^>]*class="list-chapter"[^>]*>([\s\S]*?)<\/ul>/ig;
+    var liRegex = /<li>\s*<span[^>]*class="glyphicon[^"]*"[^>]*><\/span>\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<\/li>/ig;
+
     var chapUl;
-    while ((chapUl = listChapBlock.exec(htmlContent)) !== null) {
-        var liRegex = /<li>\s*<span[^>]*class="glyphicon[^"]*"[^>]*><\/span>\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<\/li>/ig;
+    while ((chapUl = listChapBlockRegex.exec(htmlContent)) !== null) {
         var chapMatch;
         while ((chapMatch = liRegex.exec(chapUl[1])) !== null) {
             var chapUrl = chapMatch[1];
@@ -323,6 +324,73 @@ function parseMovieDetail(htmlContent, apiUrl) {
                 "slug": cSlug
             });
         }
+    }
+
+    // Try to fetch remaining pages if pagination exists
+    try {
+        var maxPage = 1;
+        var pageRegex = /trang-(\d+)/g;
+        var pageMatch;
+        while ((pageMatch = pageRegex.exec(htmlContent)) !== null) {
+            var pVal = parseInt(pageMatch[1], 10);
+            if (pVal > maxPage) {
+                maxPage = pVal;
+            }
+        }
+
+        if (maxPage > 1) {
+            // Limit to 20 pages max to prevent blocking the UI for too long
+            var fetchLimit = maxPage > 20 ? 20 : maxPage;
+            
+            for (var p = 2; p <= fetchLimit; p++) {
+                var cleanApi = apiUrl.replace(/\/$/, "");
+                var pageUrl = cleanApi + "/trang-" + p + "/";
+                
+                // Use Rhino Java interop to fetch HTTP content synchronously
+                var pageHtml = "";
+                try {
+                    var url = new java.net.URL(pageUrl);
+                    var conn = url.openConnection();
+                    conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+                    conn.setConnectTimeout(5000);
+                    conn.setReadTimeout(5000);
+                    var is = conn.getInputStream();
+                    var reader = new java.io.BufferedReader(new java.io.InputStreamReader(is, "UTF-8"));
+                    var line = "";
+                    var builder = new java.lang.StringBuilder();
+                    while ((line = reader.readLine()) !== null) {
+                        builder.append(line).append("\n");
+                    }
+                    pageHtml = builder.toString();
+                    is.close();
+                } catch (e) {
+                    // Ignore fetch errors for subsequent pages
+                }
+
+                if (pageHtml) {
+                    var pListChapBlock = /<ul[^>]*class="list-chapter"[^>]*>([\s\S]*?)<\/ul>/ig;
+                    var pLiRegex = /<li>\s*<span[^>]*class="glyphicon[^"]*"[^>]*><\/span>\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<\/li>/ig;
+                    var pChapUl;
+                    while ((pChapUl = pListChapBlock.exec(pageHtml)) !== null) {
+                        var pChapMatch;
+                        while ((pChapMatch = pLiRegex.exec(pChapUl[1])) !== null) {
+                            var pChapUrl = pChapMatch[1];
+                            var pChapName = cleanText(pChapMatch[2]);
+                            var pCSlugMatch = /\/([^\/]+)\/?$/.exec(pChapUrl);
+                            var pCSlug = pCSlugMatch ? pCSlugMatch[1] : pChapUrl;
+                            
+                            episodes.push({
+                                "id": pChapUrl,
+                                "name": pChapName,
+                                "slug": pCSlug
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    } catch (e) {
+        // Fallback silently if Java interop is blocked or fails
     }
     
     servers.push({
