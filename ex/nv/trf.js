@@ -346,25 +346,33 @@ function parseMovieDetail(htmlContent, apiUrl) {
                 var cleanApi = apiUrl.replace(/\/$/, "");
                 var pageUrl = cleanApi + "/trang-" + p + "/";
                 
-                // Use Rhino Java interop to fetch HTTP content synchronously
                 var pageHtml = "";
                 try {
-                    var url = new java.net.URL(pageUrl);
-                    var conn = url.openConnection();
-                    conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
-                    var is = conn.getInputStream();
-                    var reader = new java.io.BufferedReader(new java.io.InputStreamReader(is, "UTF-8"));
-                    var line = "";
-                    var builder = new java.lang.StringBuilder();
-                    while ((line = reader.readLine()) !== null) {
-                        builder.append(line).append("\n");
+                    if (typeof KkHttpClient !== 'undefined') {
+                        pageHtml = KkHttpClient.get(pageUrl);
+                    } else {
+                        // Fallback to Rhino Packages.java interop
+                        var url = new Packages.java.net.URL(pageUrl);
+                        var conn = url.openConnection();
+                        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+                        conn.setConnectTimeout(5000);
+                        conn.setReadTimeout(5000);
+                        var is = conn.getInputStream();
+                        var reader = new Packages.java.io.BufferedReader(new Packages.java.io.InputStreamReader(is, "UTF-8"));
+                        var line = "";
+                        var builder = new Packages.java.lang.StringBuilder();
+                        while ((line = reader.readLine()) !== null) {
+                            builder.append(line).append("\n");
+                        }
+                        pageHtml = builder.toString();
+                        is.close();
                     }
-                    pageHtml = builder.toString();
-                    is.close();
                 } catch (e) {
-                    // Ignore fetch errors for subsequent pages
+                    // Inject error as an episode so we can debug on user's device
+                    if (episodes.length === 50) {
+                        episodes.push({ "id": "error", "name": "Error fetching page " + p + ": " + e, "slug": "error" });
+                    }
+                    break; // Stop fetching on error
                 }
 
                 if (pageHtml) {
