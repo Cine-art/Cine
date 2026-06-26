@@ -8,7 +8,7 @@ function getManifest() {
         "name": "TruyenFull",
         "version": "1.0.0",
         "baseUrl": "https://truyenfull.today",
-        "iconUrl": "https://truyenfull.today/favicons/favicon-192x192.png",
+        "iconUrl": "https://dl.memuplay.com/new_market/img/app.truyenfull.vn.icon.2025-01-02-03-19-33.png",
         "isEnabled": true,
         "type": "NOVEL"
     });
