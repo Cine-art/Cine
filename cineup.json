@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 40,
+    "latestVersionCode": 41,
 	"forceupdate": false,
-    "latestVersionName": "1.5",
-    "releaseNotes": "Novel - TTS Support",
+    "latestVersionName": "1.5.1",
+    "releaseNotes": "Novel - TTS Support - 3D",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
