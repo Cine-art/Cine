@@ -6,21 +6,21 @@
       "name": "TruyenFull",
       "version": "1.0.0",
       "iconUrl": "https://dl.memuplay.com/new_market/img/app.truyenfull.vn.icon.2025-01-02-03-19-33.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/trf.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/trf.cine"
     },
     {
       "id": "gogzone",
       "name": "GoG Zone",
       "version": "1.0.0",
       "iconUrl": "https://gog.zone/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/gog.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/gog.cine"
     },
     {
       "id": "hako",
       "name": "Hako",
       "version": "1.0.0",
       "iconUrl": "https://docln.sbs/img/favicon-2026-2x.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/hk.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/hk.cine"
     },
     {
       "id": "wikicv",
@@ -34,14 +34,14 @@
       "name": "TruyenNet",
       "version": "1.0.0",
       "iconUrl": "https://truyennet.org/images/logo.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/tn.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/tn.cine"
     },
     {
       "id": "metruyenchuvn",
       "name": "MeTruyenChuVN",
       "version": "1.0.0",
       "iconUrl": "https://metruyenchuvn.com/images/logo.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/mtc.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/mtc.cine"
     }
   ]
 }
