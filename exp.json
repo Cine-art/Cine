@@ -6,91 +6,91 @@
       "name": "AVDB JAV",
       "version": "1.0.3",
       "iconUrl": "https://avdbapi.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/avd.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/avd.cine"
     },
     {
       "id": "javhd",
       "name": "JavHD",
       "version": "1.0.8",
       "iconUrl": "https://javhdz.today/favicon-32x32.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/jh.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/jh.cine"
     },
      {
       "id": "missav",
       "name": "MissAV",
       "version": "1.1.3",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma.cine"
     },
     {
       "id": "sextop1",
       "name": "Sextop1",
       "version": "1.1.5",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/sextop1.webp",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/st1.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/st1.cine"
     },
     {
       "id": "vlxx",
       "name": "VLXX",
       "version": "1.0.5",
       "iconUrl": "https://vlxxsex.page/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/vx.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/vx.cine"
     },
     {
       "id": "javguru",
       "name": "Jav Guru",
       "version": "1.0.0",
       "iconUrl": "https://jav.guru/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/jgr.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/jgr.cine"
     },
     {
       "id": "topxx",
       "name": "TopXX",
       "version": "1.0.0",
       "iconUrl": "https://topxx.vip/storage/uploads/logo/favicon-1766542707.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/tx.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/tx.cine"
     },
      {
       "id": "missav123",
       "name": "MissAV 123",
       "version": "1.1.8",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma123.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma123.cine"
     },
      {
       "id": "missav2",
       "name": "MissAV 2",
       "version": "1.1.2",
       "iconUrl": "https://raw.githubusercontent.com/youngbi/repo/main/plugins/missav.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma2.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ma2.cine"
     },
      {
       "id": "18jav",
       "name": "18JAV",
       "version": "1.0.0",
       "iconUrl": "https://cdn.18jav.tv/assets/icon/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/18a.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/18a.cine"
     },
      {
       "id": "kissjav",
       "name": "KissJAV",
       "version": "1.0.0",
       "iconUrl": "https://kissjav.li/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/kia.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/kia.cine"
     },
      {
       "id": "beeg",
       "name": "Beeg",
       "version": "1.0.0",
       "iconUrl": "https://beeg.com/assets/favicon.svg",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/bee.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/bee.cine"
     },
      {
       "id": "hentaigem",
     "name": "Hentaigem",
     "version": "1.0.0",
     "iconUrl": "https://www.hentaigem.com/images/icons/favicon-32x32.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/htg.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/htg.cine"
     }
   ]
 }
