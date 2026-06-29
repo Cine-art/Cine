@@ -29,5 +29,12 @@
       "iconUrl": "https://wikicv.net/static/img/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/wcv.js"
     },
+    {
+      "id": "truyennet",
+      "name": "TruyenNet",
+      "version": "1.0.0",
+      "iconUrl": "https://truyennet.org/images/logo.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/tn.js"
+    },
   ]
 }
