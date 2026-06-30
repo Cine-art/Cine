@@ -4,12 +4,12 @@
     {
       "id": "xem",
       "name": "Hội Quán",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/xem.jx"
+      "scriptUrl": "https://xem.hoiquan.click/"
     },
     {
       "id": "vmttv",
       "name": "VMTTV",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/tv.jx"
+      "scriptUrl": "https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/vmttv"
     },
     {
       "id": "mytv",
