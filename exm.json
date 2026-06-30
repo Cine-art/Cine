@@ -6,35 +6,35 @@
       "name": "NetTruyen",
       "version": "1.0.0",
       "iconUrl": "https://nettruyen.gg/assets/images/landings/nettruyen-fav.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/nt.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/nt.cine"
     },
     {
       "id": "truyenqq",
       "name": "TruyenQQ",
       "version": "1.0.1",
       "iconUrl": "https://truyenqqko.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/qq.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/qq.cine"
     },
     {
       "id": "sayhentai",
       "name": "SayHentai",
       "version": "1.0.5",
       "iconUrl": "https://sayhentai.sh/favicon-32x32.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/sh.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/sh.cine"
     },
     {
       "id": "otruyen",
       "name": "OTruyen",
       "version": "1.0.2",
       "iconUrl": "https://otruyen.cc/logo/logo-otruyen-1.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/ot.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/ot.cine"
     },
     {
       "id": "misskon",
       "name": "MissKon",
       "version": "1.0.1",
       "iconUrl": "https://misskon.com/img/logo.2026.v5.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/mk.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mg/mk.cine"
     }
 	  ]
 }
