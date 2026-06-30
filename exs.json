@@ -6,42 +6,42 @@
       "name": "PhimNganHDC",
       "version": "1.0.1",
       "iconUrl": "https://phimnganhdc.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/phdc.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/phdc.cine"
     },
     {
       "id": "phimngan",
       "name": "PhimNgan.TV",
       "version": "1.0.3",
       "iconUrl": "https://phimngan.tv/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/pntv.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/pntv.cine"
     },
     {
       "id": "netshort",
       "name": "NetShort",
       "version": "1.0.1",
       "iconUrl": "https://netshort.com/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/ns.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/ns.cine"
     },
     {
      "id": "vokich",
       "name": "Võ Kịch",
       "version": "1.0.0",
       "iconUrl": "https://vokich.com/ic.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/vk.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/vk.cine"
     },
     {
      "id": "dongphimngan",
       "name": "Động Phim Ngắn",
       "version": "1.0.0",
       "iconUrl": "https://dongphimngan.com/uploads/4260e165-e0c7-45e7-9ac1-6740b4f50510-pc.webp",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/dpg.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/dpg.cine"
     },
     {
      "id": "dramangan",
       "name": "DramaNgắn",
       "version": "1.0.1",
       "iconUrl": "hhttps://dramangan.org/static/images/favicon.png",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/drm.js"
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/drm.cine"
     },
   ]
 }
