@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 43,
+    "latestVersionCode": 44,
 	"forceupdate": false,
-    "latestVersionName": "1.5.2",
+    "latestVersionName": "1.5.3",
     "releaseNotes": "Novel - TTS - E2E",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
