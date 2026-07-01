@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 45,
+    "latestVersionCode": 47,
 	"forceupdate": false,
-    "latestVersionName": "1.5.4",
-    "releaseNotes": "Novel - TTS - E2E",
+    "latestVersionName": "1.5.6",
+    "releaseNotes": "Remote Cross Device",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
