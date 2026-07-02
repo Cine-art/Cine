@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 47,
+    "latestVersionCode": 51,
 	"forceupdate": false,
-    "latestVersionName": "1.5.6",
+    "latestVersionName": "1.5.8",
     "releaseNotes": "Remote Cross Device",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
