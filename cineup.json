@@ -1,6 +1,6 @@
 {
     "latestVersionCode": 52,
-	"forceupdate": true,
+	"forceupdate": false,
     "latestVersionName": "1.5.9",
     "releaseNotes": "Remote Cross Device \nFullscreen TTS Reader",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
