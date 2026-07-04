@@ -2,6 +2,6 @@
     "latestVersionCode": 54,
 	"forceupdate": false,
     "latestVersionName": "1.6.1",
-    "releaseNotes": "Remote Cross Device \nFullscreen TTS Reader \nKaraoke TTS \n DLNA Cast",
+    "releaseNotes": "Remote Cross Device \nFullscreen TTS Reader \nKaraoke TTS \nDLNA Cast",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
