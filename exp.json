@@ -133,13 +133,6 @@
       "version": "1.0.0",
       "iconUrl": "https://nangcuc.cv/wp-content/uploads/2026/06/favicon-150x150.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/nac.cine"
-    },
-     {
-      "id": "truyendich",
-      "name": "TruyenDich",
-      "version": "1.0.0",
-      "iconUrl": "https://truyendich.ai/icon.webp",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/tad.cine"
     }
   ]
 }
