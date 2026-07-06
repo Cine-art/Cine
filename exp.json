@@ -91,6 +91,13 @@
     "version": "1.0.0",
     "iconUrl": "https://www.hentaigem.com/images/icons/favicon-32x32.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/htg.cine"
+    },
+     {
+      "id": "xerotica",
+      "name": "Xerotica",
+      "version": "1.0.0",
+      "iconUrl": "https://www.xerotica.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/xrt.cine"
     }
   ]
 }
