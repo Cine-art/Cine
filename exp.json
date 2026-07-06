@@ -115,10 +115,17 @@
     },
      {
       "id": "javninja",
-        "name": "Jav Ninja",
-        "version": "1.0.0",
+      "name": "Jav Ninja",
+      "version": "1.0.0",
       "iconUrl": "https://jav.ninja/favicon-192x192.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/jan.cine"
+    },
+     {
+       "id": "boxav",
+      "name": "BoxAV",
+      "version": "1.0.0",
+      "iconUrl": "https://www.boxav.net/assets/favicon.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/ba.cine"
     }
   ]
 }
