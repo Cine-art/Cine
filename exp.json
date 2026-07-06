@@ -98,6 +98,13 @@
       "version": "1.0.0",
       "iconUrl": "https://www.xerotica.com/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/xrt.cine"
+    },
+     {
+      "id": "kawaijav",
+      "name": "Kawai JAV",
+      "version": "1.0.0",
+      "iconUrl": "https://www.xerotica.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/ad/kwj.cine"
     }
   ]
 }
