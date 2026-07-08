@@ -56,6 +56,13 @@
       "version": "1.0.0",
       "iconUrl": "https://truyendich.ai/icon.webp",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/tad.cine"
+    },
+     {
+      "id": "trichtinhlau",
+      "name": "Trích Tinh Lâu",
+      "version": "1.0.0",
+      "iconUrl": "https://trichtinhlau.com/frontend/assets/images/Trichtinhlau-logo.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/ttt.cine"
     }
   ]
 }
