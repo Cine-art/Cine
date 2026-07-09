@@ -9,13 +9,6 @@
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/phdc.cine"
     },
     {
-      "id": "phimngan",
-      "name": "PhimNgan.TV",
-      "version": "1.0.3",
-      "iconUrl": "https://phimngan.tv/favicon.ico",
-      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/pntv.cine"
-    },
-    {
       "id": "netshort",
       "name": "NetShort",
       "version": "1.0.1",
