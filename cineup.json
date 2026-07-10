@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 61,
+    "latestVersionCode": 63,
 	"forceupdate": false,
-    "latestVersionName": "1.6.7",
-    "releaseNotes": "Remote Cross Device \nFullscreen Karaoke TTS Reader \nDLNA Cast \nLocal Backup \nSupport Subtitle",
+    "latestVersionName": "1.6.8",
+    "releaseNotes": "Remote Cross Device \nFullscreen Karaoke TTS Reader \nDLNA Cast \nLocal Backup \nSupport Subtitle \nE-ink Mode",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
