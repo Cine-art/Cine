@@ -147,6 +147,13 @@
       "version": "1.0.0",
       "iconUrl": "https://ghienphim.cv/themes/motchill/img/logo.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mo/ngp.cine"
+    },
+     {
+      "id": "xemphimhd",
+        "name": "XemPhimHD",
+        "version": "1.0.0",
+      "iconUrl": "https://xemphimhd.im/motchill.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mo/xehd.cine"
     }
   ]
 }
