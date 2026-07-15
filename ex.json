@@ -140,6 +140,13 @@
       "version": "1.0.1",
       "iconUrl": "https://phimmoi.video/images/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mo/pmv.cine"
+    },
+     {
+      "id": "ghienphim",
+      "name": "GhienPhim",
+      "version": "1.0.0",
+      "iconUrl": "https://ghienphim.cv/themes/motchill/img/logo.png",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mo/ngp.cine"
     }
   ]
 }
