@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 67,
+    "latestVersionCode": 69,
 	"forceupdate": false,
-    "latestVersionName": "1.7.1",
-    "releaseNotes": "Nplayer UI \nRemote Cross Device \nFullscreen Karaoke TTS Reader \nDLNA Cast \nLocal Backup \nSupport Subtitle \nE-ink Mode",
+    "latestVersionName": "1.7.2",
+    "releaseNotes": "Liquid Glass UI Beta \nNplayer UI",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
