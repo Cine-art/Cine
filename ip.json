@@ -45,6 +45,11 @@
       "id": "truyenhinh",
       "name": "TVLyMacSau",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/liv/ttLms.jx"
+    },
+    {
+      "id": "byvn",
+      "name": "BYVN",
+      "scriptUrl": "https://byvn.net/s7se"
     }
     
   ]
