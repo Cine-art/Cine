@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 69,
+    "latestVersionCode": 70,
 	"forceupdate": false,
-    "latestVersionName": "1.7.2",
-    "releaseNotes": "Liquid Glass UI Beta \nNplayer UI",
+    "latestVersionName": "1.7.3",
+    "releaseNotes": "Liquid Glass UI Beta \nNplayer UI \nNew short player",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
