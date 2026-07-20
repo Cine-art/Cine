@@ -63,6 +63,13 @@
       "version": "1.0.0",
       "iconUrl": "https://trichtinhlau.com/frontend/assets/images/Trichtinhlau-logo.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/ttt.cine"
+    },
+     {
+      "id": "sottruyen",
+      "name": "Sọt Truyện",
+      "version": "1.0.0",
+      "iconUrl": "https://sottruyen.com/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/sot.cine"
     }
   ]
 }
