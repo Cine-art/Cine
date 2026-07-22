@@ -25,7 +25,7 @@
     {
       "id": "wikicv",
       "name": "WikiCV",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "iconUrl": "https://wikicv.net/static/img/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/wcv.js"
     },
