@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 72,
+    "latestVersionCode": 74,
 	"forceupdate": false,
-    "latestVersionName": "1.7.5",
+    "latestVersionName": "1.7.6",
     "releaseNotes": "Liquid Glass UI Beta \nNew short player \nDPI bypass",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
