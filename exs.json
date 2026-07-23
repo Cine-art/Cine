@@ -38,7 +38,7 @@
     },
      {
      "id": "shortflix",
-      "name": "Shortflix"
+      "name": "Shortflix",
       "version": "1.2.3",
       "iconUrl": "https://www.shortflix.net/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/sof.cine"
