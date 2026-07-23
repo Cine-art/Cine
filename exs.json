@@ -33,8 +33,15 @@
      "id": "dramangan",
       "name": "DramaNgắn",
       "version": "1.0.1",
-      "iconUrl": "hhttps://dramangan.org/static/images/favicon.png",
+      "iconUrl": "https://dramangan.org/static/images/favicon.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/drm.cine"
     },
+     {
+     "id": "shortflix",
+      "name": "Shortflix"
+      "version": "1.2.3",
+      "iconUrl": "https://www.shortflix.net/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/so/sof.cine"
+    }
   ]
 }
