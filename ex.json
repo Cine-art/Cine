@@ -154,6 +154,13 @@
         "version": "1.0.0",
       "iconUrl": "https://xemphimhd.im/motchill.png",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mo/xehd.cine"
+    },
+     {
+      "id": "tinhlagi",
+      "name": "Tinhlagi.pro",
+      "version": "1.1.2",
+      "iconUrl": "https://tinhlagi.pro/home/tinhlagi.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/mo/tinhlagi.cine"
     }
   ]
 }
