@@ -70,6 +70,13 @@
       "version": "1.0.0",
       "iconUrl": "https://sottruyen.com/favicon.ico",
       "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/sot.cine"
+    },
+     {
+      "id": "webnovel",
+      "name": "Webnovel.vn",
+      "version": "1.0.3",
+      "iconUrl": "https://cdn.webnovel.vn/img/favicon.ico",
+      "scriptUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/ex/nv/wno.cine"
     }
   ]
 }
