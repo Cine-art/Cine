@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 87,
+    "latestVersionCode": 88,
 	"forceupdate": false,
-    "latestVersionName": "1.8.1",
-    "releaseNotes": "Liquid Glass UI Beta \nNew short player \nDPI bypass \nTTS",
+    "latestVersionName": "1.8.2",
+    "releaseNotes": "Mini Player TTS \nPreload Novel chapter \nSupport Loacl File \nEpub reader",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
