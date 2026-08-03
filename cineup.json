@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 88,
+    "latestVersionCode": 8,
 	"forceupdate": false,
-    "latestVersionName": "1.8.2",
-    "releaseNotes": "Mini Player TTS \nPreload Novel chapter \nSupport Local File \nEpub reader",
+    "latestVersionName": "1.8.3",
+    "releaseNotes": "Mini Player TTS \nPreload Novel chapter \nSupport Local File \nCast Epub to TV",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
