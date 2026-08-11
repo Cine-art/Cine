@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 92,
+    "latestVersionCode": 93,
 	"forceupdate": false,
-    "latestVersionName": "1.8.5",
-    "releaseNotes": "Mini Player TTS \nPreload Novel chapter \nSupport Local File \nCast Epub to TV (beta) \nFix SSL A9",
+    "latestVersionName": "1.8.6",
+    "releaseNotes": "Material You UI \nTvMate IPTV \nDynamic config",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
