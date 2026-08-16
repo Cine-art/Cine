@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 96,
+    "latestVersionCode": 97,
 	"forceupdate": false,
-    "latestVersionName": "1.8.6",
+    "latestVersionName": "1.8.8",
 	"releaseNotes": "New UI for Android TV Beta \nFix extension structure \nOptimize the Liquid Glass UI \nUser agent mode \nAuto redirect domain",
     "downloadUrl": "https://github.com/Cine-art/Cine/raw/refs/heads/main/cine.apx"
 }
