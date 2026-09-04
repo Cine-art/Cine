@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 98,
+    "latestVersionCode": 99,
 	"forceupdate": false,
-    "latestVersionName": "1.8.9",
-	"releaseNotes": "Live in recent \nOptimize IPTV mode",
+    "latestVersionName": "1.9.1",
+	"releaseNotes": "Tablet mode \nAdaptive HLS \nRandom cate \nNew Reader \nMore EPG",
     "downloadUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cine.apx"
 }
