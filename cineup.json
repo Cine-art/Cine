@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 100,
+    "latestVersionCode": 101,
 	"forceupdate": false,
-    "latestVersionName": "1.9.2",
-	"releaseNotes": "Tablet mode \nAdaptive HLS \nRandom cate \nNew Reader \nMore EPG",
+    "latestVersionName": "1.9.3",
+	"releaseNotes": "New Bottombar \nManual reload Home \nFix HLS, notification \nOptimize Search.",
     "downloadUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cine.apx"
 }
