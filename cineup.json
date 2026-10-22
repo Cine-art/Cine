@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 101,
+    "latestVersionCode": 103,
 	"forceupdate": false,
-    "latestVersionName": "1.9.3",
-	"releaseNotes": "New Bottombar \nManual reload Home \nFix HLS, notification \nOptimize Search.",
+    "latestVersionName": "1.9.5",
+	"releaseNotes": "Auto reg Webview \nUpdate Embed.",
     "downloadUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cine.apx"
 }
