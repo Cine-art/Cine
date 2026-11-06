@@ -1,7 +1,7 @@
 {
-    "latestVersionCode": 103,
+    "latestVersionCode": 104,
 	"forceupdate": false,
-    "latestVersionName": "1.9.5",
-	"releaseNotes": "Auto reg Webview \nUpdate Embed.",
+    "latestVersionName": "1.9.6",
+	"releaseNotes": "Custom Bottombar \nAuto start last channel",
     "downloadUrl": "https://raw.githubusercontent.com/Cine-art/Cine/refs/heads/main/cine.apx"
 }
